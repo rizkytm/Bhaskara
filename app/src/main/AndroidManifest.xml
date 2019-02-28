@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailTopikActivity"></activity>
+        <activity
+            android:name=".KamusActivity"
+            android:label="@string/title_activity_kamus"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".QuizActivity" />
+        <activity android:name=".LatihanActivity" />
+        <activity android:name=".DetailTopikActivity" />
         <activity
             android:name=".TheoryActivity"
             android:label="@string/title_activity_theory"

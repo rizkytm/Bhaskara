@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_library_books_red"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/action_ind_sun"
+                android:icon="@drawable/ic_library_books_red"
+                android:orderInCategory="100"
+                android:title="Indo - Sunda"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_sun_ind"
+                android:icon="@drawable/ic_library_books_green"
+                android:orderInCategory="100"
+                android:title="Sunda - Indo"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/action_sun_sun"
+                android:icon="@drawable/ic_library_books_blue"
+                android:orderInCategory="100"
+                android:title="Sunda - Sunda"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>

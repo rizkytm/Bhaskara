@@ -31,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
                 if (position == 0) {
                     Intent intent = new Intent(MainActivity.this, TheoryActivity.class);
                     startActivity(intent);
+                } else if (position == 1) {
+                    Intent intent = new Intent(MainActivity.this, LatihanActivity.class);
+                    startActivity(intent);
+                } else if (position == 2) {
+                    Intent intent = new Intent(MainActivity.this, KamusActivity.class);
+                    startActivity(intent);
                 }
             }
         });
