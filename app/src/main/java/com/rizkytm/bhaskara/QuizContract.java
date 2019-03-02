@@ -22,4 +22,10 @@ public final class QuizContract {
         public static final String COLUMN_DIFFICULTY = "difficulty";
         public static final String COLUMN_CATEGORY_ID = "category_id";
     }
+
+    public static class TopicsTable implements BaseColumns {
+        public static final String TABLE_NAME = "topics";
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_CONTENT = "content";
+    }
 }

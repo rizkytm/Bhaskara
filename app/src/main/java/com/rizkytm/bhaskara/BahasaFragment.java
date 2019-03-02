@@ -1,6 +1,7 @@
 package com.rizkytm.bhaskara;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,6 +23,16 @@ public class BahasaFragment extends Fragment {
 //    private FragmentListener listener;
 //    private ArrayList<String> mSource = new ArrayList<String>();
 
+    DBHelper db;
+    QuizDbHelper dbHelper;
+    public ArrayList<Topik> topiks = new ArrayList<>();
+
+    private FragmentListener listener;
+    private ArrayList<Topik> mSource = new ArrayList<Topik>();
+
+    public static final String EXTRA_TITLE = "extraTitle";
+    public static final String EXTRA_CONTENT = "extraContent";
+
     public BahasaFragment() {
         // Required empty public constructor
     }
@@ -33,8 +44,17 @@ public class BahasaFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_bahasa, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.bahasaListView);
-        TopikAdapter adapter = new TopikAdapter(this.getActivity(), getTopikBahasa());
+        final TopikAdapter adapter = new TopikAdapter(this.getActivity(), getTopikList());
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), DetailTopikActivity.class);
+                intent.putExtra(EXTRA_TITLE, topiks.get(position).getJudul());
+                intent.putExtra(EXTRA_CONTENT, topiks.get(position).getIsi());
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
@@ -60,24 +80,50 @@ public class BahasaFragment extends Fragment {
 ////        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1)
 //    }
 
-    private ArrayList<Topik> getTopikBahasa() {
-        //COLECTION OF CRIME MOVIES
-        ArrayList<Topik> topikBahasa=new ArrayList<>();
+    public ArrayList<Topik> getTopikList() {
+//        String tableName = getTableName(dicType);
+        dbHelper = new QuizDbHelper(getContext());
+        dbHelper.getWritableDatabase();
+        ArrayList<Topik> topikList = dbHelper.getAllTopics();
+        String judul, isi;
+        for (int i = 0; i<topikList.size();i++) {
+            judul = topikList.get(i).getJudul();
+            isi = topikList.get(i).getIsi();
 
-        //SINGLE MOVIE
-        Topik topik=new Topik("Pekenalan");
 
-        //ADD ITR TO COLLECTION
-        topikBahasa.add(topik);
+            Topik topik = new Topik(judul, isi);
+//            topik.setName(name);
 
-        topik = new Topik("Percakapan di Rumah");
-        topikBahasa.add(topik);
+            topiks.add(topik);
+        }
+        dbHelper.close();
 
-        topik=new Topik("Percakapan di Sekolah");
-        topikBahasa.add(topik);
-
-        return topikBahasa;
+//        ArrayList<String> source = new ArrayList<>();
+//        while (result.moveToNext()) {
+//            source.add(result.getString(result.getColumnIndex(COL_JUDUL)));
+//        }
+//        return source;
+        return topiks;
     }
+
+//    private ArrayList<Topik> getTopikBahasa() {
+//        //COLECTION OF CRIME MOVIES
+//        ArrayList<Topik> topikBahasa=new ArrayList<>();
+//
+//        //SINGLE MOVIE
+//        Topik topik=new Topik("Pekenalan");
+//
+//        //ADD ITR TO COLLECTION
+//        topikBahasa.add(topik);
+//
+//        topik = new Topik("Percakapan di Rumah");
+//        topikBahasa.add(topik);
+//
+//        topik=new Topik("Percakapan di Sekolah");
+//        topikBahasa.add(topik);
+//
+//        return topikBahasa;
+//    }
 
     @Override
     public String toString() {

@@ -1,8 +1,10 @@
 package com.rizkytm.bhaskara;
 
 import android.content.Intent;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 public class DetailTopikActivity extends AppCompatActivity {
@@ -13,9 +15,12 @@ public class DetailTopikActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_topik);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(TopikAdapter.EXTRA_MESSAGE);
+        String title = intent.getStringExtra(BahasaFragment.EXTRA_TITLE);
+        String content = intent.getStringExtra(BahasaFragment.EXTRA_CONTENT);
 
-        TextView textView = findViewById(R.id.detailTopik);
-        textView.setText(message);
+        TextView textViewTitle = (TextView) findViewById(R.id.detailTopik);
+        TextView textViewContent = (TextView) findViewById(R.id.isiTeori);
+        textViewTitle.setText(title);
+        textViewContent.setText(content);
     }
 }

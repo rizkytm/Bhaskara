@@ -56,10 +56,19 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 CategoriesTable.TABLE_NAME + "(" + CategoriesTable._ID + ")" + "ON DELETE CASCADE" +
                 ")";
 
+        final String SQL_CREATE_TOPICS_TABLE = "CREATE TABLE " +
+                TopicsTable.TABLE_NAME + "( " +
+                TopicsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TopicsTable.COLUMN_TITLE + " TEXT, " +
+                TopicsTable.COLUMN_CONTENT + " TEXT " +
+                ")";
+
         db.execSQL(SQL_CREATE_CATEGORIES_TABLE);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
+        db.execSQL(SQL_CREATE_TOPICS_TABLE);
         fillCategoriesTable();
         fillQuestionsTable();
+        fillTopicsTable();
     }
 
     @Override
@@ -128,6 +137,22 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         cv.put(QuestionsTable.COLUMN_DIFFICULTY, question.getDifficulty());
         cv.put(QuestionsTable.COLUMN_CATEGORY_ID, question.getCategoryID());
         db.insert(QuestionsTable.TABLE_NAME, null, cv);
+    }
+
+    private void fillTopicsTable() {
+        Topik c1 = new Topik("Bahasa Sunda", "Ini adalah deskripsi dari Bahasa Sunda");
+        addTopik(c1);
+        Topik c2 = new Topik("Aksara Sunda", "Ini adalah deskripsi dari Aksara Sunda");
+        addTopik(c2);
+        Topik c3 = new Topik("Terjemahan", "Ini adalah deskripsi dari Terjemahan");
+        addTopik(c3);
+    }
+
+    private void addTopik(Topik topik) {
+        ContentValues cv = new ContentValues();
+        cv.put(TopicsTable.COLUMN_TITLE, topik.getJudul());
+        cv.put(TopicsTable.COLUMN_CONTENT, topik.getIsi());
+        db.insert(TopicsTable.TABLE_NAME, null, cv);
     }
 
     public List<Category> getAllCategories() {
@@ -202,5 +227,24 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
         c.close();
         return questionList;
+    }
+
+    public ArrayList<Topik> getAllTopics() {
+        ArrayList<Topik> topikList = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM  " + TopicsTable.TABLE_NAME, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Topik topik = new Topik();
+                topik.setId(c.getInt(c.getColumnIndex(TopicsTable._ID)));
+                topik.setJudul(c.getString(c.getColumnIndex(TopicsTable.COLUMN_TITLE)));
+                topik.setIsi(c.getString(c.getColumnIndex(TopicsTable.COLUMN_CONTENT)));
+                topikList.add(topik);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return topikList;
     }
 }

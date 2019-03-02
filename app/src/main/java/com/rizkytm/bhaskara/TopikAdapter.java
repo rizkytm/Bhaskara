@@ -50,20 +50,20 @@ public class TopikAdapter extends BaseAdapter {
 
         final TextView textViewName = (TextView) convertView.findViewById(R.id.nameTxt);
 
-        final String name = topiks.get(position).getName();
+        final String name = topiks.get(position).getJudul();
 
         textViewName.setText(name);
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(c,name,Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(c, DetailTopikActivity.class);
-                String message = textViewName.getText().toString();
-                intent.putExtra(EXTRA_MESSAGE, message);
-                c.startActivity(intent);
-            }
-        });
+//        convertView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Toast.makeText(c,name,Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(c, DetailTopikActivity.class);
+//                String message = textViewName.getText().toString();
+//                intent.putExtra(EXTRA_MESSAGE, message);
+//                c.startActivity(intent);
+//            }
+//        });
 
         return convertView;
     }

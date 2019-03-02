@@ -1,16 +1,15 @@
 package com.rizkytm.bhaskara;
 
-public class Topik {
+public class Teori {
 
-    String judul;
-    String isi;
-    int id;
+    public String judul = "";
+    public String isi = "";
 
-    public Topik() {
+    public Teori() {
 
     }
 
-    public Topik(String judul, String isi) {
+    public Teori(String judul, String isi) {
         this.judul = judul;
         this.isi = isi;
     }
@@ -29,13 +28,5 @@ public class Topik {
 
     public void setIsi(String isi) {
         this.isi = isi;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
