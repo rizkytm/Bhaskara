@@ -24,19 +24,19 @@
             android:textSize="20sp"
             android:gravity="center_vertical"/>
 
-        <ImageButton
-            android:id="@+id/btnVolume"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?actionBarItemBackground"
-            android:src="@drawable/ic_volume"/>
+        <!--<ImageButton-->
+            <!--android:id="@+id/btnVolume"-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:background="?actionBarItemBackground"-->
+            <!--android:src="@drawable/ic_volume"/>-->
 
-        <ImageButton
-            android:id="@+id/btnBookmark"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?actionBarItemBackground"
-            android:src="@drawable/ic_bookmark_border"/>
+        <!--<ImageButton-->
+            <!--android:id="@+id/btnBookmark"-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:background="?actionBarItemBackground"-->
+            <!--android:src="@drawable/ic_bookmark_border"/>-->
 
     </LinearLayout>
 

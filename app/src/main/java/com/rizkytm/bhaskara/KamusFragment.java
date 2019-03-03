@@ -11,9 +11,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class KamusFragment<OnViewCreated> extends Fragment {
 
@@ -51,7 +53,7 @@ public class KamusFragment<OnViewCreated> extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(listener!=null)
-                    listener.onItemClick(mSource.get(position));
+                    listener.onItemClick(adapter.getItem(position));
             }
         });
     }

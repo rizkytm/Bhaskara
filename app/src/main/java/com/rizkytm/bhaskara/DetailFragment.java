@@ -52,35 +52,35 @@ public class DetailFragment<onViewCreated> extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         tvWord = (TextView) view.findViewById(R.id.tvWord);
         tvWordTranslate = (WebView) view.findViewById(R.id.tvWordTranslate);
-        btnBookmark = (ImageButton) view.findViewById(R.id.btnBookmark);
-        btnVolume = (ImageButton) view.findViewById(R.id.btnVolume);
+//        btnBookmark = (ImageButton) view.findViewById(R.id.btnBookmark);
+//        btnVolume = (ImageButton) view.findViewById(R.id.btnVolume);
 
         final Word word = mDBHelper.getWord(value, mDicType);
         tvWord.setText(word.key);
         tvWordTranslate.loadDataWithBaseURL(null, word.value, "text/html", "utf-8", null);
 
-        Word bookmarkWord = mDBHelper.getWordFromBookmark(value);
-        int isMark = bookmarkWord == null ? 0 : 1;
-        btnBookmark.setTag(isMark);
-
-        int icon = bookmarkWord == null ? R.drawable.ic_bookmark_border : R.drawable.ic_bookmark;
-        btnBookmark.setImageResource(icon);
-
-        btnBookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int i = (int) btnBookmark.getTag();
-                if(i == 0){
-                    btnBookmark.setImageResource(R.drawable.ic_bookmark_black_24dp);
-                    btnBookmark.setTag(1);
-                    mDBHelper.addBookmark(word);
-                } else if (i == 1) {
-                    btnBookmark.setImageResource(R.drawable.ic_bookmark_border);
-                    btnBookmark.setTag(0);
-                    mDBHelper.removeBookmark(word);
-                }
-            }
-        });
+//        Word bookmarkWord = mDBHelper.getWordFromBookmark(value);
+//        int isMark = bookmarkWord == null ? 0 : 1;
+//        btnBookmark.setTag(isMark);
+//
+//        int icon = bookmarkWord == null ? R.drawable.ic_bookmark_border : R.drawable.ic_bookmark;
+//        btnBookmark.setImageResource(icon);
+//
+//        btnBookmark.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int i = (int) btnBookmark.getTag();
+//                if(i == 0){
+//                    btnBookmark.setImageResource(R.drawable.ic_bookmark_black_24dp);
+//                    btnBookmark.setTag(1);
+//                    mDBHelper.addBookmark(word);
+//                } else if (i == 1) {
+//                    btnBookmark.setImageResource(R.drawable.ic_bookmark_border);
+//                    btnBookmark.setTag(0);
+//                    mDBHelper.removeBookmark(word);
+//                }
+//            }
+//        });
     }
 
     @Override
