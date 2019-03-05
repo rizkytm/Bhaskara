@@ -52,30 +52,38 @@
         android:textSize="40sp"
         android:freezesText="true"/>
 
-    <TextView
-        android:id="@+id/text_view_question"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radio_group"
-        android:layout_marginBottom="16dp"
-        android:text="Ini adalah pertanyaan\nIni adalah pertanyaan\nIni adalah pertanyaan\n"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:freezesText="true"/>
+        android:layout_height="200dp"
+        android:id="@+id/sv_pertanyaan"
+        android:layout_marginTop="96dp">
+
+        <TextView
+            android:id="@+id/text_view_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:freezesText="true"
+            android:text="Ini adalah pertanyaan\nIni adalah pertanyaan\nIni adalah pertanyaan\n"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+    </ScrollView>
 
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_below="@+id/sv_pertanyaan"
+        android:layout_marginTop="36dp"
+        >
 
         <RadioButton
             android:id="@+id/radio_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Option 1"
-            android:freezesText="true"/>
+            android:freezesText="true"
+            android:text="Option 1" />
 
         <RadioButton
             android:id="@+id/radio_button2"
@@ -105,8 +113,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/radio_group"
-        android:layout_marginTop="16dp"
-        android:text="Pilih Jawaban"
-        android:freezesText="true"/>
+        android:layout_marginTop="36dp"
+        android:freezesText="true"
+        android:text="Pilih Jawaban" />
 
 </RelativeLayout>

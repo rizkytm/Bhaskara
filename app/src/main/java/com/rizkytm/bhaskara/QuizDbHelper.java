@@ -100,8 +100,11 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillQuestionsTable() {
-        Question q1 = new Question("Abdi nuju .... di ruang makan",
-                "Neda", "Tuang", "Nyatu", "Maca", 1,
+        Question q1 = new Question("Baca sempalan hutbah di handap !\n" +
+                "Dina bubuka hutbah, hotib parantos macakeun surat Az Zumar ayat 9, anu pihartoseunana : “Ucapkeun (Muhammad) naha sarua jalma-jalma nu boga kanyaho jeung jalma-jalma anu teu boga kanyaho? Saenyana, ngan jalma anu boga nalar wungkul anu bisa narima pangjaran.”\n" +
+                "Jelas pisan éta ayat téh, nitah ka urang sangkan daék diajar. Kapan urang téh boga akal. Lamun urang embung narima pangajaran atawa embung diajar, sarua baé urang téh jeung teu boga akal. Ku kituna, hayu urang diajar masing bener-bener. Kapan cenah jalma anu boga élmu téh darajatna kacida pisan luhurna.\n" +
+                "Sempalan hutbah di luhur mangrupakeun ....",
+                "Bubuka", "Eusi", "Panutup", "Rarangkay", 1,
                 Question.DIFFICULTY_EASY, Category.BAHASA_SUNDA);
         addQuestion(q1);
         Question q2 = new Question("Bapa nuju .... di kolam renang",
@@ -140,7 +143,26 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillTopicsTable() {
-        Topik c1 = new Topik("Bahasa Sunda", "Ini adalah deskripsi dari Bahasa Sunda");
+        Topik c1 = new Topik("Bahasa Sunda, Aksara Sunda dan Terjemahannya",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
+                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
+                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
+                        "\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
+                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
+                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
+                        "\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
+                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
+                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
+                        "\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
+                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
+                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
+                        "\n" +
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
+                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
+                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
         addTopik(c1);
         Topik c2 = new Topik("Aksara Sunda", "Ini adalah deskripsi dari Aksara Sunda");
         addTopik(c2);
