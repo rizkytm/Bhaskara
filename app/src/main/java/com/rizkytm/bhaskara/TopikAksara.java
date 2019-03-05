@@ -2,17 +2,40 @@ package com.rizkytm.bhaskara;
 
 public class TopikAksara {
 
-    String name;
+    String judul;
+    String isi;
+    int id;
 
-    public TopikAksara(String name) {
-        this.name = name;
+    public TopikAksara() {
+
     }
 
-    public String getName() {
-        return name;
+    public TopikAksara(String judul, String isi) {
+        this.judul = judul;
+        this.isi = isi;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getJudul() {
+        return judul;
+    }
+
+    public void setJudul(String judul) {
+        this.judul = judul;
+    }
+
+    public String getIsi() {
+        return isi;
+    }
+
+    public void setIsi(String isi) {
+        this.isi = isi;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

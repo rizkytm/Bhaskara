@@ -28,4 +28,10 @@ public final class QuizContract {
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_CONTENT = "content";
     }
+
+    public static class TopicAksaraTable implements BaseColumns {
+        public static final String TABLE_NAME = "aksara";
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_CONTENT = "content";
+    }
 }

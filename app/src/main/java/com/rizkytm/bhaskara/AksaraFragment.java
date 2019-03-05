@@ -1,5 +1,6 @@
 package com.rizkytm.bhaskara;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,6 +17,13 @@ public class AksaraFragment extends Fragment {
 
     public ArrayList<Topik> topiks = new ArrayList<>();
     DBHelper db;
+    QuizDbHelper dbHelper;
+    public ArrayList<TopikAksara> topikAksaras = new ArrayList<>();
+    ListView listView;
+
+    public static final String EXTRA_TITLE = "extraTitle";
+    public static final String EXTRA_CONTENT = "extraContent";
+
     public AksaraFragment() {
         // Required empty public constructor
     }
@@ -25,36 +34,46 @@ public class AksaraFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_aksara, container, false);
 
-        ListView listView = (ListView) rootView.findViewById(R.id.aksaraListView);
-        TopikAdapter adapter = new TopikAdapter(this.getActivity(), getTopikAksara());
+        listView = (ListView) rootView.findViewById(R.id.aksaraListView);
+        final TopikAksaraAdapter adapter = new TopikAksaraAdapter(this.getActivity(), getTopicAksara());
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), DetailTopikActivity.class);
+                intent.putExtra(EXTRA_TITLE, topikAksaras.get(position).getJudul());
+                intent.putExtra(EXTRA_CONTENT, topikAksaras.get(position).getIsi());
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }
 
-    public ArrayList<Topik> getTopikList() {
+    public ArrayList<TopikAksara> getTopicAksara() {
 //        String tableName = getTableName(dicType);
-        db = new DBHelper(getContext());
-        db.getWritableDatabase();
-        ArrayList<Topik> topikList = db.getTopikList();
+        dbHelper = new QuizDbHelper(getContext());
+        dbHelper.getWritableDatabase();
+        ArrayList<TopikAksara> topikAksaraList = dbHelper.getAllTopicAksara();
         String judul, isi;
-        for (int i = 0; i<topikList.size();i++) {
-            judul = topikList.get(i).getJudul();
-            isi = topikList.get(i).getIsi();
+        for (int i = 0; i<topikAksaraList.size();i++) {
+            judul = topikAksaraList.get(i).getJudul();
+            isi = topikAksaraList.get(i).getIsi();
 
-            Topik topik = new Topik(judul, isi);
+
+            TopikAksara topikAksara = new TopikAksara(judul, isi);
 //            topik.setName(name);
 
-            topiks.add(topik);
+            topikAksaras.add(topikAksara);
         }
-        db.close();
+        dbHelper.close();
 
 //        ArrayList<String> source = new ArrayList<>();
 //        while (result.moveToNext()) {
 //            source.add(result.getString(result.getColumnIndex(COL_JUDUL)));
 //        }
 //        return source;
-        return topiks;
+        return topikAksaras;
     }
 
 

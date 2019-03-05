@@ -63,12 +63,21 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 TopicsTable.COLUMN_CONTENT + " TEXT " +
                 ")";
 
+        final String SQL_CREATE_TOPICAKSARA_TABLE = "CREATE TABLE " +
+                TopicAksaraTable.TABLE_NAME + "( " +
+                TopicAksaraTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TopicAksaraTable.COLUMN_TITLE + " TEXT, " +
+                TopicAksaraTable.COLUMN_CONTENT + " TEXT " +
+                ")";
+
         db.execSQL(SQL_CREATE_CATEGORIES_TABLE);
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_TOPICS_TABLE);
+        db.execSQL(SQL_CREATE_TOPICAKSARA_TABLE);
         fillCategoriesTable();
         fillQuestionsTable();
         fillTopicsTable();
+        fillTopicAksaraTable();
     }
 
     @Override
@@ -97,6 +106,39 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(CategoriesTable.COLUMN_NAME, category.getName());
         db.insert(CategoriesTable.TABLE_NAME, null, cv);
+    }
+
+    private void fillTopicAksaraTable() {
+        TopikAksara t1 = new TopikAksara("Sejarah Aksara Sunda",
+                "Sebagai salah satu kebudayaan yang telah berusia cukup lama, " +
+                        "secara historis lebih dari 16 abad yang lalu, kebudayaan Sunda " +
+                        "memiliki kekayaan peninggalan kebudayaan berupa benda-benda " +
+                        "bertulis, seperti prasasti, piagam, serta naskah kuno yang cukup " +
+                        "banyak. Hal ini menunjukkan adanya kecakapan tradisi tulis-menulis " +
+                        "di kalangan masyarakat Sunda. Kenyataan tersebut sekaligus mem- " +
+                        "buktikan adanya kesadaran yang tinggi dari para pendahulu " +
+                        "masyarakat Sunda mengenai pentingnya penyampaian informasi " +
+                        "hasil ketajaman wawasan, pikiran, dan perasaan mereka berupa " +
+                        "gagasan atau ide-ide yang mereka rekam melalui sarana bahasa dan " +
+                        "aksara pada setiap kurun waktu yang dilaluinya");
+        addTopicAksara(t1);
+        TopikAksara t2 = new TopikAksara("Tipologi Aksara Sunda",
+                "Aksara Sunda Kuno memiliki tipe dasar aksara Pallawa Lanjut. " +
+                        "Aksara tersebut memiliki kemiripan dengan model aksara Tibet dan " +
+                        "Punjab (band. Holle, 1877), dengan beberapa ciri tipologi dari penga- " +
+                        "ruh model aksara prasasti-prasasti zaman Tarumanagara, sebelum " +
+                        "mencapai taraf modifikasi bentuk khasnya. Hal ini nampak sebagai- " +
+                        "mana yang digunakan dalam prasasti-prasasti dan naskah-naskah " +
+                        "Sunda Kuno berbahan lontar dan bambu abad ke-14 hingga abad ke- " +
+                        "18 Masehi.");
+        addTopicAksara(t2);
+    }
+
+    private void addTopicAksara(TopikAksara topikAksara) {
+        ContentValues cv = new ContentValues();
+        cv.put(TopicAksaraTable.COLUMN_TITLE, topikAksara.getJudul());
+        cv.put(TopicAksaraTable.COLUMN_CONTENT, topikAksara.getIsi());
+        db.insert(TopicAksaraTable.TABLE_NAME, null, cv);
     }
 
     private void fillQuestionsTable() {
@@ -268,5 +310,24 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
         c.close();
         return topikList;
+    }
+
+    public ArrayList<TopikAksara> getAllTopicAksara() {
+        ArrayList<TopikAksara> topikAksaraList = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM  " + TopicAksaraTable.TABLE_NAME, null);
+
+        if (c.moveToFirst()) {
+            do {
+                TopikAksara topikAksara = new TopikAksara();
+                topikAksara.setId(c.getInt(c.getColumnIndex(TopicAksaraTable._ID)));
+                topikAksara.setJudul(c.getString(c.getColumnIndex(TopicAksaraTable.COLUMN_TITLE)));
+                topikAksara.setIsi(c.getString(c.getColumnIndex(TopicAksaraTable.COLUMN_CONTENT)));
+                topikAksaraList.add(topikAksara);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return topikAksaraList;
     }
 }
