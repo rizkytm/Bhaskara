@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GameActivity"></activity>
         <activity
             android:name=".KamusActivity"
             android:label="@string/title_activity_kamus"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".LatihanActivity" />
         <activity android:name=".DetailTopikActivity" />
         <activity android:name=".MenuEssayActivity" />
-        <activity android:name=".EssayActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".EssayActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".TheoryActivity"
             android:label="@string/title_activity_theory"
