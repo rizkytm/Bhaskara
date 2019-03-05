@@ -16,6 +16,9 @@
         <activity android:name=".QuizActivity" />
         <activity android:name=".LatihanActivity" />
         <activity android:name=".DetailTopikActivity" />
+        <activity android:name=".MenuEssayActivity" />
+        <activity android:name=".EssayActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".TheoryActivity"
             android:label="@string/title_activity_theory"

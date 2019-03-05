@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    int[] images = {R.drawable.ic_teori, R.drawable.ic_latihan, R.drawable.ic_kamus};
-    String[] judul = {"Teori", "Latihan", "Kamus"};
-    String[] desc = {"Ini adalah deskripsi teori", "Ini adalah deskripsi latihan", "Ini adalah deskripsi kamus"};
+    int[] images = {R.drawable.ic_teori, R.drawable.ic_latihan, R.drawable.ic_wrap_text, R.drawable.ic_kamus};
+    String[] judul = {"Teori", "Latihan", "Essay", "Kamus"};
+    String[] desc = {"Ini adalah deskripsi teori", "Ini adalah deskripsi latihan", "Ini adalah deskripsi latihan", "Ini adalah deskripsi kamus"};
 
     ListView listView;
     ListAdapter listAdapter;
@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, LatihanActivity.class);
                     startActivity(intent);
                 } else if (position == 2) {
+                    Intent intent = new Intent(MainActivity.this, MenuEssayActivity.class);
+                    startActivity(intent);
+                } else if (position == 3) {
                     Intent intent = new Intent(MainActivity.this, KamusActivity.class);
                     startActivity(intent);
                 }

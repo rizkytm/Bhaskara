@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".EssayActivity">
+
+        <TextView
+            android:id="@+id/text_view_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Skor: 0"
+            android:textColor="@android:color/black"
+            android:freezesText="true"/>
+
+        <TextView
+            android:id="@+id/text_view_question_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_score"
+            android:text="Pertanyaan: 1/x"
+            android:textColor="@android:color/black"
+            android:freezesText="true"/>
+
+        <TextView
+            android:id="@+id/text_view_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_question_count"
+            android:text="Kategori: "
+            android:textColor="@android:color/black"
+            android:freezesText="true"/>
+
+        <TextView
+            android:id="@+id/text_view_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_view_category"
+            android:text="Tingkat Kesulitan: "
+            android:textColor="@android:color/black"
+            android:freezesText="true"/>
+
+        <TextView
+            android:id="@+id/text_view_countdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="00:30"
+            android:textColor="@android:color/black"
+            android:textSize="40sp"
+            android:freezesText="true"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/sv_pertanyaan"
+            android:layout_marginTop="96dp">
+
+            <TextView
+                android:id="@+id/text_view_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:freezesText="true"
+                android:text="Ini adalah pertanyaan\nIni adalah pertanyaan\nIni adalah pertanyaan\n"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/edit_text_jawaban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Isi jawaban di sini"
+            android:layout_below="@+id/sv_pertanyaan"
+            android:layout_marginTop="36dp"/>
+
+        <Button
+            android:id="@+id/button_confirm_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_text_jawaban"
+            android:layout_marginTop="36dp"
+            android:freezesText="true"
+            android:text="Pilih Jawaban" />
+
+
+</RelativeLayout>

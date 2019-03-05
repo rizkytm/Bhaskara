@@ -56,6 +56,17 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 CategoriesTable.TABLE_NAME + "(" + CategoriesTable._ID + ")" + "ON DELETE CASCADE" +
                 ")";
 
+        final String SQL_CREATE_ESSAYS_TABLE = "CREATE TABLE " +
+                EssaysTable.TABLE_NAME + " ( " +
+                EssaysTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                EssaysTable.COLUMN_PERTANYAAN + " TEXT, " +
+                EssaysTable.COLUMN_JAWABAN + " TEXT," +
+                EssaysTable.COLUMN_DIFFICULTY + " TEXT," +
+                EssaysTable.COLUMN_CATEGORY_ID + " INTEGER, " +
+                "FOREIGN KEY(" + EssaysTable.COLUMN_CATEGORY_ID + ") REFERENCES " +
+                CategoriesTable.TABLE_NAME + "(" + CategoriesTable._ID + ")" + "ON DELETE CASCADE" +
+                ")";
+
         final String SQL_CREATE_TOPICS_TABLE = "CREATE TABLE " +
                 TopicsTable.TABLE_NAME + "( " +
                 TopicsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -74,10 +85,12 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
         db.execSQL(SQL_CREATE_TOPICS_TABLE);
         db.execSQL(SQL_CREATE_TOPICAKSARA_TABLE);
+        db.execSQL(SQL_CREATE_ESSAYS_TABLE);
         fillCategoriesTable();
         fillQuestionsTable();
         fillTopicsTable();
         fillTopicAksaraTable();
+        fillEssaysTable();
     }
 
     @Override
@@ -100,6 +113,24 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         addCategory(c2);
         Category c3 = new Category("Terjemahan");
         addCategory(c3);
+    }
+
+    private void fillEssaysTable() {
+        Pertanyaan p1 = new Pertanyaan("Apa bahasa sundanya makan?", "neda", Pertanyaan.DIFFICULTY_EASY, 1);
+        addEssay(p1);
+        Pertanyaan p2 = new Pertanyaan("Apa bahasa sundanya pergi?", "indit", Pertanyaan.DIFFICULTY_EASY, 1);
+        addEssay(p2);
+        Pertanyaan p3 = new Pertanyaan("Apa bahasa sundanya tidur?", "sare", Pertanyaan.DIFFICULTY_EASY, 1);
+        addEssay(p3);
+    }
+
+    private void addEssay(Pertanyaan pertanyaan) {
+        ContentValues cv = new ContentValues();
+        cv.put(EssaysTable.COLUMN_PERTANYAAN, pertanyaan.getPertanyaan());
+        cv.put(EssaysTable.COLUMN_JAWABAN, pertanyaan.getJawaban());
+        cv.put(EssaysTable.COLUMN_DIFFICULTY, pertanyaan.getKesulitan());
+        cv.put(EssaysTable.COLUMN_CATEGORY_ID, pertanyaan.getCategoryID());
+        db.insert(EssaysTable.TABLE_NAME, null, cv);
     }
 
     private void addCategory(Category category) {
@@ -329,5 +360,32 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
         c.close();
         return topikAksaraList;
+    }
+
+    public ArrayList<Pertanyaan> getPertanyaans(int categoryID, String difficulty) {
+        ArrayList<Pertanyaan> pertanyaanList = new ArrayList<>();
+        db = getReadableDatabase();
+
+        String selection = EssaysTable.COLUMN_CATEGORY_ID + " = ? " +
+                " AND " + EssaysTable.COLUMN_DIFFICULTY + " = ? ";
+        String[] selectionArgs = new String[]{String.valueOf(categoryID), difficulty};
+
+        Cursor c = db.query(EssaysTable.TABLE_NAME, null, selection,
+                selectionArgs, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Pertanyaan pertanyaan = new Pertanyaan();
+                pertanyaan.setId(c.getInt(c.getColumnIndex(EssaysTable._ID)));
+                pertanyaan.setPertanyaan(c.getString(c.getColumnIndex(EssaysTable.COLUMN_PERTANYAAN)));
+                pertanyaan.setJawaban(c.getString(c.getColumnIndex(EssaysTable.COLUMN_JAWABAN)));
+                pertanyaan.setKesulitan(c.getString(c.getColumnIndex(EssaysTable.COLUMN_DIFFICULTY)));
+                pertanyaan.setCategoryID(c.getInt(c.getColumnIndex(EssaysTable.COLUMN_CATEGORY_ID)));
+                pertanyaanList.add(pertanyaan);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return pertanyaanList;
     }
 }

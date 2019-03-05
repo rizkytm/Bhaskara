@@ -23,6 +23,14 @@ public final class QuizContract {
         public static final String COLUMN_CATEGORY_ID = "category_id";
     }
 
+    public static class EssaysTable implements BaseColumns {
+        public static final String TABLE_NAME = "essay_questions";
+        public static final String COLUMN_PERTANYAAN = "pertanyaan";
+        public static final String COLUMN_JAWABAN = "jawaban";
+        public static final String COLUMN_DIFFICULTY = "kesulitan";
+        public static final String COLUMN_CATEGORY_ID = "category_id";
+    }
+
     public static class TopicsTable implements BaseColumns {
         public static final String TABLE_NAME = "topics";
         public static final String COLUMN_TITLE = "title";
