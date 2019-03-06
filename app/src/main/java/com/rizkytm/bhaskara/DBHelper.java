@@ -29,16 +29,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private final String TBL_SUN_IND = "sun_ind";
     private final String TBL_SUN_SUN = "sun_sun";
     private final String TBL_BOOKMARK = "bookmark";
-    private final String TBL_TOPIK = "topik";
 
     private final String COL_KEY = "key";
     private final String COL_VALUE = "value";
-    private final String COL_JUDUL = "judul";
-    private final String COL_ISI = "isi";
 
     public SQLiteDatabase mDB;
-
-    public ArrayList<Topik> topikList = new ArrayList<>();
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -84,38 +79,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        this.mDB = db;
 
-        final String SQL_CREATE_TOPICS_TABLE = "CREATE TABLE " +
-                TBL_TOPIK + "( " +
-                "judul" + " VARCHAR, " +
-                "isi" + " TEXT " +
-                ")";
-
-        db.execSQL(SQL_CREATE_TOPICS_TABLE);
-
-        fillTopikTable();
-    }
-
-    private void fillTopikTable() {
-        Topik c1 = new Topik("Bahasa Sunda", "Ini adalah deskripsi dari Bahasa Sunda");
-        addTopik(c1);
-        Topik c2 = new Topik("Aksara Sunda", "Ini adalah deskripsi dari Aksara Sunda");
-        addTopik(c2);
-        Topik c3 = new Topik("Terjemahan", "Ini adalah deskripsi dari Terjemahan");
-        addTopik(c3);
-    }
-
-    private void addTopik(Topik topik) {
-        ContentValues cv = new ContentValues();
-        cv.put(COL_JUDUL, topik.getJudul());
-        cv.put(COL_ISI, topik.getIsi());
-        mDB.insert(TBL_TOPIK, null, cv);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TBL_TOPIK);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_BOOKMARK);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_IND_SUN);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_SUN_IND);
@@ -133,31 +101,6 @@ public class DBHelper extends SQLiteOpenHelper {
             source.add(result.getString(result.getColumnIndex(COL_KEY)));
         }
         return source;
-    }
-
-    public ArrayList<Topik> getTopikList() {
-//        String tableName = getTableName(dicType);
-        mDB = this.getWritableDatabase();
-        String q = "SELECT * FROM " + TBL_TOPIK;
-        Cursor result = (Cursor) mDB.rawQuery(q, null);
-
-//        ArrayList<String> source = new ArrayList<>();
-//        while (result.moveToNext()) {
-//            source.add(result.getString(result.getColumnIndex(COL_JUDUL)));
-//        }
-//        return source;
-
-        if (result.getCount() != 0) {
-            if (result.moveToFirst()) {
-                do {
-                    Topik topik = new Topik();
-                    topik.judul = result.getString(result.getColumnIndex(COL_JUDUL));
-                } while (result.moveToNext());
-            }
-        }
-        result.close();
-        mDB.close();
-        return topikList;
     }
 
     public Word getWord(String key, int dicType) {

@@ -216,31 +216,45 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     }
 
     private void fillTopicsTable() {
-        Topik c1 = new Topik("Bahasa Sunda, Aksara Sunda dan Terjemahannya",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
-                        "\n" +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
-                        "\n" +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
-                        "\n" +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
-                        "\n" +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
-                        " when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
+        Topik c1 = new Topik("Kedudukan Bahasa Sunda",
+                "Bahasa Sunda merupakan bahasa daerah dalam kelompok bahasa di " +
+                        "Jawa, dan tergolong ke dalam bahasa-bahasa Nusantara Bagian Barat, serta " +
+                        "termasluk bahasa daerah besar di wilayah Repuhlik Indonesia dengan jumlah " +
+                        "penuturnya reJatif besar (lebih dari 20 juta) dan mempunyai tradisi sastra, " +
+                        "baik sastra lisan maupun sastra tulis.\n" +
+                    "Bahasa Sunda dipergunakan oleh sebagian besar penduduk Jawa Barat. " +
+                        "Sebagian lainnya penduduk Jawa Barat mempergunakan dialek Jawa (Ban" +
+                        "ten, Cirebon, Indramayu), diaJek Melayu Jakarta (Jakarta dan sekitarnya), " +
+                        "dan di kota-kota besar sebagian penduduk mempergunakan bahasa Indo" +
+                        "nesia. Menurut sensus tahun 1980 penduduk Jawa Barat hnjumlah 27 juta " +
+                        "orang.\n" +
+                    "Bahasa Sunda, seperti bahasa-bahasa daerah lainnya yang terdapat di " +
+                        "wilayah Republik Indonesia, merupakan salah satu unsur kebudayaan nasio" +
+                        "nal yang dipelihara oleh para pemakainya dan oleh karena itu dilindungi " +
+                        "serta dipelihara juga oleh negara, sesuai dengan bunyi penjelasan Pasal 36, " +
+                        "Bab XV, Undang-Undarg Dasar 1945.");
         addTopik(c1);
-        Topik c2 = new Topik("Aksara Sunda", "Ini adalah deskripsi dari Aksara Sunda");
+        Topik c2 = new Topik("Fonologi Bahasa Sunda",
+                "1. Fonem\n" +
+                    "Tata bunyi bahasa Sunda mengenal 25 fonem yang terdiri dari dua jenis " +
+                        "fonem segmental, yaitu fonem vokal (7) dan fonem konsonan (18).\n" +
+                    "2. Urutan Fonem dalam Kata\n" +
+                    "a. Urutan Vokal\n" +
+                        "1) Vokal /a/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +
+                        "tidak dapat mengikuti vokal /a/;\n" +
+                        "2) vokal /i/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +
+                        "tidak dapat mengikuti vokal /i/;\n" +
+                        "3) vokal /u/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +
+                        "tidak dapat mengikuti vokal /u/;\n" +
+                    "b. Urutan Konsonan\n" +
+                        "1) Dalam kata dasar tidak terdapat susunan konsunan yang sama. " +
+                            "Tidak semua konsonan dapat diikuti oleh konsonan lain;\n" +
+                        "2) Gugus konsonan (cluster), konsonan keduanya terdiri ataS kon" +
+                        "sonan /I/, /r/, atau /y/;\n" +
+                        "3) Pada umumnya gugus konsonan di awal kala terdapat pada kata " +
+                        "satu suku (ekasuku);");
         addTopik(c2);
-        Topik c3 = new Topik("Terjemahan", "Ini adalah deskripsi dari Terjemahan");
-        addTopik(c3);
+
     }
 
     private void addTopik(Topik topik) {
