@@ -2,8 +2,9 @@ package com.rizkytm.bhaskara;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +13,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class GameActivity extends AppCompatActivity {
 
-    TextView tv_p1, tv_p2;
+    TextView tv_p1;
+//    TextView tv_p2;
 
     ImageView iv_11, iv_12, iv_13, iv_14,
             iv_21, iv_22, iv_23, iv_24,
@@ -41,8 +45,15 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+//        BhaskaraDB db = new BhaskaraDB(this);
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ga);
+//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//        byte[] img = bos.toByteArray();
+//
+//        db.addImage("ga", img, img);
+
         tv_p1 = (TextView) findViewById(R.id.tv_p1);
-        tv_p2 = (TextView) findViewById(R.id.tv_p2);
+//        tv_p2 = (TextView) findViewById(R.id.tv_p2);
 
         iv_11 = (ImageView) findViewById(R.id.iv_11);
         iv_12 = (ImageView) findViewById(R.id.iv_12);
@@ -74,7 +85,7 @@ public class GameActivity extends AppCompatActivity {
 
         Collections.shuffle(Arrays.asList(cardsArray));
 
-        tv_p2.setTextColor(Color.GRAY);
+//        tv_p2.setTextColor(Color.GRAY);
 
         iv_11.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -297,10 +308,10 @@ public class GameActivity extends AppCompatActivity {
 
             if (turn == 1) {
                 playerPoints++;
-                tv_p1.setText("P1: " + playerPoints);
+                tv_p1.setText("Skor: " + playerPoints);
             } else if (turn == 2) {
-                cpuPoints++;
-                tv_p2.setText("P2: " + cpuPoints);
+//                cpuPoints++;
+//                tv_p2.setText("P2: " + cpuPoints);
             }
         } else {
             iv_11.setImageResource(R.drawable.q_mark);
@@ -316,15 +327,15 @@ public class GameActivity extends AppCompatActivity {
             iv_33.setImageResource(R.drawable.q_mark);
             iv_34.setImageResource(R.drawable.q_mark);
 
-            if (turn == 1) {
-                turn = 2;
-                tv_p1.setTextColor(Color.GRAY);
-                tv_p2.setTextColor(Color.BLACK);
-            } else if (turn == 2) {
-                turn = 1;
-                tv_p2.setTextColor(Color.GRAY);
-                tv_p1.setTextColor(Color.BLACK);
-            }
+//            if (turn == 1) {
+//                turn = 2;
+//                tv_p1.setTextColor(Color.GRAY);
+//                tv_p2.setTextColor(Color.BLACK);
+//            } else if (turn == 2) {
+//                turn = 1;
+//                tv_p2.setTextColor(Color.GRAY);
+//                tv_p1.setTextColor(Color.BLACK);
+//            }
         }
 
         iv_11.setEnabled(true);
@@ -359,7 +370,9 @@ public class GameActivity extends AppCompatActivity {
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
             alertDialogBuilder
-                    .setMessage("GAME OVER!\nP1: " + playerPoints + "\nP2: " + cpuPoints)
+                    .setMessage("GAME OVER!\nSkor: "+ playerPoints
+//                            + "\nP2: " + cpuPoints
+                    )
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                         @Override
@@ -381,18 +394,42 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void frontOfCardsResources() {
-        images101 = R.drawable.ka;
-        images102 = R.drawable.ga;
-        images103 = R.drawable.nga;
-        images104 = R.drawable.ca;
-        images105 = R.drawable.ja;
-        images106 = R.drawable.nya;
-        images201 = R.drawable.huruf_ka;
-        images202 = R.drawable.huruf_ga;
-        images203 = R.drawable.huruf_nga;
-        images204 = R.drawable.huruf_ca;
-        images205 = R.drawable.huruf_ja;
-        images206 = R.drawable.huruf_nya;
+
+        int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
+                R.drawable.fb, R.drawable.ig, R.drawable.ln, R.drawable.tw, R.drawable.wa, R.drawable.yt};
+        int[] imagesB = {R.drawable.huruf_ka, R.drawable.huruf_ga, R.drawable.huruf_nga, R.drawable.huruf_ca, R.drawable.huruf_ja, R.drawable.huruf_nya,
+                R.drawable.facebook, R.drawable.instagram, R.drawable.line, R.drawable.twitter, R.drawable.whatsapp, R.drawable.youtube};
+
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        for (int i=0;i<imagesA.length;i++){
+            numbers.add(i);
+        }
+        Collections.shuffle(numbers);
+
+        int pertama = numbers.get(0);
+        int kedua = numbers.get(1);
+        int ketiga = numbers.get(2);
+        int keempat = numbers.get(3);
+        int kelima = numbers.get(4);
+        int keenam = numbers.get(5);
+
+        images101 = imagesA[pertama];
+        images201 = imagesB[pertama];
+
+        images102 = imagesA[kedua];
+        images202 = imagesB[kedua];
+
+        images103 = imagesA[ketiga];
+        images203 = imagesB[ketiga];
+
+        images104 = imagesA[keempat];
+        images204 = imagesB[keempat];
+
+        images105 = imagesA[kelima];
+        images205 = imagesB[kelima];
+
+        images106 = imagesA[keenam];
+        images206 = imagesB[keenam];
 
 
     }

@@ -1,12 +1,18 @@
 package com.rizkytm.bhaskara;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.rizkytm.bhaskara.QuizContract.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,6 +38,22 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
     private final String COL_KEY = "key";
     private final String COL_VALUE = "value";
+
+//    // Table Names
+//    private static final String TABLE_IMAGE = "images";
+//
+//    // column names
+//    private static final String COLUMN_ID = "id";
+//    private static final String COLUMN_NAME = "name";
+//    private static final String COLUMN_IMAGE_A = "image_a";
+//    private static final String COLUMN_IMAGE_B = "image_b";
+//
+//    // Table create statement
+//    private static final String CREATE_TABLE_IMAGE = "CREATE TABLE " + TABLE_IMAGE + "("+
+//            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//            COLUMN_NAME + " TEXT," +
+//            COLUMN_IMAGE_A + " BLOB," +
+//            COLUMN_IMAGE_B + " BLOB);";
 
     public SQLiteDatabase db;
 
@@ -88,12 +110,26 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+//        db.execSQL(CREATE_TABLE_IMAGE);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // on upgrade drop older tables
+//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_IMAGE);
 
+        // create new table
+//        onCreate(db);
     }
+
+
+//    public void addImage(String name, byte[] imageA, byte[] imageB) throws SQLiteException {
+//        SQLiteDatabase database = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put(COLUMN_NAME, name);
+//        cv.put(COLUMN_IMAGE_A, imageA);
+//        cv.put(COLUMN_IMAGE_B, imageB);
+//        database.insert(TABLE_IMAGE, null, cv);
+//    }
 
     public ArrayList<String> getWord(int dicType) {
         String tableName = getTableName(dicType);
