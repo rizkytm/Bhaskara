@@ -86,7 +86,7 @@ public class QuizActivity extends AppCompatActivity {
         textViewKesulitan.setText("Tingkat Kesulitan: " + difficulty);
 
         if (savedInstanceState == null) {
-            QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
+            BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
             questionList = dbHelper.getQuestions(categoryID, difficulty);
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);

@@ -79,7 +79,7 @@ public class EssayActivity extends AppCompatActivity {
         textViewKesulitan.setText("Tingkat Kesulitan: " + difficulty);
 
         if (savedInstanceState == null) {
-            QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
+            BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
             pertanyaanList = dbHelper.getPertanyaans(categoryID, difficulty);
             questionCountTotal = pertanyaanList.size();
             Collections.shuffle(pertanyaanList);

@@ -32,7 +32,7 @@ public class KamusActivity extends AppCompatActivity
     MenuItem menuSetting;
     Toolbar toolbar;
 
-    DBHelper dbHelper;
+    BhaskaraDB dbHelper;
 
     KamusFragment kamusFragment;
     BookmarkFragment bookmarkFragment;
@@ -46,7 +46,7 @@ public class KamusActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        dbHelper = new DBHelper(this);
+        dbHelper = new BhaskaraDB(this);
 
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

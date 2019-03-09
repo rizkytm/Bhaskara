@@ -23,8 +23,8 @@ public class BahasaFragment extends Fragment {
 //    private FragmentListener listener;
 //    private ArrayList<String> mSource = new ArrayList<String>();
 
-    DBHelper db;
-    QuizDbHelper dbHelper;
+//    DBHelper db;
+    BhaskaraDB dbHelper;
     public ArrayList<Topik> topiks = new ArrayList<>();
 
     private FragmentListener listener;
@@ -82,7 +82,7 @@ public class BahasaFragment extends Fragment {
 
     public ArrayList<Topik> getTopikList() {
 //        String tableName = getTableName(dicType);
-        dbHelper = new QuizDbHelper(getContext());
+        dbHelper = new BhaskaraDB(getContext());
         dbHelper.getWritableDatabase();
         ArrayList<Topik> topikList = dbHelper.getAllTopics();
         String judul, isi;

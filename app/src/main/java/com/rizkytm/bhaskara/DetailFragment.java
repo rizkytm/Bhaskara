@@ -20,14 +20,14 @@ public class DetailFragment<onViewCreated> extends Fragment {
     private TextView tvWord;
     private ImageButton btnBookmark, btnVolume;
     private WebView tvWordTranslate;
-    private DBHelper mDBHelper;
+    private BhaskaraDB mDBHelper;
     private int mDicType;
 
     public DetailFragment() {
         // Required empty public constructor
     }
 
-    public static DetailFragment getNewInstance(String value, DBHelper dbHelper, int dicType) {
+    public static DetailFragment getNewInstance(String value, BhaskaraDB dbHelper, int dicType) {
         DetailFragment fragment = new DetailFragment();
         fragment.value = value;
         fragment.mDBHelper = dbHelper;

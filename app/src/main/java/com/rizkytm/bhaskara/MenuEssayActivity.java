@@ -86,7 +86,7 @@ public class MenuEssayActivity extends AppCompatActivity {
 //        adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        spinnerCategory.setAdapter(adapterCategories);
 
-        QuizDbHelper dbHelper = QuizDbHelper.getInstance(this);
+        BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
         List<Category> categories = dbHelper.getAllCategories();
 
         ArrayAdapter<Category> adapterCategories = new ArrayAdapter<>(this,

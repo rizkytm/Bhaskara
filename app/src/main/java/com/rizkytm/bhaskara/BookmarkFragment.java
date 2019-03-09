@@ -18,13 +18,13 @@ import android.widget.Toast;
 public class BookmarkFragment extends Fragment {
 
     private FragmentListener listener;
-    private DBHelper mDBHelper;
+    private BhaskaraDB mDBHelper;
 
     public BookmarkFragment() {
         // Required empty public constructor
     }
 
-    public static BookmarkFragment getNewInstance(DBHelper dbHelper) {
+    public static BookmarkFragment getNewInstance(BhaskaraDB dbHelper) {
         BookmarkFragment fragment = new BookmarkFragment();
         fragment.mDBHelper = dbHelper;
         return fragment;

@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class AksaraFragment extends Fragment {
 
     public ArrayList<Topik> topiks = new ArrayList<>();
-    DBHelper db;
-    QuizDbHelper dbHelper;
+//    DBHelper db;
+    BhaskaraDB dbHelper;
     public ArrayList<TopikAksara> topikAksaras = new ArrayList<>();
     ListView listView;
 
@@ -52,7 +52,7 @@ public class AksaraFragment extends Fragment {
 
     public ArrayList<TopikAksara> getTopicAksara() {
 //        String tableName = getTableName(dicType);
-        dbHelper = new QuizDbHelper(getContext());
+        dbHelper = new BhaskaraDB(getContext());
         dbHelper.getWritableDatabase();
         ArrayList<TopikAksara> topikAksaraList = dbHelper.getAllTopicAksara();
         String judul, isi;
