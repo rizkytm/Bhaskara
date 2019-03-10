@@ -2,13 +2,16 @@ package com.rizkytm.bhaskara;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +20,14 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import com.rizkytm.bhaskara.MainActivity;
 
 public class GameActivity extends AppCompatActivity {
+
+
+    private BhaskaraDB bhaskaraDB;
+
+    ArrayList<Image> images = new ArrayList<>();
 
     TextView tv_p1;
 //    TextView tv_p2;
@@ -45,12 +54,22 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-//        BhaskaraDB db = new BhaskaraDB(this);
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ga);
-//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//        byte[] img = bos.toByteArray();
-//
-//        db.addImage("ga", img, img);
+
+
+//        Drawable dbDrawable = getResources().getDrawable(R.drawable.ga);
+
+
+        int photoID = R.drawable.ka;
+        String nama = getResources().getResourceEntryName(R.drawable.ka);
+
+
+//        Image image = new Image();
+//        image.name = "ini huruf";
+//        image.imageA = photoID;
+//        image.imageB = photoID;
+//        bhaskaraDB.tambah(image);
+
+        loadAllImages();
 
         tv_p1 = (TextView) findViewById(R.id.tv_p1);
 //        tv_p2 = (TextView) findViewById(R.id.tv_p2);
@@ -395,14 +414,23 @@ public class GameActivity extends AppCompatActivity {
 
     private void frontOfCardsResources() {
 
-        int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
-                R.drawable.fb, R.drawable.ig, R.drawable.ln, R.drawable.tw, R.drawable.wa, R.drawable.yt};
-        int[] imagesB = {R.drawable.huruf_ka, R.drawable.huruf_ga, R.drawable.huruf_nga, R.drawable.huruf_ca, R.drawable.huruf_ja, R.drawable.huruf_nya,
-                R.drawable.facebook, R.drawable.instagram, R.drawable.line, R.drawable.twitter, R.drawable.whatsapp, R.drawable.youtube};
+//        int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
+//                R.drawable.fb, R.drawable.ig, R.drawable.ln, R.drawable.tw, R.drawable.wa, R.drawable.yt};
+//        int[] imagesB = {R.drawable.huruf_ka, R.drawable.huruf_ga, R.drawable.huruf_nga, R.drawable.huruf_ca, R.drawable.huruf_ja, R.drawable.huruf_nya,
+//                R.drawable.facebook, R.drawable.instagram, R.drawable.line, R.drawable.twitter, R.drawable.whatsapp, R.drawable.youtube};
+
 
         ArrayList<Integer> numbers = new ArrayList<Integer>();
-        for (int i=0;i<imagesA.length;i++){
+//        ArrayList<String> imagesA = new ArrayList<String>();
+//        ArrayList<String> imagesB = new ArrayList<String>();
+
+
+        int count = images.size();
+
+        for (int i=0;i<count;i++){
             numbers.add(i);
+//            imagesA.add(images.get(i).getImageA());
+//            imagesB.add(images.get(i).getImageB());
         }
         Collections.shuffle(numbers);
 
@@ -413,24 +441,33 @@ public class GameActivity extends AppCompatActivity {
         int kelima = numbers.get(4);
         int keenam = numbers.get(5);
 
-        images101 = imagesA[pertama];
-        images201 = imagesB[pertama];
+//        String string = images.get(0).getImageA();
+//        int nomer = Integer.parseInt(string);
 
-        images102 = imagesA[kedua];
-        images202 = imagesB[kedua];
+        images101 = images.get(pertama).getImageA();
+        images201 = images.get(pertama).getImageB();
 
-        images103 = imagesA[ketiga];
-        images203 = imagesB[ketiga];
+        images102 = images.get(kedua).getImageA();
+        images202 = images.get(kedua).getImageB();
 
-        images104 = imagesA[keempat];
-        images204 = imagesB[keempat];
+        images103 = images.get(ketiga).getImageA();
+        images203 = images.get(ketiga).getImageB();
 
-        images105 = imagesA[kelima];
-        images205 = imagesB[kelima];
+        images104 = images.get(keempat).getImageA();
+        images204 = images.get(keempat).getImageB();
 
-        images106 = imagesA[keenam];
-        images206 = imagesB[keenam];
+        images105 = images.get(kelima).getImageA();
+        images205 = images.get(kelima).getImageB();
+
+        images106 = images.get(keenam).getImageA();
+        images206 = images.get(keenam).getImageB();
 
 
+    }
+
+    public ArrayList<Image> loadAllImages() {
+        bhaskaraDB = new BhaskaraDB(this);
+        images = bhaskaraDB.getAllImages();
+        return images;
     }
 }

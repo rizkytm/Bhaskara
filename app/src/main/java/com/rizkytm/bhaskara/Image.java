@@ -2,14 +2,14 @@ package com.rizkytm.bhaskara;
 
 public class Image {
 
-    private int id;
-    private String name;
-    private byte[] imageA;
-    private byte[] imageB;
+    public int id;
+    public String name;
+    public int imageA;
+    public int imageB;
 
     public Image() {}
 
-    public Image(String name, byte[] imageA, byte[] imageB) {
+    public Image(String name, int imageA, int imageB) {
         this.name = name;
         this.imageA = imageA;
         this.imageB = imageB;
@@ -31,19 +31,19 @@ public class Image {
         this.name = name;
     }
 
-    public byte[] getImageA() {
+    public int getImageA() {
         return imageA;
     }
 
-    public void setImageA(byte[] imageA) {
+    public void setImageA(int imageA) {
         this.imageA = imageA;
     }
 
-    public byte[] getImageB() {
+    public int getImageB() {
         return imageB;
     }
 
-    public void setImageB(byte[] imageB) {
+    public void setImageB(int imageB) {
         this.imageB = imageB;
     }
 }

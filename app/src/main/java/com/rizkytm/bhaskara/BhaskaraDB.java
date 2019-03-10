@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.rizkytm.bhaskara.QuizContract.*;
 
@@ -20,6 +23,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.provider.MediaStore.Images.Thumbnails.IMAGE_ID;
 
 public class BhaskaraDB extends SQLiteOpenHelper {
 
@@ -39,15 +44,15 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     private final String COL_KEY = "key";
     private final String COL_VALUE = "value";
 
-//    // Table Names
-//    private static final String TABLE_IMAGE = "images";
-//
-//    // column names
-//    private static final String COLUMN_ID = "id";
-//    private static final String COLUMN_NAME = "name";
-//    private static final String COLUMN_IMAGE_A = "image_a";
-//    private static final String COLUMN_IMAGE_B = "image_b";
-//
+    // Table Names
+    private static final String TABLE_IMAGE = "images";
+
+    // column names
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_IMAGE_A = "image_a";
+    private static final String COLUMN_IMAGE_B = "image_b";
+
 //    // Table create statement
 //    private static final String CREATE_TABLE_IMAGE = "CREATE TABLE " + TABLE_IMAGE + "("+
 //            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -111,6 +116,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 //        db.execSQL(CREATE_TABLE_IMAGE);
+
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -129,6 +135,87 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 //        cv.put(COLUMN_IMAGE_A, imageA);
 //        cv.put(COLUMN_IMAGE_B, imageB);
 //        database.insert(TABLE_IMAGE, null, cv);
+//    }
+
+    public void tambah(Image image) {
+
+        try {
+//            String sql="INSERT INTO images (id, name, image_a, image_b) VALUES(1, 'ini huruf ka yah', " + photoID + " , " + photoID + " );";
+            String sql="INSERT INTO images ([name], [image_a], [image_b]) VALUES(?, ?, ?);";
+            db.execSQL(sql, new Object[]{image.name, image.imageA, image.imageB});
+        } catch (SQLException ex) {
+
+        }
+
+
+//        db.execSQL("INSERT INTO images (name, image_a, image_b) VALUES('ini huruf ka', " + photoID + " , " + photoID + ");");
+
+//        Cursor c = db.rawQuery(sql, null);
+    }
+
+    public ArrayList<Image> getAllImages() {
+        ArrayList<Image> imageList = new ArrayList<>();
+//        db = getReadableDatabase();
+        String q = "SELECT * FROM " + TABLE_IMAGE;
+        Cursor c = db.rawQuery(q, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Image image = new Image();
+                image.setId(c.getInt(c.getColumnIndex(COLUMN_ID)));
+                image.setName(c.getString(c.getColumnIndex(COLUMN_NAME)));
+                image.setImageA(c.getInt(c.getColumnIndex(COLUMN_IMAGE_A)));
+                image.setImageB(c.getInt(c.getColumnIndex(COLUMN_IMAGE_B)));
+                imageList.add(image);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return imageList;
+    }
+
+    public void insetImage(Drawable dbDrawable, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, name);
+        Bitmap bitmap = ((BitmapDrawable)dbDrawable).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        values.put(COLUMN_IMAGE_A, stream.toByteArray());
+        values.put(COLUMN_IMAGE_B, stream.toByteArray());
+        db.insert(TABLE_IMAGE, null, values);
+        db.close();
+    }
+
+//    public ArrayList<String> getImageA() {
+//        String q = "SELECT * FROM " + TABLE_IMAGE + ";";
+//        Cursor result = db.rawQuery(q, null);
+//
+//        ArrayList<String> source = new ArrayList<>();
+//        while (result.moveToNext()) {
+//            source.add(result.getString(result.getColumnIndex()))
+//        }
+//    }
+
+//    public ArrayList<Image> getImages() {
+//        ArrayList<Image> imageList = new ArrayList<>();
+////        db = getReadableDatabase();
+//        String q = "SELECT * FROM " + TABLE_IMAGE + ";";
+//        Cursor c = db.rawQuery(q, null);
+//
+//        if (c.moveToFirst()) {
+//            do {
+//                Image image = new Image();
+//                image.setId(c.getInt(c.getColumnIndex(COLUMN_ID)));
+//                image.setName(c.getString(c.getColumnIndex(COLUMN_NAME)));
+//                image.setImageA(c.getString(c.getColumnIndex(COLUMN_IMAGE_A)));
+//                image.setImageB(c.getString(c.getColumnIndex(COLUMN_IMAGE_B)));
+//                imageList.add(image);
+//            } while (c.moveToNext());
+//        }
+//
+//        c.close();
+//        return imageList;
 //    }
 
     public ArrayList<String> getWord(int dicType) {
