@@ -1,6 +1,7 @@
 package com.rizkytm.bhaskara;
 
 public class Word {
+    public String id;
     public String key = "";
     public String value = "";
 
@@ -27,5 +28,13 @@ public class Word {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

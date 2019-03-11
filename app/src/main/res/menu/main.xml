@@ -20,12 +20,12 @@
                 android:orderInCategory="100"
                 android:title="Sunda - Indo"
                 app:showAsAction="never" />
-            <item
-                android:id="@+id/action_sun_sun"
-                android:icon="@drawable/ic_library_books_blue"
-                android:orderInCategory="100"
-                android:title="Sunda - Sunda"
-                app:showAsAction="never" />
+            <!--<item-->
+                <!--android:id="@+id/action_sun_sun"-->
+                <!--android:icon="@drawable/ic_library_books_blue"-->
+                <!--android:orderInCategory="100"-->
+                <!--android:title="Sunda - Sunda"-->
+                <!--app:showAsAction="never" />-->
         </menu>
     </item>
 </menu>

@@ -146,10 +146,11 @@ public class KamusActivity extends AppCompatActivity
         } else if (id == R.id.action_sun_ind) {
             kamusFragment.resetDataSource(source);
             menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_green));
-        } else if (id == R.id.action_sun_sun) {
-            kamusFragment.resetDataSource(source);
-            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_blue));
         }
+//        else if (id == R.id.action_sun_sun) {
+//            kamusFragment.resetDataSource(source);
+//            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_blue));
+//        }
 
         return super.onOptionsItemSelected(item);
     }

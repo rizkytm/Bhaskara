@@ -36,11 +36,12 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     private String DATABASE_LOCATION = "";
     private String DATABASE_FULL_PATH = "";
 
-    private final String TBL_IND_SUN = "ind_sun";
-    private final String TBL_SUN_IND = "sun_ind";
-    private final String TBL_SUN_SUN = "sun_sun";
-    private final String TBL_BOOKMARK = "bookmark";
+    private final String TBL_IND_SUN = "indo_sunda";
+    private final String TBL_SUN_IND = "sunda_indo";
+    private final String TBL_SUN_SUN = "sunda_sunda";
+//    private final String TBL_BOOKMARK = "bookmark";
 
+    private final String COL_ID = "id";
     private final String COL_KEY = "key";
     private final String COL_VALUE = "value";
 
@@ -237,6 +238,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
         Word word = new Word();
         while (result.moveToNext()) {
+            word.id = result.getString(result.getColumnIndex(COL_ID));
             word.key = result.getString(result.getColumnIndex(COL_KEY));
             word.value = result.getString(result.getColumnIndex(COL_VALUE));
         }
@@ -294,9 +296,11 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         String tableName = "";
         if (dicType == R.id.action_sun_ind) {
             tableName = TBL_SUN_IND;
-        } else if (dicType == R.id.action_sun_sun) {
-            tableName = TBL_SUN_SUN;
-        } else if (dicType == R.id.action_ind_sun) {
+        }
+//        else if (dicType == R.id.action_sun_sun) {
+//            tableName = TBL_SUN_SUN;
+//        }
+        else if (dicType == R.id.action_ind_sun) {
             tableName = TBL_IND_SUN;
         }
         return tableName;
