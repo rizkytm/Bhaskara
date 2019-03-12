@@ -9,28 +9,56 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GameActivity"></activity>
-        <activity
-            android:name=".KamusActivity"
-            android:label="@string/title_activity_kamus"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".LatihanActivity" />
-        <activity android:name=".DetailTopikActivity" />
-        <activity android:name=".MenuEssayActivity" />
-        <activity
-            android:name=".EssayActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".TheoryActivity"
-            android:label="@string/title_activity_theory"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Main2Activity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".GameActivity"
+            android:label="Game"
+            android:parentActivityName=".Main2Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rizkytm.bhaskara.Main2Activity"/>
+        </activity>
+        <activity
+            android:name=".KamusActivity"
+            android:label="Kamus"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".QuizActivity" />
+        <activity android:name=".LatihanActivity"
+            android:label="Latihan Pilihan Ganda"
+            android:parentActivityName=".Main2Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rizkytm.bhaskara.Main2Activity"/>
+        </activity>
+        <activity android:name=".DetailTopikActivity"
+            android:label="Rincian Teori"
+            android:parentActivityName=".TheoryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rizkytm.bhaskara.TheoryActivity"/>
+        </activity>
+        <activity android:name=".MenuEssayActivity"
+            android:label="Latihan Essay"
+            android:parentActivityName=".Main2Activity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rizkytm.bhaskara.Main2Activity"/>
+        </activity>
+        <activity
+            android:name=".EssayActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TheoryActivity"
+            android:label="Teori"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

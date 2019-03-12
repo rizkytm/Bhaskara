@@ -46,6 +46,15 @@ public class KamusActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(TheoryActivity.this, Main2Activity.class);
+//                startActivity(intent);
+                KamusActivity.super.onBackPressed();
+            }
+        });
+
         dbHelper = new BhaskaraDB(this);
 
 //        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,6 +73,16 @@ public class KamusActivity extends AppCompatActivity
         kamusFragment.setOnFragmentListener(new FragmentListener() {
             @Override
             public void onItemClick(String value) {
+//                String id = Global.getState(KamusActivity.this, "dic_type");
+//                Intent intent = getIntent();
+//                String jenisKamus = intent.getStringExtra(Main2Activity.EXTRA_KAMUS);
+//                if (jenisKamus.equals("indo_sunda")) {
+//                    int dicType = R.id.action_ind_sun;
+//                    goToFragment(DetailFragment.getNewInstance(value, dbHelper, dicType), false);
+//                } else {
+//                    int dicType = R.id.action_sun_ind;
+//                    goToFragment(DetailFragment.getNewInstance(value, dbHelper, dicType), false);
+//                }
                 String id = Global.getState(KamusActivity.this, "dic_type");
                 int dicType = id == null ? R.id.action_ind_sun:Integer.valueOf(id);
                 goToFragment(DetailFragment.getNewInstance(value, dbHelper, dicType), false);
@@ -108,6 +127,40 @@ public class KamusActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        menuSetting = menu.findItem(R.id.action_settings);
+////        menuSetting.setVisible(false);
+////        this.invalidateOptionsMenu();
+//
+//        String id = Global.getState(this, "dic_type");
+////        if (id != null) {
+////            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
+////        } else {
+////            ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
+////            kamusFragment.resetDataSource(source);
+////        }
+//        Intent intent = getIntent();
+//        String jenisKamus = intent.getStringExtra(Main2Activity.EXTRA_KAMUS);
+//        if (id == null) {
+//            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
+//        } else {
+//            if (jenisKamus.equals("indo_sunda"))
+//            {
+//                ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
+//                kamusFragment.resetDataSource(source);
+//            } else {
+//                ArrayList<String> source = dbHelper.getWord(R.id.action_sun_ind);
+//                kamusFragment.resetDataSource(source);
+//            }
+//
+//        }
+//        return true;
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

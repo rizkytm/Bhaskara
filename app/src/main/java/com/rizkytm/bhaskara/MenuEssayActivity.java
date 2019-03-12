@@ -33,6 +33,8 @@ public class MenuEssayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_latihan_essay);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         textViewHighscore = findViewById(R.id.text_view_highscore);
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);

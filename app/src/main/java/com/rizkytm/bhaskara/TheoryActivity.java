@@ -1,5 +1,6 @@
 package com.rizkytm.bhaskara;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -38,6 +39,21 @@ public class TheoryActivity extends AppCompatActivity implements TabLayout.OnTab
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
 //        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(TheoryActivity.this, Main2Activity.class);
+//                startActivity(intent);
+                TheoryActivity.super.onBackPressed();
+            }
+        });
+
+        // add back arrow to toolbar
+//        if (getSupportActionBar() != null){
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        }
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);

@@ -14,6 +14,8 @@ public class DetailTopikActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_topik);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         String title = intent.getStringExtra(BahasaFragment.EXTRA_TITLE);
         String content = intent.getStringExtra(BahasaFragment.EXTRA_CONTENT);
