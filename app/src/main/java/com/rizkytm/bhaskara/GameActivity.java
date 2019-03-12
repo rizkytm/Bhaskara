@@ -7,12 +7,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,17 +23,18 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Locale;
+
 import com.rizkytm.bhaskara.Main2Activity;
 
 public class GameActivity extends AppCompatActivity {
-
 
     private BhaskaraDB bhaskaraDB;
 
     ArrayList<Image> images = new ArrayList<>();
 
     TextView tv_p1;
-//    TextView tv_p2;
+    TextView tv_cd;
 
     ImageView iv_11, iv_12, iv_13, iv_14,
             iv_21, iv_22, iv_23, iv_24,
@@ -48,6 +52,8 @@ public class GameActivity extends AppCompatActivity {
 
     int turn = 1;
     int playerPoints = 0, cpuPoints = 0;
+
+    Chronometer simpleChronometer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +75,12 @@ public class GameActivity extends AppCompatActivity {
 //        image.imageB = photoID;
 //        bhaskaraDB.tambah(image);
 
-        loadAllImages();
-
         tv_p1 = (TextView) findViewById(R.id.tv_p1);
-//        tv_p2 = (TextView) findViewById(R.id.tv_p2);
+//        tv_cd = (TextView) findViewById(R.id.tv_cd);
+
+        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
+        simpleChronometer.setBase(SystemClock.elapsedRealtime());
+        simpleChronometer.start();
 
         iv_11 = (ImageView) findViewById(R.id.iv_11);
         iv_12 = (ImageView) findViewById(R.id.iv_12);
@@ -387,10 +395,18 @@ public class GameActivity extends AppCompatActivity {
                 iv_33.getVisibility() == View.INVISIBLE &&
                 iv_34.getVisibility() == View.INVISIBLE) {
 
+            simpleChronometer.stop();
+            long elapsedMillis = SystemClock.elapsedRealtime() - simpleChronometer.getBase();
+            int minutes = (int) (elapsedMillis / 1000) / 60;
+            int seconds = (int) (elapsedMillis / 1000) % 60;
+
+            String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
             alertDialogBuilder
                     .setMessage("GAME OVER!\nSkor: "+ playerPoints
 //                            + "\nP2: " + cpuPoints
+                              + "\nWaktu yang ditempuh: " + timeFormatted
                     )
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
@@ -424,8 +440,9 @@ public class GameActivity extends AppCompatActivity {
 //        ArrayList<String> imagesA = new ArrayList<String>();
 //        ArrayList<String> imagesB = new ArrayList<String>();
 
+        images = loadAllImages();
 
-        int count = images.size();
+        int count = bhaskaraDB.imagesA.length;
 
         for (int i=0;i<count;i++){
             numbers.add(i);
@@ -467,7 +484,7 @@ public class GameActivity extends AppCompatActivity {
 
     public ArrayList<Image> loadAllImages() {
         bhaskaraDB = new BhaskaraDB(this);
-        images = bhaskaraDB.getAllImages();
-        return images;
+        ArrayList<Image> gambar = bhaskaraDB.getAllImages();
+        return gambar;
     }
 }

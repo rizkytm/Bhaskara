@@ -21,10 +21,6 @@ public class Main2Activity extends AppCompatActivity {
     TextView textView;
     Typeface typeface;
 
-    int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
-            R.drawable.fb, R.drawable.ig, R.drawable.ln, R.drawable.tw, R.drawable.wa, R.drawable.yt};
-    int[] imagesB = {R.drawable.huruf_ka, R.drawable.huruf_ga, R.drawable.huruf_nga, R.drawable.huruf_ca, R.drawable.huruf_ja, R.drawable.huruf_nya,
-            R.drawable.facebook, R.drawable.instagram, R.drawable.line, R.drawable.twitter, R.drawable.whatsapp, R.drawable.youtube};
 
     private BhaskaraDB bhaskaraDB;
 
@@ -32,8 +28,6 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        loadImages();
 
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
 
@@ -108,14 +102,5 @@ public class Main2Activity extends AppCompatActivity {
         }
     }
 
-    public void loadImages() {
-        bhaskaraDB = new BhaskaraDB(this);
-        for (int i=0; i<imagesA.length; i++) {
-            String name = getResources().getResourceEntryName(imagesA[i]);
-            int imageA = imagesA[i];
-            int imageB = imagesB[i];
-            Image image = new Image(name, imageA, imageB);
-            bhaskaraDB.tambah(image);
-        }
-    }
+
 }
