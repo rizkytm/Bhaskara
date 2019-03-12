@@ -334,13 +334,16 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (turn == 1) {
-                playerPoints++;
+                playerPoints += 3;
                 tv_p1.setText("Skor: " + playerPoints);
             } else if (turn == 2) {
 //                cpuPoints++;
 //                tv_p2.setText("P2: " + cpuPoints);
             }
         } else {
+            playerPoints--;
+            tv_p1.setText("Skor: " + playerPoints);
+
             iv_11.setImageResource(R.drawable.q_mark);
             iv_12.setImageResource(R.drawable.q_mark);
             iv_13.setImageResource(R.drawable.q_mark);
