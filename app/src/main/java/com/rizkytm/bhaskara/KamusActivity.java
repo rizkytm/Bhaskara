@@ -128,56 +128,70 @@ public class KamusActivity extends AppCompatActivity
         }
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        menuSetting = menu.findItem(R.id.action_settings);
-////        menuSetting.setVisible(false);
-////        this.invalidateOptionsMenu();
-//
-//        String id = Global.getState(this, "dic_type");
-////        if (id != null) {
-////            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
-////        } else {
-////            ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
-////            kamusFragment.resetDataSource(source);
-////        }
-//        Intent intent = getIntent();
-//        String jenisKamus = intent.getStringExtra(Main2Activity.EXTRA_KAMUS);
-//        if (id == null) {
-//            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
-//        } else {
-//            if (jenisKamus.equals("indo_sunda"))
-//            {
-//                ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
-//                kamusFragment.resetDataSource(source);
-//            } else {
-//                ArrayList<String> source = dbHelper.getWord(R.id.action_sun_ind);
-//                kamusFragment.resetDataSource(source);
-//            }
-//
-//        }
-//        return true;
-//    }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         menuSetting = menu.findItem(R.id.action_settings);
+//        menuSetting.setVisible(false);
+//        this.invalidateOptionsMenu();
 
         String id = Global.getState(this, "dic_type");
+//        if (id != null) {
+//            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
+//        } else {
+//            ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
+//            kamusFragment.resetDataSource(source);
+//        }
+        Intent intent = getIntent();
+        String jenisKamus = intent.getStringExtra(Main2Activity.EXTRA_KAMUS);
         if (id != null) {
-            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
+
+            if (jenisKamus.equals("indo_sunda"))
+            {
+                ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
+                kamusFragment.resetDataSource(source);
+//                menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+                onOptionsItemSelected(menu.findItem(Integer.valueOf(R.id.action_ind_sun)));
+            } else {
+                ArrayList<String> source = dbHelper.getWord(R.id.action_sun_ind);
+                kamusFragment.resetDataSource(source);
+//                menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+                onOptionsItemSelected(menu.findItem(Integer.valueOf(R.id.action_sun_ind)));
+            }
         } else {
-            ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
-            kamusFragment.resetDataSource(source);
+            if (jenisKamus.equals("indo_sunda"))
+            {
+                ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
+                kamusFragment.resetDataSource(source);
+//                menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+            } else {
+                ArrayList<String> source = dbHelper.getWord(R.id.action_sun_ind);
+                kamusFragment.resetDataSource(source);
+//                menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+            }
+
         }
         return true;
     }
+
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        menuSetting = menu.findItem(R.id.action_settings);
+//
+//        String id = Global.getState(this, "dic_type");
+//        if (id != null) {
+//            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
+//        } else {
+//            ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
+//            kamusFragment.resetDataSource(source);
+//        }
+//        return true;
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -192,14 +206,35 @@ public class KamusActivity extends AppCompatActivity
 
         ArrayList<String> source = dbHelper.getWord(id);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_ind_sun) {
-            kamusFragment.resetDataSource(source);
-            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_red));
-        } else if (id == R.id.action_sun_ind) {
-            kamusFragment.resetDataSource(source);
-            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_green));
+        Intent intent = getIntent();
+        String jenisKamus = intent.getStringExtra(Main2Activity.EXTRA_KAMUS);
+        if (jenisKamus.equals("indo_sunda")) {
+            if (id == R.id.action_ind_sun) {
+                kamusFragment.resetDataSource(source);
+                Global.saveState(this,"dic_type", String.valueOf(id));
+//            menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+            } else if (id == R.id.action_sun_ind) {
+                kamusFragment.resetDataSource(source);
+                Global.saveState(this,"dic_type", String.valueOf(id));
+//            menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+            }
+        } else {
+            if (id == R.id.action_ind_sun) {
+                kamusFragment.resetDataSource(source);
+//            menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+            } else if (id == R.id.action_sun_ind) {
+                kamusFragment.resetDataSource(source);
+//            menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+            }
         }
+        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_ind_sun) {
+//            kamusFragment.resetDataSource(source);
+//            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_red));
+//        } else if (id == R.id.action_sun_ind) {
+//            kamusFragment.resetDataSource(source);
+//            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_green));
+//        }
 //        else if (id == R.id.action_sun_sun) {
 //            kamusFragment.resetDataSource(source);
 //            menuSetting.setIcon(getDrawable(R.drawable.ic_library_books_blue));

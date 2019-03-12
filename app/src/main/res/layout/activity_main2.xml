@@ -25,9 +25,20 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:textAlignment="center"
-                android:text="BHASKARA SUNDA\nᮘ᮪ᮠᮞ᮪ᮊᮛ ᮞᮥᮔ᮪ᮓ"
+                android:text="BHASKARA SUNDA"
                 android:textColor="@android:color/white"
                 android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/textGrid2"
+                android:layout_below="@+id/textGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:text="ᮘ᮪ᮠᮞ᮪ᮊᮛ ᮞᮥᮔ᮪ᮓ"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
 
         </RelativeLayout>
 
@@ -67,10 +78,10 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_teori" />
+                        android:src="@drawable/icon_teori" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -78,8 +89,9 @@
                         android:text="Teori"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"/>
 
                 </LinearLayout>
 
@@ -108,19 +120,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_latihan" />
+                        android:src="@drawable/icon_game" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Latihan"
+                        android:text="Game"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"/>
 
                 </LinearLayout>
 
@@ -152,19 +165,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_wrap_text" />
+                        android:src="@drawable/icon_quiz" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Essay"
+                        android:text="Quiz\nPilihan Ganda"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"/>
 
                 </LinearLayout>
 
@@ -193,19 +207,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_videogame" />
+                        android:src="@drawable/icon_essay" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Game"
+                        android:text="Quiz\nEssay"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"/>
 
                 </LinearLayout>
 
@@ -237,19 +252,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_kamus" />
+                        android:src="@drawable/icon_indo" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kamus"
+                        android:text="Kamus\nIndo-Sunda"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"/>
 
                 </LinearLayout>
 
@@ -278,19 +294,20 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_kamus" />
+                        android:src="@drawable/icon_sunda" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kamus 2"
+                        android:text="Kamus\nSunda-Indo"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"/>
 
                 </LinearLayout>
 

@@ -20,7 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import com.rizkytm.bhaskara.MainActivity;
+import com.rizkytm.bhaskara.Main2Activity;
 
 public class GameActivity extends AppCompatActivity {
 
