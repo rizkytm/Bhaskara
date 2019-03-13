@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="#fff"
     tools:context=".LatihanActivity">
 
     <TextView
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:text="Belajar Bahasa dan Aksara Sunda"
+        android:text="Quiz Mode Pilihan Ganda"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 

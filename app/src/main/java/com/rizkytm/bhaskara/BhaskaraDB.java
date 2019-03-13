@@ -29,9 +29,11 @@ import static android.provider.MediaStore.Images.Thumbnails.IMAGE_ID;
 public class BhaskaraDB extends SQLiteOpenHelper {
 
     public int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
-            R.drawable.fb, R.drawable.ig, R.drawable.ln, R.drawable.tw, R.drawable.wa, R.drawable.yt};
-    int[] imagesB = {R.drawable.huruf_ka, R.drawable.huruf_ga, R.drawable.huruf_nga, R.drawable.huruf_ca, R.drawable.huruf_ja, R.drawable.huruf_nya,
-            R.drawable.facebook, R.drawable.instagram, R.drawable.line, R.drawable.twitter, R.drawable.whatsapp, R.drawable.youtube};
+            R.drawable.ta, R.drawable.da, R.drawable.na, R.drawable.pa, R.drawable.ba, R.drawable.ma,
+            R.drawable.ya, R.drawable.ra, R.drawable.la, R.drawable.wa, R.drawable.sa, R.drawable.ha};
+    int[] imagesB = {R.drawable.ka_s, R.drawable.ga_s, R.drawable.nga_s, R.drawable.ca_s, R.drawable.ja_s, R.drawable.nya_s,
+            R.drawable.ta_s, R.drawable.da_s, R.drawable.na_s, R.drawable.pa_s, R.drawable.ba_s, R.drawable.ma_s,
+            R.drawable.ya_s, R.drawable.ra_s, R.drawable.la_s, R.drawable.wa_s, R.drawable.sa_s, R.drawable.ha_s};
 
 
     private Context mContext;

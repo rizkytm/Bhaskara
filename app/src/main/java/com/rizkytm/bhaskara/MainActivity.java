@@ -17,11 +17,6 @@ public class MainActivity extends AppCompatActivity {
     String[] judul = {"Teori", "Latihan", "Essay", "Game", "Kamus"};
     String[] desc = {"Ini adalah deskripsi teori", "Ini adalah deskripsi latihan", "Ini adalah deskripsi essay", "Ini adalah deskripsi game", "Ini adalah deskripsi kamus"};
 
-    int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
-            R.drawable.fb, R.drawable.ig, R.drawable.ln, R.drawable.tw, R.drawable.wa, R.drawable.yt};
-    int[] imagesB = {R.drawable.huruf_ka, R.drawable.huruf_ga, R.drawable.huruf_nga, R.drawable.huruf_ca, R.drawable.huruf_ja, R.drawable.huruf_nya,
-            R.drawable.facebook, R.drawable.instagram, R.drawable.line, R.drawable.twitter, R.drawable.whatsapp, R.drawable.youtube};
-
 
     ListView listView;
     ListAdapter listAdapter;
@@ -33,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadImages();
         listView = (ListView) findViewById(R.id.listView);
         listAdapter = new ListAdapter(MainActivity.this, judul, desc, images);
         listView.setAdapter(listAdapter);
@@ -58,16 +52,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void loadImages() {
-        bhaskaraDB = new BhaskaraDB(this);
-        for (int i=0; i<imagesA.length; i++) {
-            String name = getResources().getResourceEntryName(imagesA[i]);
-            int imageA = imagesA[i];
-            int imageB = imagesB[i];
-            Image image = new Image(name, imageA, imageB);
-            bhaskaraDB.tambah(image);
-        }
     }
 }

@@ -21,8 +21,8 @@ public class DetailTopikActivity extends AppCompatActivity {
         String content = intent.getStringExtra(BahasaFragment.EXTRA_CONTENT);
 
         TextView textViewTitle = (TextView) findViewById(R.id.detailTopik);
-        TextView textViewContent = (TextView) findViewById(R.id.isiTeori);
+        WebView webViewContent = (WebView) findViewById(R.id.isiTeori);
         textViewTitle.setText(title);
-        textViewContent.setText(content);
+        webViewContent.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
     }
 }

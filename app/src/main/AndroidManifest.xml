@@ -9,46 +9,58 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main2Activity"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".SplashActivity"
+            android:label="Bhaskara"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity"
+        <activity
+            android:name=".Main2Activity"
+            android:label="Home"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".GameActivity"
             android:label="Game"
             android:parentActivityName=".Main2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rizkytm.bhaskara.Main2Activity"/>
+                android:value="com.rizkytm.bhaskara.Main2Activity" />
         </activity>
         <activity
             android:name=".KamusActivity"
             android:label="Kamus"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".QuizActivity" />
-        <activity android:name=".LatihanActivity"
-            android:label="Latihan Pilihan Ganda"
+        <activity
+            android:name=".LatihanActivity"
+            android:label="Quiz"
             android:parentActivityName=".Main2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rizkytm.bhaskara.Main2Activity"/>
+                android:value="com.rizkytm.bhaskara.Main2Activity" />
         </activity>
-        <activity android:name=".DetailTopikActivity"
+        <activity
+            android:name=".DetailTopikActivity"
             android:label="Rincian Teori"
             android:parentActivityName=".TheoryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rizkytm.bhaskara.TheoryActivity"/>
+                android:value="com.rizkytm.bhaskara.TheoryActivity" />
         </activity>
-        <activity android:name=".MenuEssayActivity"
-            android:label="Latihan Essay"
+        <activity
+            android:name=".MenuEssayActivity"
+            android:label="Quiz"
             android:parentActivityName=".Main2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rizkytm.bhaskara.Main2Activity"/>
+                android:value="com.rizkytm.bhaskara.Main2Activity" />
         </activity>
         <activity
             android:name=".EssayActivity"
@@ -57,9 +69,7 @@
             android:name=".TheoryActivity"
             android:label="Teori"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
