@@ -55,18 +55,20 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:background="@drawable/border"
         android:id="@+id/sv_pertanyaan"
         android:layout_marginTop="96dp">
 
-        <TextView
-            android:id="@+id/text_view_question"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:freezesText="true"
-            android:text="Ini adalah pertanyaan\nIni adalah pertanyaan\nIni adalah pertanyaan\n"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/text_view_question"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:freezesText="true"
+                android:text="Ini adalah pertanyaan1\nIni adalah pertanyaan2"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"/>
 
     </ScrollView>
 
