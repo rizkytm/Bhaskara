@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -65,8 +66,8 @@ public class GameActivity extends AppCompatActivity {
 //        Drawable dbDrawable = getResources().getDrawable(R.drawable.ga);
 
 
-        int photoID = R.drawable.ka;
-        String nama = getResources().getResourceEntryName(R.drawable.ka);
+//        int photoID = R.drawable.ka;
+//        String nama = getResources().getResourceEntryName(R.drawable.ka);
 
 
 //        Image image = new Image();
@@ -77,10 +78,6 @@ public class GameActivity extends AppCompatActivity {
 
         tv_p1 = (TextView) findViewById(R.id.tv_p1);
 //        tv_cd = (TextView) findViewById(R.id.tv_cd);
-
-        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
-        simpleChronometer.setBase(SystemClock.elapsedRealtime());
-        simpleChronometer.start();
 
         iv_11 = (ImageView) findViewById(R.id.iv_11);
         iv_12 = (ImageView) findViewById(R.id.iv_12);
@@ -209,6 +206,35 @@ public class GameActivity extends AppCompatActivity {
                 doStuff(iv_34, theCard);
             }
         });
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
+        alertDialogBuilder
+                .setMessage("Selamat Datang di Game Bhaskara\n" +
+                        "Cocokkan Aksara Sunda dengan huruf latinnya"
+                )
+                .setCancelable(false)
+                .setPositiveButton("MULAI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                "Game dimulai",
+                                Toast.LENGTH_SHORT);
+                        toast.show();
+                        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
+                        simpleChronometer.setBase(SystemClock.elapsedRealtime());
+                        simpleChronometer.start();
+                    }
+                })
+                .setNegativeButton("KELUAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+
 
     }
 
@@ -407,7 +433,7 @@ public class GameActivity extends AppCompatActivity {
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
             alertDialogBuilder
-                    .setMessage("GAME OVER!\nSkor: "+ playerPoints
+                    .setMessage("PERMAINAN SELESAI!\nSkor: "+ playerPoints
 //                            + "\nP2: " + cpuPoints
                               + "\nWaktu yang ditempuh: " + timeFormatted
                     )
@@ -417,7 +443,7 @@ public class GameActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intent = new Intent(getApplicationContext(), GameActivity.class);
                             startActivity(intent);
-                            finish();;
+                            finish();
                         }
                     })
                     .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
