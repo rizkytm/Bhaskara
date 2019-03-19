@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TebakActivity"></activity>
+        <activity android:name=".TebakActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".SplashActivity"
             android:label="Bhaskara"
@@ -29,6 +30,7 @@
         <activity
             android:name=".GameActivity"
             android:label="Game"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".Main2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -38,10 +40,12 @@
             android:name=".KamusActivity"
             android:label="Kamus"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".QuizActivity" />
+        <activity android:name=".QuizActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LatihanActivity"
             android:label="Quiz"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".Main2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

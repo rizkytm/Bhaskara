@@ -8,7 +8,7 @@
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    android:background="#fff"
+    android:background="@mipmap/latar_putih_edit"
     tools:context=".GameActivity">
 
     <include

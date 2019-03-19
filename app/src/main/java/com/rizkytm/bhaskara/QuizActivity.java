@@ -145,6 +145,8 @@ public class QuizActivity extends AppCompatActivity {
             textViewNoPertanyaan.setText("Question: " + questionCounter + "/" + questionCountTotal);
             answered = false;
             pilihJawaban.setText("Pilih Jawaban");
+            pilihJawaban.setTextColor(Color.BLACK);
+            pilihJawaban.setBackgroundColor(Color.WHITE);
 
             timeLeftInMillis = COUNTDOWN_IN_MILLIS;
             startCountDown();
@@ -228,8 +230,12 @@ public class QuizActivity extends AppCompatActivity {
 
         if (questionCounter < questionCountTotal) {
             pilihJawaban.setText("Selanjutnya");
+            pilihJawaban.setTextColor(Color.WHITE);
+            pilihJawaban.setBackgroundColor(Color.BLUE);
         } else {
             pilihJawaban.setText("Selesai");
+            pilihJawaban.setTextColor(Color.WHITE);
+            pilihJawaban.setBackgroundColor(Color.BLUE);
         }
     }
 
