@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kofigyan.stateprogressbar.StateProgressBar;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
@@ -56,16 +58,33 @@ public class QuizActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
+    private String[] steps = {"ONE","TWO"};
+
+    private StateProgressBar stateProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        stateProgressBar = (StateProgressBar) findViewById(R.id.your_state_progress_bar_id);
+//        stateProgressBar.setStateDescriptionData(steps);
+
         textViewPertanyaan = findViewById(R.id.text_view_question);
+        textViewPertanyaan.setTextColor(Color.WHITE);
+
         textViewSkor = findViewById(R.id.text_view_score);
+        textViewSkor.setTextColor(Color.WHITE);
+
         textViewNoPertanyaan = findViewById(R.id.text_view_question_count);
+        textViewNoPertanyaan.setTextColor(Color.WHITE);
+
         textViewKategori = findViewById(R.id.text_view_category);
+        textViewKategori.setTextColor(Color.WHITE);
+
         textViewKesulitan = findViewById(R.id.text_view_difficulty);
+        textViewKesulitan.setTextColor(Color.WHITE);
+
         textViewWaktu = findViewById(R.id.text_view_countdown);
         rbGroup = findViewById(R.id.radio_group);
         pil1 = findViewById(R.id.radio_button1);
@@ -109,6 +128,45 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
 
+        pilihJawaban.setTextColor(Color.GRAY);
+        pilihJawaban.setEnabled(false);
+
+        pil1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihJawaban.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                pilihJawaban.setTextColor(Color.WHITE);
+                pilihJawaban.setEnabled(true);
+            }
+        });
+
+        pil2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihJawaban.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                pilihJawaban.setTextColor(Color.WHITE);
+                pilihJawaban.setEnabled(true);
+            }
+        });
+
+        pil3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihJawaban.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                pilihJawaban.setTextColor(Color.WHITE);
+                pilihJawaban.setEnabled(true);
+            }
+        });
+
+        pil4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pilihJawaban.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                pilihJawaban.setTextColor(Color.WHITE);
+                pilihJawaban.setEnabled(true);
+            }
+        });
+
         pilihJawaban.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,12 +178,14 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 } else {
                     showNextQuestion();
+                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 }
             }
         });
     }
 
     private void showNextQuestion() {
+
         pil1.setTextColor(textColorDefaultRb);
         pil2.setTextColor(textColorDefaultRb);
         pil3.setTextColor(textColorDefaultRb);
@@ -133,9 +193,11 @@ public class QuizActivity extends AppCompatActivity {
         rbGroup.clearCheck();
 
         if (questionCounter < questionCountTotal) {
+
             currentQuestion = questionList.get(questionCounter);
 
             textViewPertanyaan.setText(currentQuestion.getPertanyaan());
+            textViewPertanyaan.setTextColor(Color.WHITE);
             pil1.setText(currentQuestion.getPil1());
             pil2.setText(currentQuestion.getPil2());
             pil3.setText(currentQuestion.getPil3());
@@ -145,8 +207,8 @@ public class QuizActivity extends AppCompatActivity {
             textViewNoPertanyaan.setText("Question: " + questionCounter + "/" + questionCountTotal);
             answered = false;
             pilihJawaban.setText("Pilih Jawaban");
-            pilihJawaban.setTextColor(Color.BLACK);
-            pilihJawaban.setBackgroundColor(Color.WHITE);
+            pilihJawaban.setEnabled(false);
+            pilihJawaban.setTextColor(Color.GRAY);
 
             timeLeftInMillis = COUNTDOWN_IN_MILLIS;
             startCountDown();
@@ -183,7 +245,7 @@ public class QuizActivity extends AppCompatActivity {
         if (timeLeftInMillis < 10000) {
             textViewWaktu.setTextColor(Color.RED);
         } else {
-            textViewWaktu.setTextColor(textColorDefaultCd);
+            textViewWaktu.setTextColor(Color.WHITE);
         }
     }
 
@@ -192,12 +254,21 @@ public class QuizActivity extends AppCompatActivity {
 
         countDownTimer.cancel();
 
+        pilihJawaban.setEnabled(true);
+        pilihJawaban.setBackgroundColor(Color.WHITE);
+        pilihJawaban.setTextColor(Color.BLACK);
+
         RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
         int noJawaban = rbGroup.indexOfChild(rbSelected) + 1;
 
         if (noJawaban == currentQuestion.getNoJawaban()) {
             score++;
             textViewSkor.setText("Skor: " + score);
+            textViewPertanyaan.setText("Benar");
+            textViewPertanyaan.setTextColor(Color.GREEN);
+        } else {
+            textViewPertanyaan.setText("Salah");
+            textViewPertanyaan.setTextColor(Color.RED);
         }
 
         showSolution();
@@ -212,30 +283,28 @@ public class QuizActivity extends AppCompatActivity {
         switch (currentQuestion.getNoJawaban()) {
             case 1:
                 pil1.setTextColor(Color.GREEN);
-                textViewPertanyaan.setText("Jawaban 1 Benar");
+//                textViewPertanyaan.setText("Jawaban 1 Benar");
                 break;
             case 2:
                 pil2.setTextColor(Color.GREEN);
-                textViewPertanyaan.setText("Jawaban 2 Benar");
+//                textViewPertanyaan.setText("Jawaban 2 Benar");
                 break;
             case 3:
                 pil3.setTextColor(Color.GREEN);
-                textViewPertanyaan.setText("Jawaban 3 Benar");
+//                textViewPertanyaan.setText("Jawaban 3 Benar");
                 break;
             case 4:
                 pil4.setTextColor(Color.GREEN);
-                textViewPertanyaan.setText("Jawaban 4 Benar");
+//                textViewPertanyaan.setText("Jawaban 4 Benar");
                 break;
         }
 
         if (questionCounter < questionCountTotal) {
             pilihJawaban.setText("Selanjutnya");
-            pilihJawaban.setTextColor(Color.WHITE);
-            pilihJawaban.setBackgroundColor(Color.BLUE);
+//            pilihJawaban.setTextColor(Color.WHITE);
         } else {
             pilihJawaban.setText("Selesai");
-            pilihJawaban.setTextColor(Color.WHITE);
-            pilihJawaban.setBackgroundColor(Color.BLUE);
+//            pilihJawaban.setTextColor(Color.WHITE);
         }
     }
 

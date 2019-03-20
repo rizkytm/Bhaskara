@@ -2,10 +2,13 @@ package com.rizkytm.bhaskara;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -25,6 +28,9 @@ public class LatihanActivity extends AppCompatActivity {
     private TextView textViewHighscore;
     private Spinner spinnerCategory;
     private Spinner spinnerDifficulty;
+    private TextView textViewBhaskara;
+
+    private Typeface typeface;
 
     private int highscore;
 
@@ -38,6 +44,10 @@ public class LatihanActivity extends AppCompatActivity {
         textViewHighscore = findViewById(R.id.text_view_highscore);
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
+
+        textViewBhaskara = findViewById(R.id.text_bhaskara);
+        typeface = Typeface.createFromAsset(getAssets(), "ciung_wanara.ttf");
+        textViewBhaskara.setTypeface(typeface);
 
         loadCategories();
         loadDifficultyLevels();
@@ -94,6 +104,17 @@ public class LatihanActivity extends AppCompatActivity {
         ArrayAdapter<Category> adapterCategories = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, categories);
         adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) view).setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         spinnerCategory.setAdapter(adapterCategories);
 
     }
@@ -104,6 +125,17 @@ public class LatihanActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, difficultyLevels);
         adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDifficulty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ((TextView) view).setTextColor(Color.WHITE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         spinnerDifficulty.setAdapter(adapterDifficulty);
     }
 

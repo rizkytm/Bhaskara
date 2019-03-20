@@ -18,10 +18,11 @@
         android:textSize="30sp" />
 
     <TextView
+        android:id="@+id/text_bhaskara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="108dp"
         android:text="Bhaskara Sunda"
         android:textColor="@android:color/white"
         android:textSize="35sp" />
@@ -48,7 +49,8 @@
 
     <Button
         android:id="@+id/button_start_quiz"
-        android:background="#fff"
+        android:background="@drawable/buttonbackground"
+        android:radius="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -90,11 +92,12 @@
 
     <Spinner
         android:id="@+id/spinner_difficulty"
+        style="@style/MySpinnerLook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_view_kesulitan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>
