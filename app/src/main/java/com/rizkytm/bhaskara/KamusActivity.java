@@ -152,12 +152,12 @@ public class KamusActivity extends AppCompatActivity
             {
                 ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
                 kamusFragment.resetDataSource(source);
-//                menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+                menuSetting.setIcon(getDrawable(R.drawable.i_ke_s));
                 onOptionsItemSelected(menu.findItem(Integer.valueOf(R.id.action_ind_sun)));
             } else {
                 ArrayList<String> source = dbHelper.getWord(R.id.action_sun_ind);
                 kamusFragment.resetDataSource(source);
-//                menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+                menuSetting.setIcon(getDrawable(R.drawable.s_ke_i));
                 onOptionsItemSelected(menu.findItem(Integer.valueOf(R.id.action_sun_ind)));
             }
         } else {
@@ -165,11 +165,11 @@ public class KamusActivity extends AppCompatActivity
             {
                 ArrayList<String> source = dbHelper.getWord(R.id.action_ind_sun);
                 kamusFragment.resetDataSource(source);
-//                menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+                menuSetting.setIcon(getDrawable(R.drawable.i_ke_s));
             } else {
                 ArrayList<String> source = dbHelper.getWord(R.id.action_sun_ind);
                 kamusFragment.resetDataSource(source);
-//                menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+                menuSetting.setIcon(getDrawable(R.drawable.s_ke_i));
             }
 
         }
@@ -212,11 +212,11 @@ public class KamusActivity extends AppCompatActivity
             if (id == R.id.action_ind_sun) {
                 kamusFragment.resetDataSource(source);
                 Global.saveState(this,"dic_type", String.valueOf(id));
-//            menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+                menuSetting.setIcon(getDrawable(R.drawable.i_ke_s));
             } else if (id == R.id.action_sun_ind) {
                 kamusFragment.resetDataSource(source);
                 Global.saveState(this,"dic_type", String.valueOf(id));
-//            menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+                menuSetting.setIcon(getDrawable(R.drawable.s_ke_i));
             }
         } else {
             if (id == R.id.action_ind_sun) {

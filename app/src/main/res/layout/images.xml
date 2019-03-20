@@ -15,6 +15,9 @@
 
         <ImageView
             android:id="@+id/iv_11"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -23,6 +26,9 @@
 
         <ImageView
             android:id="@+id/iv_12"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -31,6 +37,9 @@
 
         <ImageView
             android:id="@+id/iv_13"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -39,6 +48,9 @@
 
         <ImageView
             android:id="@+id/iv_14"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -56,6 +68,9 @@
 
         <ImageView
             android:id="@+id/iv_21"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -64,6 +79,9 @@
 
         <ImageView
             android:id="@+id/iv_22"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -72,6 +90,9 @@
 
         <ImageView
             android:id="@+id/iv_23"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -80,6 +101,9 @@
 
         <ImageView
             android:id="@+id/iv_24"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -97,6 +121,9 @@
 
         <ImageView
             android:id="@+id/iv_31"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -105,6 +132,9 @@
 
         <ImageView
             android:id="@+id/iv_32"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -113,6 +143,9 @@
 
         <ImageView
             android:id="@+id/iv_33"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
@@ -121,6 +154,9 @@
 
         <ImageView
             android:id="@+id/iv_34"
+            android:background="@drawable/image_border"
+            android:elevation="4dp"
+            android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerInside"
             android:src="@drawable/q_mark"
