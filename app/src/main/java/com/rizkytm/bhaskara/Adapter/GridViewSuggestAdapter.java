@@ -55,14 +55,14 @@ public class GridViewSuggestAdapter extends BaseAdapter {
             if(suggestSource.get(position).equals("null"))
             {
                 button = new Button(context);
-                button.setLayoutParams(new GridView.LayoutParams(85,85));
+                button.setLayoutParams(new GridView.LayoutParams(100,100));
                 button.setPadding(8,8,8,8);
                 button.setBackgroundColor(Color.DKGRAY);
             }
             else
             {
                 button = new Button(context);
-                button.setLayoutParams(new GridView.LayoutParams(85,85));
+                button.setLayoutParams(new GridView.LayoutParams(100,100));
                 button.setPadding(8,8,8,8);
                 button.setBackgroundColor(Color.DKGRAY);
                 button.setTextColor(Color.YELLOW);
@@ -116,8 +116,10 @@ public class GridViewSuggestAdapter extends BaseAdapter {
                             tebakActivity.ke++;
                             if (tebakActivity.ke > 0) {
                                 tebakActivity.btnDelete.setEnabled(true);
+                                tebakActivity.btnSubmit.setEnabled(true);
                             } else {
                                 tebakActivity.btnDelete.setEnabled(false);
+                                tebakActivity.btnSubmit.setEnabled(false);
                             }
 
                             setPosisiTerakhir(position);

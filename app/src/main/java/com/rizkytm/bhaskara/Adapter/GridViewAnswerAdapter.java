@@ -38,10 +38,10 @@ public class GridViewAnswerAdapter extends BaseAdapter {
         Button button;
         if (convertView == null) {
             button = new Button(context);
-            button.setLayoutParams(new GridView.LayoutParams(85,85));
+            button.setLayoutParams(new GridView.LayoutParams(100,100));
             button.setPadding(8,8,8,8);
-            button.setBackgroundColor(Color.DKGRAY);
-            button.setTextColor(Color.YELLOW);
+            button.setBackgroundColor(Color.WHITE);
+            button.setTextColor(Color.BLUE);
             button.setText(String.valueOf(answerCharacter[position]));
         } else {
             button = (Button) convertView;

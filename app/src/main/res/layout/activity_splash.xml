@@ -7,12 +7,12 @@
     android:id="@+id/splash_screen"
     tools:context=".SplashActivity">
 
-    <ImageView
-        android:id="@+id/gambarSplash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/splash_screen"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/gambarSplash"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:src="@drawable/splash_screen"/>-->
 
 </RelativeLayout>

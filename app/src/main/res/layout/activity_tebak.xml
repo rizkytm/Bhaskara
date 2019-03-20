@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    android:background="@mipmap/latar_kuning_edit"
+    android:background="@mipmap/latar_biru_edit"
     tools:context=".TebakActivity">
 
     <LinearLayout
@@ -17,25 +17,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Chronometer
+            android:id="@+id/simpleChronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="32dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="8dp"
+            />
+
         <TextView
             android:id="@+id/tv_skor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="8dp"
             android:textSize="32dp"
             android:textColor="#000000"
             android:text="Skor: 0" />
 
-        <Chronometer
-            android:id="@+id/simpleChronometer"
+        <com.kofigyan.stateprogressbar.StateProgressBar
+            android:id="@+id/your_state_progress_bar_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="32dp"
-            android:textColor="#000000"
-            android:layout_marginLeft="8dp"
-            />
+            android:layout_centerHorizontal="true"
+            app:spb_currentStateNumber="one"
+            app:spb_maxStateNumber="five"
+            app:spb_stateBackgroundColor="#BDBDBD"
+            app:spb_stateForegroundColor="#009688"
+            app:spb_stateNumberBackgroundColor="#808080"
+            app:spb_stateNumberForegroundColor="#eeeeee"
+            app:spb_currentStateDescriptionColor="#009688"
+            app:spb_stateDescriptionColor="#808080"
+            app:spb_animateToCurrentProgressState="true"
+            app:spb_checkStateCompleted="true"/>
 
         <ImageView
             android:id="@+id/imgLogo"
@@ -55,7 +73,8 @@
             android:scrollbars="none"
             android:stretchMode="columnWidth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"/>
 
         <GridView
             android:id="@+id/gridViewSuggest"
@@ -68,13 +87,14 @@
             android:scrollbars="none"
             android:stretchMode="columnWidth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"/>
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
@@ -85,7 +105,7 @@
         android:text="Delete"
         android:layout_toRightOf="@+id/btnSubmit"
         android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>

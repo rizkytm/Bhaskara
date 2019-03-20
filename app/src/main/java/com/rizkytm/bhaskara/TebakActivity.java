@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kofigyan.stateprogressbar.StateProgressBar;
 import com.rizkytm.bhaskara.Adapter.GridViewAnswerAdapter;
 import com.rizkytm.bhaskara.Adapter.GridViewSuggestAdapter;
 import com.rizkytm.bhaskara.Common.Common;
@@ -43,9 +44,24 @@ public class TebakActivity extends AppCompatActivity {
 
     public ImageView imgViewQuestion;
 
+    public String[] string = {
+            "ᮖᮃᮎᮈᮘᮇᮇᮊ",
+            "ᮜᮄᮔᮈ",
+            "ᮒᮝᮄᮒᮒᮈᮛ",
+            "ᮝᮠᮃᮒᮞᮃᮕᮕ",
+            "ᮚᮇᮅᮒᮅᮘᮈ"
+    };
+
+    public String[] strings = {
+            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪"
+    };
+
     int[] image_list = {
             R.drawable.facebook,
-            R.drawable.instagram,
             R.drawable.line,
             R.drawable.twitter,
             R.drawable.whatsapp,
@@ -68,6 +84,8 @@ public class TebakActivity extends AppCompatActivity {
 
     ArrayList<Integer> numbers;
 
+    private StateProgressBar stateProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +98,8 @@ public class TebakActivity extends AppCompatActivity {
             numbers.add(i);
         }
         Collections.shuffle(numbers);
+
+        stateProgressBar = (StateProgressBar) findViewById(R.id.your_state_progress_bar_id);
 
         initView();
 
@@ -119,39 +139,8 @@ public class TebakActivity extends AppCompatActivity {
 
         setupList();
 
-        btnDelete = (Button) findViewById(R.id.btnDelete);
-        btnDelete.setEnabled(false);
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ke--;
-                if (ke > 0) {
-                    btnDelete.setEnabled(true);
-                } else {
-                    btnDelete.setEnabled(false);
-                }
-                int terakhir = Arrays.asList(Common.user_submit_answer).indexOf(ke);
-                //                char chara = Common.user_submit_answer[ke];
-                char chara = Common.user_submit_answer[ke];
-                String karakter = Character.toString(chara);
-                Common.user_submit_answer[ke] = ' ';
-
-                GridViewAnswerAdapter answerAdapter = new GridViewAnswerAdapter(Common.user_submit_answer, getApplicationContext());
-                gridViewAnswer.setAdapter(answerAdapter);
-                answerAdapter.notifyDataSetChanged();
-
-                Log.i("info",String.valueOf(suggestAdapter.posisi_terakhir));
-
-                suggestSource.set(posisi.get(posisi.size()-1),karakter);
-                posisi.remove(posisi.size()-1);
-                suggestAdapter = new GridViewSuggestAdapter(suggestSource,getApplicationContext(),TebakActivity.this);
-                gridViewSuggest.setAdapter(suggestAdapter);
-                suggestAdapter.notifyDataSetChanged();
-            }
-        });
-
-
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit.setEnabled(false);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,6 +168,8 @@ public class TebakActivity extends AppCompatActivity {
                     gridViewSuggest.setAdapter(suggestAdapter);
                     suggestAdapter.notifyDataSetChanged();
 
+                    btnSubmit.setEnabled(false);
+
                     setupList();
 
                 } else {
@@ -188,6 +179,38 @@ public class TebakActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnDelete.setEnabled(false);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ke--;
+                if (ke > 0) {
+                    btnDelete.setEnabled(true);
+                } else {
+                    btnDelete.setEnabled(false);
+                    btnSubmit.setEnabled(false);
+                }
+                int terakhir = Arrays.asList(Common.user_submit_answer).indexOf(ke);
+                //                char chara = Common.user_submit_answer[ke];
+                char chara = Common.user_submit_answer[ke];
+                String karakter = Character.toString(chara);
+                Common.user_submit_answer[ke] = ' ';
+
+                GridViewAnswerAdapter answerAdapter = new GridViewAnswerAdapter(Common.user_submit_answer, getApplicationContext());
+                gridViewAnswer.setAdapter(answerAdapter);
+                answerAdapter.notifyDataSetChanged();
+
+                Log.i("info",String.valueOf(suggestAdapter.posisi_terakhir));
+
+                suggestSource.set(posisi.get(posisi.size()-1),karakter);
+                posisi.remove(posisi.size()-1);
+                suggestAdapter = new GridViewSuggestAdapter(suggestSource,getApplicationContext(),TebakActivity.this);
+                gridViewSuggest.setAdapter(suggestAdapter);
+                suggestAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void setupList() {
@@ -195,10 +218,26 @@ public class TebakActivity extends AppCompatActivity {
 //        Random random = new Random();
 
         if (turn < jumlahSoal) {
+
+            switch (turn) {
+                case 1:
+                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    break;
+                case 2:
+                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                    break;
+                case 3:
+                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                    break;
+                case 4:
+                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                    break;
+            }
+
             int imageSelected = image_list[numbers.get(turn)];
             imgViewQuestion.setImageResource(imageSelected);
 
-            correct_answer = getResources().getResourceName(imageSelected);
+            correct_answer = strings[numbers.get(turn)];
             correct_answer = correct_answer.substring(correct_answer.lastIndexOf("/")+1);
 
             answer = correct_answer.toCharArray();
