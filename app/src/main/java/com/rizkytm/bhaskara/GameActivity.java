@@ -77,6 +77,7 @@ public class GameActivity extends AppCompatActivity {
 //        bhaskaraDB.tambah(image);
 
         tv_p1 = (TextView) findViewById(R.id.tv_p1);
+        tv_p1.setTextColor(Color.WHITE);
 //        tv_cd = (TextView) findViewById(R.id.tv_cd);
 
         iv_11 = (ImageView) findViewById(R.id.iv_11);
@@ -362,6 +363,7 @@ public class GameActivity extends AppCompatActivity {
             if (turn == 1) {
                 playerPoints += 3;
                 tv_p1.setText("Skor: " + playerPoints);
+                tv_p1.setTextColor(Color.WHITE);
             } else if (turn == 2) {
 //                cpuPoints++;
 //                tv_p2.setText("P2: " + cpuPoints);
@@ -369,6 +371,7 @@ public class GameActivity extends AppCompatActivity {
         } else {
             playerPoints--;
             tv_p1.setText("Skor: " + playerPoints);
+            tv_p1.setTextColor(Color.WHITE);
 
             iv_11.setImageResource(R.drawable.q_mark);
             iv_12.setImageResource(R.drawable.q_mark);

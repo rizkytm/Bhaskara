@@ -23,8 +23,8 @@ public class DetailTopikActivity extends AppCompatActivity {
         TextView textViewTitle = (TextView) findViewById(R.id.detailTopik);
         WebView webViewContent = (WebView) findViewById(R.id.isiTeori);
         textViewTitle.setText(title);
-//        webViewContent.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
+        webViewContent.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
 
-        webViewContent.loadUrl("file:///android_asset/appru/index.html");
+//        webViewContent.loadUrl("file:///android_asset/reveal/index.html");
     }
 }
