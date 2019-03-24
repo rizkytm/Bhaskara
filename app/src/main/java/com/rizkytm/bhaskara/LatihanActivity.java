@@ -29,6 +29,7 @@ public class LatihanActivity extends AppCompatActivity {
     private Spinner spinnerCategory;
     private Spinner spinnerDifficulty;
     private TextView textViewBhaskara;
+    private TextView textViewTopik;
 
     private Typeface typeface;
 
@@ -41,8 +42,17 @@ public class LatihanActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Intent intent = getIntent();
+        String topikName = intent.getStringExtra(ListTopikQuizActivity.EXTRA_TITLE);
+
+        textViewTopik = (TextView) findViewById(R.id.text_view_topik);
+        textViewTopik.setText("Topik : " + topikName);
+
+
         textViewHighscore = findViewById(R.id.text_view_highscore);
         spinnerCategory = findViewById(R.id.spinner_category);
+        spinnerCategory.setEnabled(false);
+        spinnerCategory.setVisibility(View.INVISIBLE);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
 
         textViewBhaskara = findViewById(R.id.text_bhaskara);
@@ -63,9 +73,12 @@ public class LatihanActivity extends AppCompatActivity {
     }
 
     private void startQuiz() {
-        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
-        int categoryID = selectedCategory.getId();
-        String categoryName = selectedCategory.getName();
+        Intent intents = getIntent();
+        String topikName = intents.getStringExtra(ListTopikQuizActivity.EXTRA_TITLE);
+        int topikID = intents.getIntExtra(ListTopikQuizActivity.EXTRA_CATEGORY_ID, 0 );
+//        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
+        int categoryID = topikID;
+        String categoryName = topikName;
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
         Intent intent = new Intent(LatihanActivity.this, QuizActivity.class);

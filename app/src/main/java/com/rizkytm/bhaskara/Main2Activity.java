@@ -75,7 +75,7 @@ public class Main2Activity extends AppCompatActivity {
 //                    intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     } else if (finalI == 2) {
-                        Intent intent = new Intent(Main2Activity.this,LatihanActivity.class);
+                        Intent intent = new Intent(Main2Activity.this,ListTopikQuizActivity.class);
 //                    intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     } else if (finalI == 3) {
