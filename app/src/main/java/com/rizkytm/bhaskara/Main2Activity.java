@@ -71,7 +71,7 @@ public class Main2Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (finalI == 0) {
-                        Intent intent = new Intent(Main2Activity.this,TheoryActivity.class);
+                        Intent intent = new Intent(Main2Activity.this,DetailCollapseActivity.class);
 //                    intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     } else if (finalI == 2) {

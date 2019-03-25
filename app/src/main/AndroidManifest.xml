@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuGameActivity"></activity>
+        <activity android:name=".DetailCollapseActivity"
+            android:theme="@style/AppThemeDetail"></activity>
+        <activity android:name=".MenuGameActivity" />
         <activity android:name=".ListTopikQuizActivity" />
         <activity
             android:name=".TebakActivity"

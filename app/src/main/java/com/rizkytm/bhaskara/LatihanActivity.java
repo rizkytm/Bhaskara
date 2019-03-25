@@ -48,10 +48,9 @@ public class LatihanActivity extends AppCompatActivity {
         textViewTopik = (TextView) findViewById(R.id.text_view_topik);
         textViewTopik.setText("Topik : " + topikName);
 
-
         textViewHighscore = findViewById(R.id.text_view_highscore);
         textViewHighscore.setVisibility(View.INVISIBLE);
-        
+
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerCategory.setEnabled(false);
         spinnerCategory.setVisibility(View.INVISIBLE);
