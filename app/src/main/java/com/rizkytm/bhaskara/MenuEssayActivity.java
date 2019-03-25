@@ -14,13 +14,13 @@ import android.widget.TextView;
 import java.util.List;
 
 public class MenuEssayActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE_QUIZ = 2;
+    private static final int REQUEST_CODE_QUIZ_ESSAY = 2;
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String KEY_HIGHSCORE = "keyHighscore";
+    public static final String SHARED_PREFS_ESSAY = "sharedPrefsEssay";
+    public static final String KEY_HIGHSCORE_ESSAY = "keyHighscoreEssay";
 
     private TextView textViewHighscore;
     private Spinner spinnerCategory;
@@ -35,13 +35,13 @@ public class MenuEssayActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        textViewHighscore = findViewById(R.id.text_view_highscore);
+        textViewHighscore = findViewById(R.id.text_view_highscore_essay);
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
 
         loadCategories();
         loadDifficultyLevels();
-        loadHighscore();
+        loadHighscoreEssay();
 
         Button buttonStartQuiz = findViewById(R.id.button_start_quiz);
         buttonStartQuiz.setOnClickListener(new View.OnClickListener() {
@@ -58,22 +58,22 @@ public class MenuEssayActivity extends AppCompatActivity {
         String categoryName = selectedCategory.getName();
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
-        Intent intent = new Intent(MenuEssayActivity.this, EssayActivity.class);
+        Intent intent = new Intent(MenuEssayActivity.this, TebakActivity.class);
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
-        startActivityForResult(intent, REQUEST_CODE_QUIZ);
+        startActivityForResult(intent, REQUEST_CODE_QUIZ_ESSAY);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_CODE_QUIZ) {
+        if (requestCode == REQUEST_CODE_QUIZ_ESSAY) {
             if (resultCode == RESULT_OK) {
-                int score = data.getIntExtra(EssayActivity.EXTRA_SCORE, 0 );
+                int score = data.getIntExtra(TebakActivity.EXTRA_SCORE_ESSAY, 0 );
                 if (score > highscore) {
-                    updateHighscore(score);
+                    updateHighscoreEssay(score);
                 }
             }
         }
@@ -107,19 +107,19 @@ public class MenuEssayActivity extends AppCompatActivity {
         spinnerDifficulty.setAdapter(adapterDifficulty);
     }
 
-    private void loadHighscore() {
-        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        highscore = prefs.getInt(KEY_HIGHSCORE, 0);
+    private void loadHighscoreEssay() {
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS_ESSAY, MODE_PRIVATE);
+        highscore = prefs.getInt(KEY_HIGHSCORE_ESSAY, 0);
         textViewHighscore.setText("Highscore: " + highscore);
     }
 
-    private void updateHighscore(int highscoreNew) {
+    private void updateHighscoreEssay(int highscoreNew) {
         highscore = highscoreNew;
         textViewHighscore.setText("Highscore: " + highscore);
 
-        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(KEY_HIGHSCORE, highscore);
-        editor.apply();
+        SharedPreferences prefsEssay = getSharedPreferences(SHARED_PREFS_ESSAY, MODE_PRIVATE);
+        SharedPreferences.Editor editorEssay = prefsEssay.edit();
+        editorEssay.putInt(KEY_HIGHSCORE_ESSAY, highscore);
+        editorEssay.apply();
     }
 }

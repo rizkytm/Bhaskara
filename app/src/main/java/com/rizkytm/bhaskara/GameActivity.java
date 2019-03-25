@@ -30,6 +30,11 @@ import com.rizkytm.bhaskara.Main2Activity;
 
 public class GameActivity extends AppCompatActivity {
 
+    public static final String EXTRA_SCORE_GAME = "extraScore";
+    private static final String KEY_SCORE_GAME = "keyScore";
+
+    private long backPressedTime;
+
     private BhaskaraDB bhaskaraDB;
 
     ArrayList<Image> images = new ArrayList<>();
@@ -452,7 +457,7 @@ public class GameActivity extends AppCompatActivity {
                     .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            finish();
+                            finishQuiz();
                         }
                     });
             AlertDialog alertDialog = alertDialogBuilder.create();
@@ -518,5 +523,29 @@ public class GameActivity extends AppCompatActivity {
         bhaskaraDB = new BhaskaraDB(this);
         ArrayList<Image> gambar = bhaskaraDB.getAllImages();
         return gambar;
+    }
+
+    private void finishQuiz() {
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(EXTRA_SCORE_GAME, playerPoints);
+        setResult(RESULT_OK, resultIntent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            finishQuiz();
+        } else {
+            Toast.makeText(this, "Tekan sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_SCORE_GAME, playerPoints);
     }
 }

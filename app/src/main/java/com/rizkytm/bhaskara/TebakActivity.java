@@ -29,6 +29,11 @@ import java.util.Random;
 
 public class TebakActivity extends AppCompatActivity {
 
+    public static final String EXTRA_SCORE_ESSAY = "extraScore";
+    private static final String KEY_SCORE_ESSAY = "keyScore";
+
+    private long backPressedTime;
+
     public ArrayList<Integer> posisi = new ArrayList<Integer>();
 
     public int ke = 0;
@@ -296,7 +301,7 @@ public class TebakActivity extends AppCompatActivity {
                 .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                        finishQuiz();
                     }
                 });
         AlertDialog alertDialog = alertDialogBuilder.create();
@@ -309,5 +314,29 @@ public class TebakActivity extends AppCompatActivity {
             result[i]=' ';
         }
         return result;
+    }
+
+    private void finishQuiz() {
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(EXTRA_SCORE_ESSAY, points);
+        setResult(RESULT_OK, resultIntent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            finishQuiz();
+        } else {
+            Toast.makeText(this, "Tekan sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();
+        }
+
+        backPressedTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_SCORE_ESSAY, points);
     }
 }

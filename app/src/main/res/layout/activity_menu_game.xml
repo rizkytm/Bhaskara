@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".MenuEssayActivity">
+    tools:context=".MenuGameActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="Bhaskara Sunda Essay"
+        android:text="Bhaskara Sunda Game"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 
@@ -35,7 +35,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/text_view_highscore_essay"
+        android:id="@+id/text_view_highscore_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/button_start_quiz"

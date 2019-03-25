@@ -79,11 +79,11 @@ public class Main2Activity extends AppCompatActivity {
 //                    intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     } else if (finalI == 3) {
-                        Intent intent = new Intent(Main2Activity.this,TebakActivity.class);
+                        Intent intent = new Intent(Main2Activity.this,MenuEssayActivity.class);
 //                    intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     } else if (finalI == 1) {
-                        Intent intent = new Intent(Main2Activity.this,GameActivity.class);
+                        Intent intent = new Intent(Main2Activity.this,MenuGameActivity.class);
 //                    intent.putExtra("info","This is activity from card item index  "+finalI);
                         startActivity(intent);
                     } else if (finalI == 4) {
