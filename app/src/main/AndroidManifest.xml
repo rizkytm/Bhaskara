@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DetailCollapseActivity"
-            android:theme="@style/AppThemeDetail"></activity>
+            android:theme="@style/AppThemeDetail"
+            android:parentActivityName=".TheoryActivity"
+            android:label="Judul Teori"></activity>
         <activity android:name=".MenuGameActivity" />
         <activity android:name=".ListTopikQuizActivity" />
         <activity

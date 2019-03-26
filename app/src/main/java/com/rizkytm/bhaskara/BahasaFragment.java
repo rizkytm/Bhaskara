@@ -49,7 +49,7 @@ public class BahasaFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), DetailTopikActivity.class);
+                Intent intent = new Intent(getActivity(), DetailCollapseActivity.class);
                 intent.putExtra(EXTRA_TITLE, topiks.get(position).getJudul());
                 intent.putExtra(EXTRA_CONTENT, topiks.get(position).getIsi());
                 startActivity(intent);

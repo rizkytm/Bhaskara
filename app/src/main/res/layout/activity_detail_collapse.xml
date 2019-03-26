@@ -14,6 +14,7 @@
         android:fitsSystemWindows="true">
         
         <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/col_toolbar"
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:fitsSystemWindows="true"
@@ -25,18 +26,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 app:layout_collapseMode="parallax"
-                android:src="@drawable/sample"
+                android:src="@drawable/book_hd"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop" />
 
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbar_collapse"-->
+                <!--android:layout_marginLeft="12dp"-->
+                <!--android:layout_width="@dimen/activity_horizontal_margin"-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+                <!--android:title="@string/news"-->
+                <!--app:layout_collapseMode="pin"/>-->
+
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_collapse"
-                android:layout_marginLeft="12dp"
-                android:layout_width="@dimen/activity_horizontal_margin"
+                android:id="@+id/toolbar_clp"
+                android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                android:title="@string/news"
-                app:layout_collapseMode="pin"/>
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
         
@@ -51,7 +61,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_margin="8dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
@@ -60,50 +70,73 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:textSize="20sp"
-                    android:layout_marginTop="12dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorPrimaryText"
-                    android:text="@string/news"/>
+                <!--<TextView-->
+                    <!--android:id="@+id/judul_teori"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="12dp"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:layout_marginTop="12dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/colorPrimaryText"-->
+                    <!--android:text="@string/news"/>-->
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:padding="12dp"
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="12dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<ImageView-->
+                        <!--android:contentDescription="@string/app_name"-->
+                        <!--android:src="@drawable/ic_library_books_red"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_weight="9"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:padding="12dp"-->
+                        <!--android:textSize="14sp"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textColor="@color/colorPrimaryText"-->
+                        <!--android:text="@string/date"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="12dp"-->
+                    <!--android:textSize="13sp"-->
+                    <!--android:lineSpacingMultiplier="1.5"-->
+                    <!--android:layout_marginTop="12dp"-->
+                    <!--android:text="@string/isi_news"/>-->
+
+                <WebView
+                    android:id="@+id/wv_teori"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:layout_below="@+id/detailTopik"
+                    android:textColor="#000"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 
-                    <ImageView
-                        android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_library_books_red"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
 
-                    <TextView
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="0dp"
-                        android:layout_weight="9"
-                        android:layout_height="wrap_content"
-                        android:padding="12dp"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryText"
-                        android:text="@string/date"/>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:textSize="13sp"
-                    android:lineSpacingMultiplier="1.5"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/isi_news"/>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                    tools:ignore="WebViewLayout" />
 
             </LinearLayout>
 
@@ -111,14 +144,5 @@
         </android.support.v7.widget.CardView>
 
     </android.support.v4.widget.NestedScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:src="@drawable/ic_library_books_blue"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:layout_anchor="@id/app_bar_layout"
-        android:layout_height="wrap_content"
-        app:layout_anchorGravity="bottom|right|end"/>
 
 </android.support.design.widget.CoordinatorLayout>

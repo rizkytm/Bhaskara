@@ -40,7 +40,7 @@ public class AksaraFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), DetailTopikActivity.class);
+                Intent intent = new Intent(getActivity(), DetailCollapseActivity.class);
                 intent.putExtra(EXTRA_TITLE, topikAksaras.get(position).getJudul());
                 intent.putExtra(EXTRA_CONTENT, topikAksaras.get(position).getIsi());
                 startActivity(intent);
