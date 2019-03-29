@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -53,9 +54,31 @@ public class MenuEssayActivity extends AppCompatActivity {
     }
 
     private void startQuiz() {
-        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
-        int categoryID = selectedCategory.getId();
-        String categoryName = selectedCategory.getName();
+//        Intent intents = getIntent();
+//        String topikName = intents.getStringExtra(ListTopikEssayActivity.EXTRA_TITLE);
+//        int topikID = intents.getIntExtra(ListTopikEssayActivity.EXTRA_CATEGORY_ID, 0 );
+//
+//        int categoryID = topikID;
+//        String categoryName = topikName;
+//
+//        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
+////        int categoryID = selectedCategory.getId();
+////        String categoryName = selectedCategory.getName();
+//        String difficulty = spinnerDifficulty.getSelectedItem().toString();
+//
+//        Intent intent = new Intent(MenuEssayActivity.this, TebakActivity.class);
+//        intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
+//        intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
+//        intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+//        startActivityForResult(intent, REQUEST_CODE_QUIZ_ESSAY);
+
+        Intent intents = getIntent();
+        String topikName = intents.getStringExtra(ListTopikEssayActivity.EXTRA_TITLE);
+        int topikID = intents.getIntExtra(ListTopikEssayActivity.EXTRA_CATEGORY_ID, 0 );
+        Log.i("info topik id", Integer.toString(topikID));
+//        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
+        int categoryID = topikID;
+        String categoryName = topikName;
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
         Intent intent = new Intent(MenuEssayActivity.this, TebakActivity.class);

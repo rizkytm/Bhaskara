@@ -47,4 +47,26 @@ public final class QuizContract {
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_CONTENT = "content";
     }
+
+    public static class TopikEssayTable implements BaseColumns {
+        public static final String TABLE_NAME = "topik_essay";
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_JUDUL = "judul";
+        public static final String COLUMN_SKOR = "skor";
+    }
+
+    public static class TopikGameTable implements BaseColumns {
+        public static final String TABLE_NAME = "topik_game";
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_JUDUL = "judul";
+        public static final String COLUMN_SKOR = "skor";
+    }
+
+    public static class SoalEssayTable implements BaseColumns {
+        public static final String TABLE_NAME = "soal_essay";
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_TOPIK_ID = "topik_id";
+        public static final String COLUMN_PERTANYAAN = "pertanyaan";
+        public static final String COLUMN_JAWABAN = "jawaban";
+    }
 }

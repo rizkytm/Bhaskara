@@ -31,6 +31,7 @@ public class TebakActivity extends AppCompatActivity {
 
     public static final String EXTRA_SCORE_ESSAY = "extraScore";
     private static final String KEY_SCORE_ESSAY = "keyScore";
+    public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
 
     private long backPressedTime;
 
@@ -47,33 +48,64 @@ public class TebakActivity extends AppCompatActivity {
 
     public GridView gridViewAnswer, gridViewSuggest;
 
-    public ImageView imgViewQuestion;
+//    public ImageView imgViewQuestion;
 
-    public String[] string = {
-            "ᮖᮃᮎᮈᮘᮇᮇᮊ",
-            "ᮜᮄᮔᮈ",
-            "ᮒᮝᮄᮒᮒᮈᮛ",
-            "ᮝᮠᮃᮒᮞᮃᮕᮕ",
-            "ᮚᮇᮅᮒᮅᮘᮈ"
-    };
+    public TextView textViewSoalEssay;
 
-    public String[] strings = {
-            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
-            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
-            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
-            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
-            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪"
-    };
+//    public String[] string = {
+//            "ᮖᮃᮎᮈᮘᮇᮇᮊ",
+//            "ᮜᮄᮔᮈ",
+//            "ᮒᮝᮄᮒᮒᮈᮛ",
+//            "ᮝᮠᮃᮒᮞᮃᮕᮕ",
+//            "ᮚᮇᮅᮒᮅᮘᮈ"
+//    };
+//
+//    public String[] strings = {
+//            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+//            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+//            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+//            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪",
+//            "ᮕᮨᮞ᮪ᮘᮥᮊ᮪"
+//    };
+//
+//    int[] image_list = {
+//            R.drawable.facebook,
+//            R.drawable.line,
+//            R.drawable.twitter,
+//            R.drawable.whatsapp,
+//            R.drawable.youtube
+//    };
 
-    int[] image_list = {
-            R.drawable.facebook,
-            R.drawable.line,
-            R.drawable.twitter,
-            R.drawable.whatsapp,
-            R.drawable.youtube
-    };
+    BhaskaraDB bhaskaraDB;
+    List<SoalEssay> soalEssays = new ArrayList<>();
 
-    int jumlahSoal = image_list.length;
+    public List<SoalEssay> getSoalEssay() {
+        bhaskaraDB = new BhaskaraDB(getApplicationContext());
+        bhaskaraDB.getWritableDatabase();
+        Intent intent = getIntent();
+        int categoryID = intent.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
+        List<SoalEssay> soalEssayList = bhaskaraDB.loadSoalEssay(categoryID);
+        int id, topik_id;
+        String pertanyaan, jawaban;
+        for (int i = 0; i<soalEssayList.size();i++) {
+            id = soalEssayList.get(i).getId();
+            topik_id = soalEssayList.get(i).getTopik_id();
+            pertanyaan = soalEssayList.get(i).getPertanyaan();
+            jawaban = soalEssayList.get(i).getJawaban();
+
+            SoalEssay soalEssay = new SoalEssay(topik_id, pertanyaan, jawaban);
+
+            soalEssays.add(soalEssay);
+        }
+        bhaskaraDB.close();
+
+        return soalEssays;
+    }
+
+
+//    int jumlahSoal = image_list.length;
+
+    int jumlahSoal = 5;
 
     public char[] answer;
 
@@ -95,6 +127,8 @@ public class TebakActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tebak);
+
+        soalEssays = getSoalEssay();
 
         textViewSkor = (TextView) findViewById(R.id.tv_skor);
 
@@ -140,7 +174,8 @@ public class TebakActivity extends AppCompatActivity {
         gridViewAnswer = (GridView) findViewById(R.id.gridViewAnswer);
         gridViewSuggest = (GridView) findViewById(R.id.gridViewSuggest);
 
-        imgViewQuestion = (ImageView) findViewById(R.id.imgLogo);
+//        imgViewQuestion = (ImageView) findViewById(R.id.imgLogo);
+        textViewSoalEssay = (TextView) findViewById(R.id.soal_essay);
 
         setupList();
 
@@ -239,10 +274,13 @@ public class TebakActivity extends AppCompatActivity {
                     break;
             }
 
-            int imageSelected = image_list[numbers.get(turn)];
-            imgViewQuestion.setImageResource(imageSelected);
+//            int imageSelected = image_list[numbers.get(turn)];
+//            imgViewQuestion.setImageResource(imageSelected);
 
-            correct_answer = strings[numbers.get(turn)];
+            String soalSelected = soalEssays.get(numbers.get(turn)).getPertanyaan();
+            textViewSoalEssay.setText(soalSelected);
+
+            correct_answer = soalEssays.get(numbers.get(turn)).getJawaban();
             correct_answer = correct_answer.substring(correct_answer.lastIndexOf("/")+1);
 
             answer = correct_answer.toCharArray();
@@ -293,7 +331,11 @@ public class TebakActivity extends AppCompatActivity {
                 .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Intent intentSebelumnya = getIntent();
+
                         Intent intent = new Intent(getApplicationContext(), TebakActivity.class);
+                        int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
+                        intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
                         startActivity(intent);
                         finish();
                     }

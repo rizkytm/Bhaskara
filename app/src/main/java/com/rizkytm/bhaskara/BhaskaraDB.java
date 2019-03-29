@@ -99,6 +99,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
         db = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
         loadImages();
+        buatSoalEssay();
     }
 
     boolean isExistingDB() {
@@ -480,5 +481,90 @@ public class BhaskaraDB extends SQLiteOpenHelper {
             Image image = new Image(name, imageA, imageB);
             tambah(image);
         }
+    }
+
+    public List<TopikEssay> getAllTopikEssay() {
+        List<TopikEssay> topikList = new ArrayList<>();
+        String q = "SELECT * FROM " + TopikEssayTable.TABLE_NAME;
+        Cursor c = db.rawQuery(q, null);
+
+        if (c.moveToFirst()) {
+            do {
+                TopikEssay topikEssay = new TopikEssay();
+                topikEssay.setId(c.getInt(c.getColumnIndex(TopikEssayTable.COLUMN_ID)));
+                topikEssay.setJudul(c.getString(c.getColumnIndex(TopikEssayTable.COLUMN_JUDUL)));
+                topikEssay.setSkor(c.getInt(c.getColumnIndex(TopikEssayTable.COLUMN_SKOR)));
+                topikList.add(topikEssay);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return topikList;
+    }
+
+    public List<TopikGame> getAllTopikGame() {
+        List<TopikGame> topikList = new ArrayList<>();
+        String q = "SELECT * FROM " + TopikGameTable.TABLE_NAME;
+        Cursor c = db.rawQuery(q, null);
+
+        if (c.moveToFirst()) {
+            do {
+                TopikGame topikGame = new TopikGame();
+                topikGame.setId(c.getInt(c.getColumnIndex(TopikEssayTable.COLUMN_ID)));
+                topikGame.setJudul(c.getString(c.getColumnIndex(TopikEssayTable.COLUMN_JUDUL)));
+                topikGame.setSkor(c.getInt(c.getColumnIndex(TopikEssayTable.COLUMN_SKOR)));
+                topikList.add(topikGame);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return topikList;
+    }
+
+    private void buatSoalEssay() {
+        SoalEssay soalEssay1 = new SoalEssay(1, "abdi", "ᮃᮘ᮪ᮓᮤ");
+        insertSoalEssay(soalEssay1);
+        SoalEssay soalEssay2 = new SoalEssay(1, "bapa", "ᮘᮕ");
+        insertSoalEssay(soalEssay2);
+        SoalEssay soalEssay3 = new SoalEssay(1, "ibu", "ᮄᮘᮥ");
+        insertSoalEssay(soalEssay3);
+        SoalEssay soalEssay4 = new SoalEssay(1, "bajigur", "ᮘᮏᮤᮌᮥᮛ᮪");
+        insertSoalEssay(soalEssay4);
+        SoalEssay soalEssay5 = new SoalEssay(1, "bajakan", "ᮘᮏᮊᮔ᮪");
+        insertSoalEssay(soalEssay5);
+    }
+
+    public void insertSoalEssay(SoalEssay soalEssay) {
+
+        try {
+            String sql="INSERT INTO soal_essay ([topik_id], [pertanyaan], [jawaban]) VALUES(?, ?, ?);";
+            db.execSQL(sql, new Object[]{soalEssay.getTopik_id(), soalEssay.getPertanyaan(), soalEssay.getJawaban()});
+        } catch (SQLException ex) {
+
+        }
+    }
+
+    public List<SoalEssay> loadSoalEssay(int topikID) {
+        List<SoalEssay> soalEssayList = new ArrayList<>();
+        String q = "SELECT * FROM " + SoalEssayTable.TABLE_NAME +" WHERE topik_id = ? ";
+
+        String[] selectionArgs = new String[]{String.valueOf(topikID)};
+
+//        String q = "SELECT * FROM " + SoalEssayTable.TABLE_NAME + "WHERE topik_id ";
+        Cursor c = db.rawQuery(q, selectionArgs);
+
+        if (c.moveToFirst()) {
+            do {
+                SoalEssay soalEssay = new SoalEssay();
+                soalEssay.setId(c.getInt(c.getColumnIndex(SoalEssayTable.COLUMN_ID)));
+                soalEssay.setTopik_id(c.getInt(c.getColumnIndex(SoalEssayTable.COLUMN_TOPIK_ID)));
+                soalEssay.setPertanyaan(c.getString(c.getColumnIndex(SoalEssayTable.COLUMN_PERTANYAAN)));
+                soalEssay.setJawaban(c.getString(c.getColumnIndex(SoalEssayTable.COLUMN_JAWABAN)));
+                soalEssayList.add(soalEssay);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return soalEssayList;
     }
 }

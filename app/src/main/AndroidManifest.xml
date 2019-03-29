@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailCollapseActivity"
-            android:theme="@style/AppThemeDetail"
+        <activity android:name=".ListTopikGameActivity"></activity>
+        <activity android:name=".ListTopikEssayActivity" />
+        <activity
+            android:name=".DetailCollapseActivity"
+            android:label="Judul Teori"
             android:parentActivityName=".TheoryActivity"
-            android:label="Judul Teori"></activity>
+            android:theme="@style/AppThemeDetail" />
         <activity android:name=".MenuGameActivity" />
         <activity android:name=".ListTopikQuizActivity" />
         <activity
