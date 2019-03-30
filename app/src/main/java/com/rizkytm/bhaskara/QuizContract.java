@@ -69,4 +69,13 @@ public final class QuizContract {
         public static final String COLUMN_PERTANYAAN = "pertanyaan";
         public static final String COLUMN_JAWABAN = "jawaban";
     }
+
+    public static class SoalGameTable implements BaseColumns {
+        public static final String TABLE_NAME = "soal_game";
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_TOPIK_ID = "topik_id";
+        public static final String COLUMN_NAMA = "nama";
+        public static final String COLUMN_IMAGE_A = "image_a";
+        public static final String COLUMN_IMAGE_B = "image_b";
+    }
 }

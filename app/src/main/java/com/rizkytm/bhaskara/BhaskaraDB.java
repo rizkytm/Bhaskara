@@ -2,6 +2,7 @@ package com.rizkytm.bhaskara;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,7 +12,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.rizkytm.bhaskara.QuizContract.*;
 
@@ -149,10 +152,18 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
     public void tambah(Image image) {
 
+//        try {
+////            String sql="INSERT INTO images (id, name, image_a, image_b) VALUES(1, 'ini huruf ka yah', " + photoID + " , " + photoID + " );";
+//            String sql="INSERT INTO images ([name], [image_a], [image_b]) VALUES(?, ?, ?);";
+//            db.execSQL(sql, new Object[]{image.name, image.imageA, image.imageB});
+//        } catch (SQLException ex) {
+//
+//        }
+
         try {
 //            String sql="INSERT INTO images (id, name, image_a, image_b) VALUES(1, 'ini huruf ka yah', " + photoID + " , " + photoID + " );";
-            String sql="INSERT INTO images ([name], [image_a], [image_b]) VALUES(?, ?, ?);";
-            db.execSQL(sql, new Object[]{image.name, image.imageA, image.imageB});
+            String sql="INSERT INTO images ([name], [image_a], [image_b], [topik_id]) VALUES(?, ?, ?, ?);";
+            db.execSQL(sql, new Object[]{image.nama, image.imageA, image.imageB, image.topik_id});
         } catch (SQLException ex) {
 
         }
@@ -173,9 +184,10 @@ public class BhaskaraDB extends SQLiteOpenHelper {
             do {
                 Image image = new Image();
                 image.setId(c.getInt(c.getColumnIndex(COLUMN_ID)));
-                image.setName(c.getString(c.getColumnIndex(COLUMN_NAME)));
+                image.setNama(c.getString(c.getColumnIndex(COLUMN_NAME)));
                 image.setImageA(c.getInt(c.getColumnIndex(COLUMN_IMAGE_A)));
                 image.setImageB(c.getInt(c.getColumnIndex(COLUMN_IMAGE_B)));
+                image.setTopik_id(c.getInt(c.getColumnIndex(SoalGameTable.COLUMN_TOPIK_ID)));
                 imageList.add(image);
             } while (c.moveToNext());
         }
@@ -473,13 +485,30 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         return pertanyaanList;
     }
 
+    public String getURLForResource (int resourceId) {
+        return Uri.parse("android.resource://"+R.class.getPackage().getName()+"/" +resourceId).toString();
+    }
+
     public void loadImages() {
+//        for (int i=0; i<imagesA.length; i++) {
+//            String name = mContext.getResources().getResourceEntryName(imagesA[i]);
+//            int imageA = imagesA[i];
+//            int imageB = imagesB[i];
+//            Image image = new Image(name, imageA, imageB, 1);
+//            tambah(image);
+//        }
+
         for (int i=0; i<imagesA.length; i++) {
             String name = mContext.getResources().getResourceEntryName(imagesA[i]);
-            int imageA = imagesA[i];
-            int imageB = imagesB[i];
-            Image image = new Image(name, imageA, imageB);
-            tambah(image);
+            String nameB = mContext.getResources().getResourceEntryName(imagesB[i]);
+            Resources resources = mContext.getResources();
+            int imageA = resources.getIdentifier(name, "drawable",
+                    mContext.getPackageName());
+//            int imageB = getURLForResource(imagesB[i]);
+            int imageB = resources.getIdentifier(nameB, "drawable",
+                    mContext.getPackageName());
+            Image image = new Image(name, imageA, imageB, 1);
+            insertImage(image);
         }
     }
 
@@ -566,5 +595,37 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
         c.close();
         return soalEssayList;
+    }
+
+    public void insertImage(Image image) {
+
+        try {
+            String sql="INSERT INTO soal_game ([nama], [image_a], [image_b], [topik_id]) VALUES(?, ?, ?, ?);";
+            db.execSQL(sql, new Object[]{image.getNama(), image.getImageA(), image.getImageB(), image.getTopik_id()});
+        } catch (SQLException ex) {
+
+        }
+
+    }
+
+    public ArrayList<Image> getAllSoalGame() {
+        ArrayList<Image> imageList = new ArrayList<>();
+        String q = "SELECT * FROM " + SoalGameTable.TABLE_NAME;
+        Cursor c = db.rawQuery(q, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Image image = new Image();
+                image.setId(c.getInt(c.getColumnIndex(SoalGameTable.COLUMN_ID)));
+                image.setId(c.getInt(c.getColumnIndex(SoalGameTable.COLUMN_TOPIK_ID)));
+                image.setNama(c.getString(c.getColumnIndex(SoalGameTable.COLUMN_NAMA)));
+                image.setImageA(c.getInt(c.getColumnIndex(SoalGameTable.COLUMN_IMAGE_A)));
+                image.setImageB(c.getInt(c.getColumnIndex(SoalGameTable.COLUMN_IMAGE_B)));
+                imageList.add(image);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return imageList;
     }
 }

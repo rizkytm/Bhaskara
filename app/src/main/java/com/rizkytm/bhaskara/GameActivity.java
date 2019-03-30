@@ -498,6 +498,8 @@ public class GameActivity extends AppCompatActivity {
 //        String string = images.get(0).getImageA();
 //        int nomer = Integer.parseInt(string);
 
+
+
         images101 = images.get(pertama).getImageA();
         images201 = images.get(pertama).getImageB();
 
@@ -521,7 +523,7 @@ public class GameActivity extends AppCompatActivity {
 
     public ArrayList<Image> loadAllImages() {
         bhaskaraDB = new BhaskaraDB(this);
-        ArrayList<Image> gambar = bhaskaraDB.getAllImages();
+        ArrayList<Image> gambar = bhaskaraDB.getAllSoalGame();
         return gambar;
     }
 
