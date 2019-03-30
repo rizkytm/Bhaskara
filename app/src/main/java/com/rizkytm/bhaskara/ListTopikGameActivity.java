@@ -15,6 +15,7 @@ public class ListTopikGameActivity extends AppCompatActivity {
     ListView topikListView;
     public static final String EXTRA_TITLE = "extraTitle";
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
+    public static final String EXTRA_SCORE = "extraScore";
     public List<TopikGame> topikGames = new ArrayList<>();
     BhaskaraDB dbHelper;
 
@@ -32,6 +33,7 @@ public class ListTopikGameActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListTopikGameActivity.this, MenuGameActivity.class);
                 intent.putExtra(EXTRA_TITLE, topikGames.get(position).getJudul());
                 intent.putExtra(EXTRA_CATEGORY_ID, topikGames.get(position).getId());
+                intent.putExtra(EXTRA_SCORE, topikGames.get(position).getSkor());
                 startActivity(intent);
             }
         });

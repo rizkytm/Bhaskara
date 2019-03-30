@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Locale;
 
 public class QuizActivity extends AppCompatActivity {
+
     public static final String EXTRA_SCORE = "extraScore";
     private static final long COUNTDOWN_IN_MILLIS = 30000;
 
@@ -48,10 +49,10 @@ public class QuizActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis;
 
-    private ArrayList<Question> questionList;
+    private ArrayList<SoalPG> questionList;
     private int questionCounter;
     private int questionCountTotal;
-    private Question currentQuestion;
+    private SoalPG currentQuestion;
 
     private int score;
     private boolean answered;
@@ -99,14 +100,14 @@ public class QuizActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int categoryID = intent.getIntExtra(LatihanActivity.EXTRA_CATEGORY_ID, 0);
         String categoryName = intent.getStringExtra(LatihanActivity.EXTRA_CATEGORY_NAME);
-        String difficulty = intent.getStringExtra(LatihanActivity.EXTRA_DIFFICULTY);
+        int difficulty = intent.getIntExtra(LatihanActivity.EXTRA_DIFFICULTY, 0);
 
         textViewKategori.setText("Kategori: " + categoryName);
         textViewKesulitan.setText("Tingkat Kesulitan: " + difficulty);
 
         if (savedInstanceState == null) {
             BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
-            questionList = dbHelper.getQuestions(categoryID, difficulty);
+            questionList = dbHelper.getSoalKuis(categoryID, difficulty);
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);
 
@@ -213,6 +214,7 @@ public class QuizActivity extends AppCompatActivity {
             timeLeftInMillis = COUNTDOWN_IN_MILLIS;
             startCountDown();
         } else {
+            updateScore();
             finishQuiz();
         }
     }
@@ -315,9 +317,20 @@ public class QuizActivity extends AppCompatActivity {
         finish();
     }
 
+    public void updateScore() {
+        BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
+        Intent intentSebelumnya = getIntent();
+        int categoryID = intentSebelumnya.getIntExtra(LatihanActivity.EXTRA_CATEGORY_ID, 0);
+        int skor = intentSebelumnya.getIntExtra(LatihanActivity.EXTRA_SCORE, 0);
+        if (skor < score) {
+            dbHelper.updateSkorKuis(score, categoryID);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            updateScore();
             finishQuiz();
         } else {
             Toast.makeText(this, "Tekan sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();

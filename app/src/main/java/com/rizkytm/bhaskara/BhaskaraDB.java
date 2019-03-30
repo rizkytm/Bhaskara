@@ -632,7 +632,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         return imageList;
     }
 
-    public void updateSkor(int newSkor, int topikID) {
+    public void updateSkorEssay(int newSkor, int topikID) {
 
         try {
             String sql="UPDATE topik_essay SET [skor] = ? WHERE [id] = ?;";
@@ -640,5 +640,71 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         } catch (SQLException ex) {
 
         }
+    }
+
+    public void updateSkorKuis(int newSkor, int topikID) {
+
+        try {
+            String sql="UPDATE topik_pg SET [skor] = ? WHERE [id] = ?;";
+            db.execSQL(sql, new Object[]{newSkor, topikID});
+        } catch (SQLException ex) {
+
+        }
+    }
+
+    public void updateSkorGame(int newSkor, int topikID) {
+
+        try {
+            String sql="UPDATE topik_game SET [skor] = ? WHERE [id] = ?;";
+            db.execSQL(sql, new Object[]{newSkor, topikID});
+        } catch (SQLException ex) {
+
+        }
+    }
+
+    public List<TopikKuis> getAllTopikKuis() {
+        List<TopikKuis> topikKuisList = new ArrayList<>();
+        String q = "SELECT * FROM " + TopikKuisTable.TABLE_NAME;
+        Cursor c = db.rawQuery(q, null);
+
+        if (c.moveToFirst()) {
+            do {
+                TopikKuis topikKuis = new TopikKuis();
+                topikKuis.setId(c.getInt(c.getColumnIndex(TopikKuisTable.COLUMN_ID)));
+                topikKuis.setJudul(c.getString(c.getColumnIndex(TopikKuisTable.COLUMN_JUDUL)));
+                topikKuis.setSkor(c.getInt(c.getColumnIndex(TopikKuisTable.COLUMN_SKOR)));
+                topikKuisList.add(topikKuis);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return topikKuisList;
+    }
+
+    public ArrayList<SoalPG> getSoalKuis(int topikID, int difficulty_id) {
+        ArrayList<SoalPG> soalPGList = new ArrayList<>();
+        String q = "SELECT * FROM " + SoalPGTable.TABLE_NAME +" WHERE topik_id = ? " +
+                "AND difficulty_id = ?";
+        String[] selectionArgs = new String[]{String.valueOf(topikID), String.valueOf(difficulty_id)};
+
+        Cursor c= db.rawQuery(q, selectionArgs);
+        if (c.moveToFirst()) {
+            do {
+                SoalPG soalPG = new SoalPG();
+                soalPG.setId(c.getInt(c.getColumnIndex(SoalPGTable.COLUMN_ID)));
+                soalPG.setPertanyaan(c.getString(c.getColumnIndex(SoalPGTable.COLUMN_PERTANYAAN)));
+                soalPG.setPil1(c.getString(c.getColumnIndex(SoalPGTable.COLUMN_PIL1)));
+                soalPG.setPil2(c.getString(c.getColumnIndex(SoalPGTable.COLUMN_PIL2)));
+                soalPG.setPil3(c.getString(c.getColumnIndex(SoalPGTable.COLUMN_PIL3)));
+                soalPG.setPil4(c.getString(c.getColumnIndex(SoalPGTable.COLUMN_PIL4)));
+                soalPG.setNoJawaban(c.getInt(c.getColumnIndex(SoalPGTable.COLUMN_NO_JAWABAN)));
+                soalPG.setDifficulty_id(c.getInt(c.getColumnIndex(SoalPGTable.COLUMN_DIFFICULTY)));
+                soalPG.setTopik_id(c.getInt(c.getColumnIndex(SoalPGTable.COLUMN_CATEGORY_ID)));
+                soalPGList.add(soalPG);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return soalPGList;
     }
 }

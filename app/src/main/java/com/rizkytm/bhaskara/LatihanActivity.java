@@ -21,6 +21,7 @@ public class LatihanActivity extends AppCompatActivity {
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
+    public static final String EXTRA_SCORE = "extraScore";
 
     public static final String SHARED_PREFS_LATIHAN = "sharedPrefs";
     public static final String KEY_HIGHSCORE_LATIHAN = "keyHighscore";
@@ -77,15 +78,18 @@ public class LatihanActivity extends AppCompatActivity {
         Intent intents = getIntent();
         String topikName = intents.getStringExtra(ListTopikQuizActivity.EXTRA_TITLE);
         int topikID = intents.getIntExtra(ListTopikQuizActivity.EXTRA_CATEGORY_ID, 0 );
+        int skor = intents.getIntExtra(ListTopikQuizActivity.EXTRA_SCORE, 0 );
 //        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
         int categoryID = topikID;
         String categoryName = topikName;
-        String difficulty = spinnerDifficulty.getSelectedItem().toString();
+        int difficulty = 1;
+//        String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
         Intent intent = new Intent(LatihanActivity.this, QuizActivity.class);
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+        intent.putExtra(EXTRA_SCORE, skor);
         startActivityForResult(intent, REQUEST_CODE_QUIZ_LATIHAN);
     }
 

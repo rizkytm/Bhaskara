@@ -324,7 +324,7 @@ public class TebakActivity extends AppCompatActivity {
         int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
         int skor = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_SCORE, 0);
         if (skor < points) {
-            bhaskaraDB.updateSkor(points, categoryID);
+            bhaskaraDB.updateSkorEssay(points, categoryID);
         }
 
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);

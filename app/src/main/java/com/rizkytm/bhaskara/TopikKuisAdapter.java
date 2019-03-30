@@ -15,10 +15,10 @@ public class TopikKuisAdapter extends BaseAdapter {
     public static final String EXTRA_MESSAGE = "com.rizkytm.bhaskara.MESSAGE";
 
     Context c;
-    List<Category> topikKuis;
+    List<TopikKuis> topikKuis;
     LayoutInflater inflater;
 
-    public TopikKuisAdapter(Context c, List<Category> topikKuis) {
+    public TopikKuisAdapter(Context c, List<TopikKuis> topikKuis) {
         this.c = c;
         this.topikKuis = topikKuis;
     }
@@ -48,21 +48,12 @@ public class TopikKuisAdapter extends BaseAdapter {
         }
 
         final TextView textViewName = (TextView) convertView.findViewById(R.id.judul_topik_kuis);
-
-        final String name = topikKuis.get(position).getName();
-
+        final String name = topikKuis.get(position).getJudul();
         textViewName.setText(name);
 
-//        convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Toast.makeText(c,name,Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(c, DetailTopikActivity.class);
-//                String message = textViewName.getText().toString();
-//                intent.putExtra(EXTRA_MESSAGE, message);
-//                c.startActivity(intent);
-//            }
-//        });
+        final TextView textViewSkor = (TextView) convertView.findViewById(R.id.skor);
+        final int nilai = topikKuis.get(position).getSkor();
+        textViewSkor.setText("Skor tertinggi: " + nilai);
 
         return convertView;
     }

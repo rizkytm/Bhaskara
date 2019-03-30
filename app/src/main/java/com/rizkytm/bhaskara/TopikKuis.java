@@ -4,13 +4,16 @@ public class TopikKuis {
 
     String judul;
     int id;
+    int skor;
 
     public TopikKuis() {
 
     }
 
-    public TopikKuis(String judul) {
+    public TopikKuis(int id, String judul, int skor) {
+        this.id = id;
         this.judul = judul;
+        this.skor = skor;
     }
 
     public String getJudul() {
@@ -27,5 +30,13 @@ public class TopikKuis {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getSkor() {
+        return skor;
+    }
+
+    public void setSkor(int skor) {
+        this.skor = skor;
     }
 }
