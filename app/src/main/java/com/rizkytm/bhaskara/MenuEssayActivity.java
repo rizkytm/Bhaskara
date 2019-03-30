@@ -19,6 +19,7 @@ public class MenuEssayActivity extends AppCompatActivity {
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
+    public static final String EXTRA_SCORE = "extraScore";
 
     public static final String SHARED_PREFS_ESSAY = "sharedPrefsEssay";
     public static final String KEY_HIGHSCORE_ESSAY = "keyHighscoreEssay";
@@ -75,6 +76,7 @@ public class MenuEssayActivity extends AppCompatActivity {
         Intent intents = getIntent();
         String topikName = intents.getStringExtra(ListTopikEssayActivity.EXTRA_TITLE);
         int topikID = intents.getIntExtra(ListTopikEssayActivity.EXTRA_CATEGORY_ID, 0 );
+        int skor = intents.getIntExtra(ListTopikEssayActivity.EXTRA_SCORE, 0 );
         Log.i("info topik id", Integer.toString(topikID));
 //        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
         int categoryID = topikID;
@@ -85,6 +87,7 @@ public class MenuEssayActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
         intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+        intent.putExtra(EXTRA_SCORE, skor);
         startActivityForResult(intent, REQUEST_CODE_QUIZ_ESSAY);
     }
 

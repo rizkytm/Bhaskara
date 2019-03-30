@@ -15,6 +15,7 @@ public class ListTopikEssayActivity extends AppCompatActivity {
     ListView topikListView;
     public static final String EXTRA_TITLE = "extraTitle";
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
+    public static final String EXTRA_SCORE = "extraScore";
     public List<TopikEssay> topikEssays = new ArrayList<>();
     BhaskaraDB dbHelper;
 
@@ -32,6 +33,7 @@ public class ListTopikEssayActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListTopikEssayActivity.this, MenuEssayActivity.class);
                 intent.putExtra(EXTRA_TITLE, topikEssays.get(position).getJudul());
                 intent.putExtra(EXTRA_CATEGORY_ID, topikEssays.get(position).getId());
+                intent.putExtra(EXTRA_SCORE, topikEssays.get(position).getSkor());
                 startActivity(intent);
             }
         });

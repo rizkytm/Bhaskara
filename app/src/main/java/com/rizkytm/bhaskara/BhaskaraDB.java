@@ -608,10 +608,13 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Image> getAllSoalGame() {
+    public ArrayList<Image> getAllSoalGame(int topikID) {
         ArrayList<Image> imageList = new ArrayList<>();
-        String q = "SELECT * FROM " + SoalGameTable.TABLE_NAME;
-        Cursor c = db.rawQuery(q, null);
+//        String q = "SELECT * FROM " + SoalGameTable.TABLE_NAME;
+        String q = "SELECT * FROM " + SoalGameTable.TABLE_NAME +" WHERE topik_id = ? ";
+
+        String[] selectionArgs = new String[]{String.valueOf(topikID)};
+        Cursor c = db.rawQuery(q, selectionArgs);
 
         if (c.moveToFirst()) {
             do {
@@ -627,5 +630,15 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
         c.close();
         return imageList;
+    }
+
+    public void updateSkor(int newSkor, int topikID) {
+
+        try {
+            String sql="UPDATE topik_essay SET [skor] = ? WHERE [id] = ?;";
+            db.execSQL(sql, new Object[]{newSkor, topikID});
+        } catch (SQLException ex) {
+
+        }
     }
 }

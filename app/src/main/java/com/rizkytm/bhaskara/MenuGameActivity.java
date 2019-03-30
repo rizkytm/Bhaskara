@@ -53,9 +53,14 @@ public class MenuGameActivity extends AppCompatActivity {
     }
 
     private void startQuiz() {
+
+        Intent intents = getIntent();
+        String topikName = intents.getStringExtra(ListTopikEssayActivity.EXTRA_TITLE);
+        int topikID = intents.getIntExtra(ListTopikEssayActivity.EXTRA_CATEGORY_ID, 0 );
+
         Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
-        int categoryID = selectedCategory.getId();
-        String categoryName = selectedCategory.getName();
+        int categoryID = topikID;
+        String categoryName = topikName;
         String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
         Intent intent = new Intent(MenuGameActivity.this, GameActivity.class);

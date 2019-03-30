@@ -32,6 +32,7 @@ public class GameActivity extends AppCompatActivity {
 
     public static final String EXTRA_SCORE_GAME = "extraScore";
     private static final String KEY_SCORE_GAME = "keyScore";
+    public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
 
     private long backPressedTime;
 
@@ -450,6 +451,10 @@ public class GameActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                            Intent intentSebelumnya = getIntent();
+
+                            int categoryID = intentSebelumnya.getIntExtra(MenuGameActivity.EXTRA_CATEGORY_ID, 0);
+                            intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
                             startActivity(intent);
                             finish();
                         }
@@ -523,7 +528,9 @@ public class GameActivity extends AppCompatActivity {
 
     public ArrayList<Image> loadAllImages() {
         bhaskaraDB = new BhaskaraDB(this);
-        ArrayList<Image> gambar = bhaskaraDB.getAllSoalGame();
+        Intent intent = getIntent();
+        int categoryID = intent.getIntExtra(MenuGameActivity.EXTRA_CATEGORY_ID, 0);
+        ArrayList<Image> gambar = bhaskaraDB.getAllSoalGame(categoryID);
         return gambar;
     }
 

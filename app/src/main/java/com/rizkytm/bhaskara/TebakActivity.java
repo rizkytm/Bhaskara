@@ -32,6 +32,7 @@ public class TebakActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE_ESSAY = "extraScore";
     private static final String KEY_SCORE_ESSAY = "keyScore";
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
+    public static final String EXTRA_SCORE = "extraScore";
 
     private long backPressedTime;
 
@@ -318,6 +319,13 @@ public class TebakActivity extends AppCompatActivity {
         long elapsedMillis = SystemClock.elapsedRealtime() - chronometer.getBase();
         int minutes = (int) (elapsedMillis / 1000) / 60;
         int seconds = (int) (elapsedMillis / 1000) % 60;
+
+        Intent intentSebelumnya = getIntent();
+        int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
+        int skor = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_SCORE, 0);
+        if (skor < points) {
+            bhaskaraDB.updateSkor(points, categoryID);
+        }
 
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
