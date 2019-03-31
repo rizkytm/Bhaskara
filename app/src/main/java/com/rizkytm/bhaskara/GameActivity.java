@@ -440,6 +440,8 @@ public class GameActivity extends AppCompatActivity {
 
             String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
+            updateScore();
+
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
             alertDialogBuilder
                     .setMessage("PERMAINAN SELESAI!\nSkor: "+ playerPoints
@@ -467,6 +469,16 @@ public class GameActivity extends AppCompatActivity {
                     });
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
+        }
+    }
+
+    public void updateScore() {
+        BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
+        Intent intentSebelumnya = getIntent();
+        int categoryID = intentSebelumnya.getIntExtra(LatihanActivity.EXTRA_CATEGORY_ID, 0);
+        int skor = intentSebelumnya.getIntExtra(LatihanActivity.EXTRA_SCORE, 0);
+        if (skor < playerPoints) {
+            dbHelper.updateSkorGame(playerPoints, categoryID);
         }
     }
 

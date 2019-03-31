@@ -47,10 +47,12 @@ public class TopikGameAdapter extends BaseAdapter {
         }
 
         final TextView textViewName = (TextView) convertView.findViewById(R.id.judul_topik_kuis);
-
         final String name = topikGames.get(position).getJudul();
-
         textViewName.setText(name);
+
+        final TextView textViewSkor = (TextView) convertView.findViewById(R.id.skor);
+        final int nilai = topikGames.get(position).getSkor();
+        textViewSkor.setText("Skor tertinggi: " + nilai);
 
         return convertView;
     }

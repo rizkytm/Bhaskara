@@ -18,6 +18,7 @@ public class MenuGameActivity extends AppCompatActivity {
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
+    public static final String EXTRA_SCORE = "extraScore";
 
     public static final String SHARED_PREFS_GAME = "sharedPrefsGame";
     public static final String KEY_HIGHSCORE_GAME = "keyHighscoreGame";
@@ -55,8 +56,9 @@ public class MenuGameActivity extends AppCompatActivity {
     private void startQuiz() {
 
         Intent intents = getIntent();
-        String topikName = intents.getStringExtra(ListTopikEssayActivity.EXTRA_TITLE);
-        int topikID = intents.getIntExtra(ListTopikEssayActivity.EXTRA_CATEGORY_ID, 0 );
+        String topikName = intents.getStringExtra(ListTopikGameActivity.EXTRA_TITLE);
+        int topikID = intents.getIntExtra(ListTopikGameActivity.EXTRA_CATEGORY_ID, 0 );
+        int skor = intents.getIntExtra(ListTopikGameActivity.EXTRA_SCORE, 0 );
 
         Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
         int categoryID = topikID;
