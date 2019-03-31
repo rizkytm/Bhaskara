@@ -29,7 +29,11 @@ public class DetailCollapseActivity extends AppCompatActivity {
         toolbar.setTitle(title);
         collapsingToolbarLayout.setTitle(title);
         WebView webViewContent = (WebView) findViewById(R.id.wv_teori);
-//        textViewTitle.setText(title);
+////        textViewTitle.setText(title);
         webViewContent.loadDataWithBaseURL(null, content, "text/html", "utf-8", null);
+
+
+//        TextView textViewContent = (TextView) findViewById(R.id.wv_teori);
+//        textViewContent.setText(content);
     }
 }

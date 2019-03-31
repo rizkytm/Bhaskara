@@ -68,7 +68,7 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <!--<TextView-->
                     <!--android:id="@+id/judul_teori"-->
@@ -118,10 +118,9 @@
 
                 <WebView
                     android:id="@+id/wv_teori"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
+                    android:padding="16dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:layout_below="@+id/detailTopik"
                     android:textColor="#000"
@@ -136,7 +135,7 @@
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
             when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                    tools:ignore="WebViewLayout" />
+                     />
 
             </LinearLayout>
 

@@ -102,8 +102,18 @@ public class QuizActivity extends AppCompatActivity {
         String categoryName = intent.getStringExtra(LatihanActivity.EXTRA_CATEGORY_NAME);
         int difficulty = intent.getIntExtra(LatihanActivity.EXTRA_DIFFICULTY, 0);
 
-        textViewKategori.setText("Kategori: " + categoryName);
-        textViewKesulitan.setText("Tingkat Kesulitan: " + difficulty);
+        textViewKategori.setText("Topik: " + categoryName);
+        switch (difficulty) {
+            case 1:
+                textViewKesulitan.setText("Tingkat Kesulitan: mudah");
+                break;
+            case 2:
+                textViewKesulitan.setText("Tingkat Kesulitan: sedang");
+                break;
+            case 3:
+                textViewKesulitan.setText("Tingkat Kesulitan: sulit");
+                break;
+        }
 
         if (savedInstanceState == null) {
             BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
