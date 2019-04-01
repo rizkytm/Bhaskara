@@ -49,7 +49,20 @@ public class TopikKuisAdapter extends BaseAdapter {
 
         final TextView textViewName = (TextView) convertView.findViewById(R.id.judul_topik_kuis);
         final String name = topikKuis.get(position).getJudul();
+        int difficulty_id = topikKuis.get(position).getDifficulty_id();
+        String difficulty = "";
+        if (difficulty_id == 1) {
+            difficulty = "mudah";
+        } else if (difficulty_id == 2)
+        {
+            difficulty = "sedang";
+        } else if (difficulty_id == 3){
+            difficulty = "sulit";
+        }
         textViewName.setText(name);
+
+        final TextView textViewDifficulty = (TextView) convertView.findViewById(R.id.difficulty);
+        textViewDifficulty.setText(difficulty);
 
         final TextView textViewSkor = (TextView) convertView.findViewById(R.id.skor);
         final int nilai = topikKuis.get(position).getSkor();

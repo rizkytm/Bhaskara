@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 app:layout_collapseMode="parallax"
-                android:src="@drawable/book_hd"
+                android:src="@drawable/buku"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop" />
 

@@ -23,6 +23,7 @@ public class ListTopikGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_topik_game);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         topikListView = (ListView)findViewById(R.id.list_topik);
         final TopikGameAdapter adapter = new TopikGameAdapter(getApplicationContext(), getTopikList());

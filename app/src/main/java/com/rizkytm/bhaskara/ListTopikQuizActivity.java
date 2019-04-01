@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,21 +24,12 @@ public class ListTopikQuizActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "extraScore";
     public List<TopikKuis> topikKuis = new ArrayList<>();
     BhaskaraDB dbHelper;
-//    SwipeRefreshLayout pullToRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_topik_quiz);
-
-//        pullToRefresh = findViewById(R.id.pullToRefresh);
-//        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                Intent intent = getIntent();
-//                startActivity(intent);
-//            }
-//        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         simpleList = (ListView)findViewById(R.id.list_topik);
         final TopikKuisAdapter adapter = new TopikKuisAdapter(getApplicationContext(), getTopikList());
@@ -66,12 +58,14 @@ public class ListTopikQuizActivity extends AppCompatActivity {
         String judul;
         int id;
         int skor;
+        int difficulty_id;
         for (int i = 0; i<topikList.size();i++) {
             judul = topikList.get(i).getJudul();
             id = topikList.get(i).getId();
             skor = topikList.get(i).getSkor();
+            difficulty_id = topikList.get(i).getDifficulty_id();
 
-            TopikKuis topik = new TopikKuis(id, judul, skor);
+            TopikKuis topik = new TopikKuis(id, judul, skor, difficulty_id);
 
             topikKuis.add(topik);
         }

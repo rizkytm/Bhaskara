@@ -673,6 +673,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
                 topikKuis.setId(c.getInt(c.getColumnIndex(TopikKuisTable.COLUMN_ID)));
                 topikKuis.setJudul(c.getString(c.getColumnIndex(TopikKuisTable.COLUMN_JUDUL)));
                 topikKuis.setSkor(c.getInt(c.getColumnIndex(TopikKuisTable.COLUMN_SKOR)));
+                topikKuis.setDifficulty_id(c.getInt(c.getColumnIndex(TopikKuisTable.COLUMN_DIFFICULTY)));
                 topikKuisList.add(topikKuis);
             } while (c.moveToNext());
         }

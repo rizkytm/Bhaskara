@@ -43,7 +43,7 @@ public class TopikGameAdapter extends BaseAdapter {
             inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if (convertView==null) {
-            convertView = inflater.inflate(R.layout.listview_item,parent, false);
+            convertView = inflater.inflate(R.layout.listview_item_topik,parent, false);
         }
 
         final TextView textViewName = (TextView) convertView.findViewById(R.id.judul_topik_kuis);

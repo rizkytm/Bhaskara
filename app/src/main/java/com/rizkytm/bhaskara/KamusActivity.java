@@ -221,10 +221,10 @@ public class KamusActivity extends AppCompatActivity
         } else {
             if (id == R.id.action_ind_sun) {
                 kamusFragment.resetDataSource(source);
-//            menuSetting.setIcon(getDrawable(R.drawable.icon_indo));
+            menuSetting.setIcon(getDrawable(R.drawable.i_ke_s));
             } else if (id == R.id.action_sun_ind) {
                 kamusFragment.resetDataSource(source);
-//            menuSetting.setIcon(getDrawable(R.drawable.icon_sunda));
+            menuSetting.setIcon(getDrawable(R.drawable.s_ke_i));
             }
         }
         //noinspection SimplifiableIfStatement

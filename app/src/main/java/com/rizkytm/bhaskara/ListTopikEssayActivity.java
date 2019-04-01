@@ -23,6 +23,7 @@ public class ListTopikEssayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_topik_essay);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         topikListView = (ListView)findViewById(R.id.list_topik);
         final TopikEssayAdapter adapter = new TopikEssayAdapter(getApplicationContext(), getTopikList());

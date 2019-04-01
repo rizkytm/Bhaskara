@@ -14,23 +14,21 @@
             android:id="@+id/judul_topik_kuis"
             android:layout_width="275dp"
             android:layout_height="wrap_content"
-            android:paddingLeft="8dp"
-            android:paddingTop="8dp"
+            android:padding="8dp"
             android:text="Judul Topik"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/background_color" />
 
-        <TextView
-            android:id="@+id/difficulty"
-            android:layout_below="@id/judul_topik_kuis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:paddingLeft="8dp"
-            android:paddingBottom="8dp"
-            android:text="Mudah"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/colorSecondaryText" />
+        <!--<TextView-->
+            <!--android:id="@+id/difficulty"-->
+            <!--android:layout_below="@id/judul_topik_kuis"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:paddingLeft="8dp"-->
+            <!--android:text="Mudah"-->
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+            <!--android:textColor="@color/background_color" />-->
 
         <TextView
             android:id="@+id/skor"

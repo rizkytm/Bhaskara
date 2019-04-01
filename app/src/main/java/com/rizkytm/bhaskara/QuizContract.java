@@ -67,6 +67,7 @@ public final class QuizContract {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_JUDUL = "judul";
         public static final String COLUMN_SKOR = "skor";
+        public static final String COLUMN_DIFFICULTY = "difficulty_id";
     }
 
     public static class SoalEssayTable implements BaseColumns {
