@@ -27,6 +27,8 @@ public class MenuGameActivity extends AppCompatActivity {
     private Spinner spinnerCategory;
     private Spinner spinnerDifficulty;
 
+    private TextView textViewTopik;
+
     private int highscore;
 
     @Override
@@ -34,11 +36,20 @@ public class MenuGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_game);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent intent = getIntent();
+        String topikName = intent.getStringExtra(ListTopikGameActivity.EXTRA_TITLE);
+        textViewTopik = (TextView) findViewById(R.id.text_view_topik);
+        textViewTopik.setText("Topik : " + topikName);
 
         textViewHighscore = findViewById(R.id.text_view_highscore_game);
+        textViewHighscore.setEnabled(false);
+        textViewHighscore.setVisibility(View.INVISIBLE);
         spinnerCategory = findViewById(R.id.spinner_category);
+        spinnerCategory.setEnabled(false);
+        spinnerCategory.setVisibility(View.INVISIBLE);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
+        spinnerDifficulty.setEnabled(false);
+        spinnerDifficulty.setVisibility(View.INVISIBLE);
 
         loadCategories();
         loadDifficultyLevels();

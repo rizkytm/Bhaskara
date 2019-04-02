@@ -28,11 +28,12 @@
         android:textSize="35sp" />
 
     <TextView
+        android:id="@+id/kuis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:text="Quiz Mode Pilihan Ganda"
+        android:text="Kuis Pilihan Ganda"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
 
@@ -40,11 +41,11 @@
         android:id="@+id/text_view_topik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/text_view_highscore"
+        android:layout_below="@id/kuis"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="48dp"
         android:text="Topik : Judul"
-        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -58,28 +59,55 @@
         android:textSize="20sp"
         android:textColor="@android:color/white" />
 
+    <TextView
+        android:id="@+id/peraturan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="48dp"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:text="Peraturan"/>
+
+    <TextView
+        android:id="@+id/detail_peraturan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/peraturan"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="16sp"
+        android:text="1. Soal yang tersedia sebanyak 5 soal\n2. Jawab pertanyaan dengan memilih satu dari empat jawaban\n3. Waktu pengerjaan tiap soal yaitu 30 detik\n 4. Jawaban benar mendapatkan poin 1
+"/>
+
     <Button
         android:id="@+id/button_start_quiz"
         android:background="@drawable/buttonbackground"
         android:radius="3dp"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Mulai Quiz"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="96dp"
+        android:text="Mulai Kuis"
         android:padding="8dp"
         android:elevation="8dp"
         android:textColor="@color/colorPrimary"/>
 
-    <TextView
-        android:id="@+id/text_view_kategori"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_start_quiz"
-        android:layout_centerHorizontal="true"
-        android:text="Kategori: "
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/text_view_kategori"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/button_start_quiz"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Kategori: "-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_marginTop="16dp"/>-->
 
     <Spinner
         android:id="@+id/spinner_category"
@@ -90,16 +118,16 @@
         android:layout_marginTop="8dp"
         android:textColor="@android:color/white"/>
 
-    <TextView
-        android:id="@+id/text_view_kesulitan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/spinner_category"
-        android:layout_centerHorizontal="true"
-        android:text="Tingkat Kesulitan: "
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"/>
+    <!--<TextView-->
+        <!--android:id="@+id/text_view_kesulitan"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/spinner_category"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Tingkat Kesulitan: "-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:textColor="@android:color/white"/>-->
 
     <Spinner
         android:id="@+id/spinner_difficulty"

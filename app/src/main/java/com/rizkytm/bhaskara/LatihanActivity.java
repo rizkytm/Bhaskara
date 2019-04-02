@@ -50,12 +50,14 @@ public class LatihanActivity extends AppCompatActivity {
         textViewTopik.setText("Topik : " + topikName);
 
         textViewHighscore = findViewById(R.id.text_view_highscore);
+        textViewHighscore.setEnabled(false);
         textViewHighscore.setVisibility(View.INVISIBLE);
 
         spinnerCategory = findViewById(R.id.spinner_category);
         spinnerCategory.setEnabled(false);
         spinnerCategory.setVisibility(View.INVISIBLE);
         spinnerDifficulty = findViewById(R.id.spinner_difficulty);
+        spinnerDifficulty.setVisibility(View.INVISIBLE);
 
         textViewBhaskara = findViewById(R.id.text_bhaskara);
         typeface = Typeface.createFromAsset(getAssets(), "ciung_wanara.ttf");

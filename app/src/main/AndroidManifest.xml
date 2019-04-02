@@ -20,7 +20,8 @@
             android:label="Judul Teori"
             android:parentActivityName=".TheoryActivity"
             android:theme="@style/AppThemeDetail" />
-        <activity android:name=".MenuGameActivity" />
+        <activity android:name=".MenuGameActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ListTopikQuizActivity"
             android:label="Topik Kuis Pilihan Ganda"
             android:parentActivityName=".Main2Activity" />
@@ -79,6 +80,7 @@
         <activity
             android:name=".MenuEssayActivity"
             android:label="Quiz"
+            android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".Main2Activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
