@@ -32,6 +32,7 @@ public class BahasaFragment extends Fragment {
 
     public static final String EXTRA_TITLE = "extraTitle";
     public static final String EXTRA_CONTENT = "extraContent";
+    public static final String EXTRA_IMAGE = "extraImage";
 
     public BahasaFragment() {
         // Required empty public constructor
@@ -52,6 +53,7 @@ public class BahasaFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), DetailCollapseActivity.class);
                 intent.putExtra(EXTRA_TITLE, topiks.get(position).getJudul());
                 intent.putExtra(EXTRA_CONTENT, topiks.get(position).getIsi());
+                intent.putExtra(EXTRA_IMAGE, topiks.get(position).getImage());
                 startActivity(intent);
             }
         });
@@ -86,12 +88,14 @@ public class BahasaFragment extends Fragment {
         dbHelper.getWritableDatabase();
         ArrayList<Topik> topikList = dbHelper.getAllTopics();
         String judul, isi;
+        int image;
         for (int i = 0; i<topikList.size();i++) {
             judul = topikList.get(i).getJudul();
             isi = topikList.get(i).getIsi();
+            image = topikList.get(i).getImage();
 
 
-            Topik topik = new Topik(judul, isi);
+            Topik topik = new Topik(judul, isi, image);
 //            topik.setName(name);
 
             topiks.add(topik);

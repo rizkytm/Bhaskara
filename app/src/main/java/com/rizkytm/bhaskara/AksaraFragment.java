@@ -23,6 +23,7 @@ public class AksaraFragment extends Fragment {
 
     public static final String EXTRA_TITLE = "extraTitle";
     public static final String EXTRA_CONTENT = "extraContent";
+    public static final String EXTRA_IMAGE = "extraImage";
 
     public AksaraFragment() {
         // Required empty public constructor
@@ -43,6 +44,7 @@ public class AksaraFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), DetailCollapseActivity.class);
                 intent.putExtra(EXTRA_TITLE, topikAksaras.get(position).getJudul());
                 intent.putExtra(EXTRA_CONTENT, topikAksaras.get(position).getIsi());
+                intent.putExtra(EXTRA_IMAGE, topikAksaras.get(position).getImage());
                 startActivity(intent);
             }
         });
@@ -56,12 +58,14 @@ public class AksaraFragment extends Fragment {
         dbHelper.getWritableDatabase();
         ArrayList<TopikAksara> topikAksaraList = dbHelper.getAllTopicAksara();
         String judul, isi;
+        int image;
         for (int i = 0; i<topikAksaraList.size();i++) {
             judul = topikAksaraList.get(i).getJudul();
             isi = topikAksaraList.get(i).getIsi();
+            image = topikAksaraList.get(i).getImage();
 
 
-            TopikAksara topikAksara = new TopikAksara(judul, isi);
+            TopikAksara topikAksara = new TopikAksara(judul, isi, image);
 //            topik.setName(name);
 
             topikAksaras.add(topikAksara);
@@ -77,24 +81,24 @@ public class AksaraFragment extends Fragment {
     }
 
 
-    private ArrayList<Topik> getTopikAksara() {
-        //COLECTION OF CRIME MOVIES
-        ArrayList<Topik> topikAksara=new ArrayList<>();
-
-        //SINGLE MOVIE
-        Topik topik=new Topik("ᮕᮨᮛ᮪ᮊᮨᮔᮜᮔ᮪", "artina");
-
-        //ADD ITR TO COLLECTION
-        topikAksara.add(topik);
-
-        topik = new Topik("ᮛᮥᮙᮠ᮪", "nyaeta");
-        topikAksara.add(topik);
-
-        topik=new Topik("ᮞᮨᮊᮧᮜᮠ᮪", "naon");
-        topikAksara.add(topik);
-
-        return topikAksara;
-    }
+//    private ArrayList<Topik> getTopikAksara() {
+//        //COLECTION OF CRIME MOVIES
+//        ArrayList<Topik> topikAksara=new ArrayList<>();
+//
+//        //SINGLE MOVIE
+//        Topik topik=new Topik("ᮕᮨᮛ᮪ᮊᮨᮔᮜᮔ᮪", "artina");
+//
+//        //ADD ITR TO COLLECTION
+//        topikAksara.add(topik);
+//
+//        topik = new Topik("ᮛᮥᮙᮠ᮪", "nyaeta");
+//        topikAksara.add(topik);
+//
+//        topik=new Topik("ᮞᮨᮊᮧᮜᮠ᮪", "naon");
+//        topikAksara.add(topik);
+//
+//        return topikAksara;
+//    }
 
     @Override
     public String toString() {

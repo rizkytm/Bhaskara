@@ -5,14 +5,16 @@ public class Topik {
     String judul;
     String isi;
     int id;
+    int image;
 
     public Topik() {
 
     }
 
-    public Topik(String judul, String isi) {
+    public Topik(String judul, String isi, int image) {
         this.judul = judul;
         this.isi = isi;
+        this.image = image;
     }
 
     public String getJudul() {
@@ -37,5 +39,13 @@ public class Topik {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }

@@ -39,6 +39,7 @@ public final class QuizContract {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_CONTENT = "content";
+        public static final String COLUMN_IMAGE = "image";
     }
 
     public static class TopicAksaraTable implements BaseColumns {
@@ -46,6 +47,7 @@ public final class QuizContract {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_CONTENT = "content";
+        public static final String COLUMN_IMAGE = "image";
     }
 
     public static class TopikEssayTable implements BaseColumns {

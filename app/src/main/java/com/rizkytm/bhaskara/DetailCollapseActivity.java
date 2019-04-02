@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailCollapseActivity extends AppCompatActivity {
@@ -24,6 +25,10 @@ public class DetailCollapseActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getStringExtra(BahasaFragment.EXTRA_TITLE);
         String content = intent.getStringExtra(BahasaFragment.EXTRA_CONTENT);
+        int image = intent.getIntExtra(BahasaFragment.EXTRA_IMAGE, 0);
+
+        ImageView imageView = (ImageView) findViewById(R.id.gambar_topik);
+        imageView.setImageResource(image);
 
 //        TextView textViewTitle = (TextView) findViewById(R.id.judul_teori);
         toolbar.setTitle(title);
