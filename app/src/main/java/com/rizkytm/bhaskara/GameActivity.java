@@ -214,34 +214,34 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
-        alertDialogBuilder
-                .setMessage("Selamat Datang di Game Bhaskara\n" +
-                        "Cocokkan Aksara Sunda dengan huruf latinnya"
-                )
-                .setCancelable(false)
-                .setPositiveButton("MULAI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast toast = Toast.makeText(getApplicationContext(),
-                                "Game dimulai",
-                                Toast.LENGTH_SHORT);
-                        toast.show();
-                        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
-                        simpleChronometer.setBase(SystemClock.elapsedRealtime());
-                        simpleChronometer.start();
-                    }
-                })
-                .setNegativeButton("KELUAR", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
+//        alertDialogBuilder
+//                .setMessage("Selamat Datang di Game Bhaskara\n" +
+//                        "Cocokkan Aksara Sunda dengan huruf latinnya"
+//                )
+//                .setCancelable(false)
+//                .setPositiveButton("MULAI", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast toast = Toast.makeText(getApplicationContext(),
+//                                "Game dimulai",
+//                                Toast.LENGTH_SHORT);
+//                        toast.show();
+//                    }
+//                })
+//                .setNegativeButton("KELUAR", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        finish();
+//                    }
+//                });
+//        AlertDialog alertDialog = alertDialogBuilder.create();
+//        alertDialog.show();
 
 
+        simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
+        simpleChronometer.setBase(SystemClock.elapsedRealtime());
+        simpleChronometer.start();
 
     }
 
@@ -444,24 +444,24 @@ public class GameActivity extends AppCompatActivity {
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
             alertDialogBuilder
-                    .setMessage("PERMAINAN SELESAI!\nSkor: "+ playerPoints
+                    .setMessage("PERMAINAN SELESAI!!!\nSkor: "+ playerPoints
 //                            + "\nP2: " + cpuPoints
-                              + "\nWaktu yang ditempuh: " + timeFormatted
+//                            + "\nWaktu yang ditempuh: " + timeFormatted
                     )
                     .setCancelable(false)
-                    .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                            Intent intentSebelumnya = getIntent();
-
-                            int categoryID = intentSebelumnya.getIntExtra(MenuGameActivity.EXTRA_CATEGORY_ID, 0);
-                            intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
-                            startActivity(intent);
-                            finish();
-                        }
-                    })
-                    .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+//                    .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+//                            Intent intentSebelumnya = getIntent();
+//
+//                            int categoryID = intentSebelumnya.getIntExtra(MenuGameActivity.EXTRA_CATEGORY_ID, 0);
+//                            intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    })
+                    .setNegativeButton("SELESAI", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             finishQuiz();

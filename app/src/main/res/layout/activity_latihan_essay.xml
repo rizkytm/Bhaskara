@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@mipmap/latar_biru_edit"
+    android:background="@drawable/bg_gradient"
     tools:context=".MenuEssayActivity">
 
     <TextView
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/kuis"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="60dp"
         android:text="Topik : Judul"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/white" />
@@ -66,10 +66,11 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="48dp"
+        android:layout_marginBottom="4dp"
         android:textColor="@android:color/white"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:text="Peraturan"/>
+        android:text="Peraturan :"/>
 
     <TextView
         android:id="@+id/detail_peraturan"
@@ -77,12 +78,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/white"
+        android:background="@drawable/bg_peraturan"
         android:layout_below="@+id/peraturan"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="48dp"
+        android:padding="8dp"
         android:textSize="16sp"
-        android:text="1. Soal yang tersedia sebanyak 5 soal\n2. Jawab pertanyaan dengan cara mengisi huruf yang kosong\n3. Jawaban benar mendapatkan poin 3\n4. Jawaban salah akan dikurangi poin 1
-"/>
+        android:text="1. Soal yang tersedia sebanyak 5 soal\n2. Jawab pertanyaan dengan cara mengisi huruf yang kosong\n3. Jawaban benar mendapatkan poin 3\n4. Jawaban salah akan dikurangi poin 1"/>
 
     <Button
         android:id="@+id/button_start_quiz"
@@ -93,7 +95,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="96dp"
-        android:text="Mulai Game"
+        android:text="Mulai Kuis"
         android:padding="8dp"
         android:elevation="8dp"
         android:textColor="@color/colorPrimary"/>

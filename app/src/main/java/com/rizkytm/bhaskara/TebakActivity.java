@@ -143,32 +143,33 @@ public class TebakActivity extends AppCompatActivity {
 
         initView();
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TebakActivity.this);
-        alertDialogBuilder
-                .setMessage("Selamat Datang di Game Tebak Bhaskara\n" +
-                        "Tebaklah Aksara Sunda"
-                )
-                .setCancelable(false)
-                .setPositiveButton("MULAI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast toast = Toast.makeText(getApplicationContext(),
-                                "Game dimulai",
-                                Toast.LENGTH_SHORT);
-                        toast.show();
-                        chronometer = (Chronometer) findViewById(R.id.simpleChronometer);
-                        chronometer.setBase(SystemClock.elapsedRealtime());
-                        chronometer.start();
-                    }
-                })
-                .setNegativeButton("KELUAR", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+//        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TebakActivity.this);
+//        alertDialogBuilder
+//                .setMessage("Selamat Datang di Game Tebak Bhaskara\n" +
+//                        "Tebaklah Aksara Sunda"
+//                )
+//                .setCancelable(false)
+//                .setPositiveButton("MULAI", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast toast = Toast.makeText(getApplicationContext(),
+//                                "Game dimulai",
+//                                Toast.LENGTH_SHORT);
+//                        toast.show();
+//                    }
+//                })
+//                .setNegativeButton("KELUAR", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        finish();
+//                    }
+//                });
+//        AlertDialog alertDialog = alertDialogBuilder.create();
+//        alertDialog.show();
+
+        chronometer = (Chronometer) findViewById(R.id.simpleChronometer);
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        chronometer.start();
     }
 
     private void initView() {
@@ -331,24 +332,24 @@ public class TebakActivity extends AppCompatActivity {
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TebakActivity.this);
         alertDialogBuilder
-                .setMessage("PERMAINAN SELESAI!\nSkor: "+ points
+                .setMessage("KUIS SELESAI!!!\nSkor: "+ points
 //                            + "\nP2: " + cpuPoints
-                                + "\nWaktu yang ditempuh: " + timeFormatted
+//                            + "\nWaktu yang ditempuh: " + timeFormatted
                 )
                 .setCancelable(false)
-                .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intentSebelumnya = getIntent();
-
-                        Intent intent = new Intent(getApplicationContext(), TebakActivity.class);
-                        int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
-                        intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
-                        startActivity(intent);
-                        finish();
-                    }
-                })
-                .setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+//                .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Intent intentSebelumnya = getIntent();
+//
+//                        Intent intent = new Intent(getApplicationContext(), TebakActivity.class);
+//                        int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
+//                        intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                })
+                .setNegativeButton("SELESAI", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finishQuiz();

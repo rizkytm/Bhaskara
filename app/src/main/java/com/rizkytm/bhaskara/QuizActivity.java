@@ -1,9 +1,11 @@
 package com.rizkytm.bhaskara;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.CountDownTimer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -225,8 +227,40 @@ public class QuizActivity extends AppCompatActivity {
             startCountDown();
         } else {
             updateScore();
-            finishQuiz();
+            dialogBox();
+//            finishQuiz();
+
         }
+    }
+
+    private void dialogBox() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(QuizActivity.this);
+        alertDialogBuilder
+                .setMessage("KUIS SELESAI!!!\nSkor: "+ score
+//                            + "\nP2: " + cpuPoints
+//                            + "\nWaktu yang ditempuh: " + timeFormatted
+                )
+                .setCancelable(false)
+//                .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Intent intentSebelumnya = getIntent();
+//
+//                        Intent intent = new Intent(getApplicationContext(), TebakActivity.class);
+//                        int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
+//                        intent.putExtra(EXTRA_CATEGORY_ID, categoryID);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                })
+                .setNegativeButton("SELESAI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishQuiz();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     private void startCountDown() {

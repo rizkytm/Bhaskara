@@ -8,7 +8,7 @@
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    android:background="@mipmap/latar_biru_edit"
+    android:background="@drawable/bg_gradient"
     tools:context=".GameActivity">
 
     <include

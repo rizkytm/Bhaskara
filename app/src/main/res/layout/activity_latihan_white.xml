@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/bg_gradient"
-    tools:context=".MenuGameActivity">
+    tools:context=".LatihanActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
         android:text="ᮘ᮪ᮠᮞ᮪ᮊᮛ ᮞᮥᮔᮓ"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="30sp" />
 
     <TextView
@@ -24,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="108dp"
         android:text="Bhaskara Sunda"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="35sp" />
 
     <TextView
@@ -33,8 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:text="Game"
-        android:textColor="@android:color/white"
+        android:text="Kuis Pilihan Ganda"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <TextView
@@ -46,10 +45,10 @@
         android:layout_marginTop="60dp"
         android:text="Topik : Judul"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:id="@+id/text_view_highscore_game"
+        android:id="@+id/text_view_highscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/button_start_quiz"
@@ -57,7 +56,7 @@
         android:layout_marginBottom="32dp"
         android:text="Skor Tertinggi: 0"
         android:textSize="20sp"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/peraturan"
@@ -67,7 +66,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="4dp"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textAlignment="center"
         android:textSize="20sp"
         android:text="Peraturan :"/>
@@ -77,40 +76,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
-        android:background="@drawable/bg_peraturan"
-        android:elevation="4dp"
+        android:textColor="@android:color/black"
         android:layout_below="@+id/peraturan"
+        android:background="@drawable/bg_peraturan_white"
+        android:padding="8dp"
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
-        android:padding="8dp"
         android:textSize="16sp"
-        android:text="1. Jodohkan gambar aksara sunda dengan aksara latin dengan benar\n2. Terdapat 6 pasang aksara yang harus dijodohkan\n3. Jawaban benar mendapatkan poin 3\n4. Jawaban salah dikurangi poin 1"/>
+        android:text="1. Soal yang tersedia sebanyak 5 soal\n2. Jawab pertanyaan dengan memilih satu dari empat jawaban\n3. Waktu pengerjaan tiap soal yaitu 30 detik\n4. Jawaban benar mendapatkan poin 1"/>
 
     <Button
         android:id="@+id/button_start_quiz"
-        android:background="@drawable/buttonbackground"
         android:radius="3dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="96dp"
-        android:text="Mulai Game"
+        android:text="Mulai Kuis"
         android:padding="8dp"
         android:elevation="8dp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@android:color/black"/>
 
     <!--<TextView-->
-    <!--android:id="@+id/text_view_kategori"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@id/button_start_quiz"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:text="Kategori: "-->
-    <!--android:textColor="@android:color/white"-->
-    <!--android:textSize="20sp"-->
-    <!--android:layout_marginTop="16dp"/>-->
+        <!--android:id="@+id/text_view_kategori"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/button_start_quiz"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Kategori: "-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_marginTop="16dp"/>-->
 
     <Spinner
         android:id="@+id/spinner_category"
@@ -119,18 +116,18 @@
         android:layout_below="@+id/text_view_kategori"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
     <!--<TextView-->
-    <!--android:id="@+id/text_view_kesulitan"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_below="@id/spinner_category"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:text="Tingkat Kesulitan: "-->
-    <!--android:textSize="20sp"-->
-    <!--android:layout_marginTop="16dp"-->
-    <!--android:textColor="@android:color/white"/>-->
+        <!--android:id="@+id/text_view_kesulitan"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/spinner_category"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="Tingkat Kesulitan: "-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:textColor="@android:color/black"/>-->
 
     <Spinner
         android:id="@+id/spinner_difficulty"
@@ -140,6 +137,6 @@
         android:layout_below="@+id/text_view_kesulitan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>

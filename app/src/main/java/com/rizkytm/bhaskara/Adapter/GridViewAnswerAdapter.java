@@ -41,7 +41,7 @@ public class GridViewAnswerAdapter extends BaseAdapter {
             button.setLayoutParams(new GridView.LayoutParams(100,100));
             button.setPadding(8,8,8,8);
             button.setBackgroundColor(Color.WHITE);
-            button.setTextColor(Color.BLUE);
+            button.setTextColor(Color.BLACK);
             button.setText(String.valueOf(answerCharacter[position]));
         } else {
             button = (Button) convertView;
