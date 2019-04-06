@@ -9,20 +9,21 @@
     tools:context=".LatihanActivity">
 
     <TextView
+        android:id="@+id/tulisan_aksara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="36dp"
         android:text="ᮘ᮪ᮠᮞ᮪ᮊᮛ ᮞᮥᮔᮓ"
         android:textColor="@android:color/white"
         android:textSize="30sp" />
 
     <TextView
         android:id="@+id/text_bhaskara"
+        android:layout_below="@+id/tulisan_aksara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp"
         android:text="Bhaskara Sunda"
         android:textColor="@android:color/white"
         android:textSize="35sp" />
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_below="@+id/text_bhaskara"
         android:text="Kuis Pilihan Ganda"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
@@ -41,7 +42,7 @@
         android:id="@+id/text_view_topik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/kuis"
+        android:layout_above="@+id/peraturan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:text="Topik : Judul"
@@ -81,8 +82,8 @@
         android:layout_below="@+id/peraturan"
         android:background="@drawable/bg_peraturan"
         android:padding="8dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
         android:textSize="16sp"
         android:text="1. Soal yang tersedia sebanyak 5 soal\n2. Jawab pertanyaan dengan memilih satu dari empat jawaban\n3. Waktu pengerjaan tiap soal yaitu 30 detik\n4. Jawaban benar mendapatkan poin 1"/>
 
@@ -94,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="16dp"
         android:text="Mulai Kuis"
         android:padding="8dp"
         android:elevation="8dp"

@@ -191,7 +191,21 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 } else {
                     showNextQuestion();
-                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    switch (questionCounter) {
+                        case 2:
+                            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                            break;
+                        case 3:
+                            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                            break;
+                        case 4:
+                            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                            break;
+                        case 5:
+                            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                            break;
+                    }
+//                    stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
                 }
             }
         });

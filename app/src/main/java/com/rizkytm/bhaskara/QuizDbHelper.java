@@ -239,9 +239,9 @@
 //                    "Tata bunyi bahasa Sunda mengenal 25 fonem yang terdiri dari dua jenis " +
 //                        "fonem segmental, yaitu fonem vokal (7) dan fonem konsonan (18).\n" +
 //                    "2. Urutan Fonem dalam Kata\n" +
-//                    "a. Urutan Vokal\n" +
-//                        "1) Vokal /a/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +
-//                        "tidak dapat mengikuti vokal /a/;\n" +
+//                    "a_latin. Urutan Vokal\n" +
+//                        "1) Vokal /a_latin/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +
+//                        "tidak dapat mengikuti vokal /a_latin/;\n" +
 //                        "2) vokal /i/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +
 //                        "tidak dapat mengikuti vokal /i/;\n" +
 //                        "3) vokal /u/ dapat diikuti oleh semua vokal, kecuali vokal /e/, yang " +

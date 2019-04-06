@@ -496,7 +496,7 @@ public class GameActivity extends AppCompatActivity {
 
         images = loadAllImages();
 
-        int count = bhaskaraDB.imagesA.length;
+        int count = images.size();
 
         for (int i=0;i<count;i++){
             numbers.add(i);

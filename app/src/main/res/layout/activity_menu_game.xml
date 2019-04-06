@@ -9,20 +9,21 @@
     tools:context=".MenuGameActivity">
 
     <TextView
+        android:id="@+id/tulisan_aksara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="36dp"
         android:text="ᮘ᮪ᮠᮞ᮪ᮊᮛ ᮞᮥᮔᮓ"
         android:textColor="@android:color/white"
         android:textSize="30sp" />
 
     <TextView
         android:id="@+id/text_bhaskara"
+        android:layout_below="@+id/tulisan_aksara"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp"
         android:text="Bhaskara Sunda"
         android:textColor="@android:color/white"
         android:textSize="35sp" />
@@ -32,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_below="@+id/text_bhaskara"
         android:text="Game"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
@@ -41,7 +42,7 @@
         android:id="@+id/text_view_topik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/kuis"
+        android:layout_above="@+id/peraturan"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:text="Topik : Judul"
@@ -81,8 +82,8 @@
         android:background="@drawable/bg_peraturan"
         android:elevation="4dp"
         android:layout_below="@+id/peraturan"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
         android:padding="8dp"
         android:textSize="16sp"
         android:text="1. Jodohkan gambar aksara sunda dengan aksara latin dengan benar\n2. Terdapat 6 pasang aksara yang harus dijodohkan\n3. Jawaban benar mendapatkan poin 3\n4. Jawaban salah dikurangi poin 1"/>
@@ -95,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="16dp"
         android:text="Mulai Game"
         android:padding="8dp"
         android:elevation="8dp"

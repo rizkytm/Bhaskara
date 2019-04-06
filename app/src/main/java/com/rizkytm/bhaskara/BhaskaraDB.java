@@ -6,15 +6,11 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.util.Log;
-import android.widget.ImageView;
 
 import com.rizkytm.bhaskara.QuizContract.*;
 
@@ -27,8 +23,6 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.provider.MediaStore.Images.Thumbnails.IMAGE_ID;
-
 public class BhaskaraDB extends SQLiteOpenHelper {
 
     public int[] imagesA = {R.drawable.ka, R.drawable.ga, R.drawable.nga, R.drawable.ca, R.drawable.ja, R.drawable.nya,
@@ -38,6 +32,16 @@ public class BhaskaraDB extends SQLiteOpenHelper {
             R.drawable.ta_s, R.drawable.da_s, R.drawable.na_s, R.drawable.pa_s, R.drawable.ba_s, R.drawable.ma_s,
             R.drawable.ya_s, R.drawable.ra_s, R.drawable.la_s, R.drawable.wa_s, R.drawable.sa_s, R.drawable.ha_s};
     int gambarTopik = R.drawable.buku;
+
+    int[] imagesSwaraLatin = {R.drawable.a_latin, R.drawable.i, R.drawable.u, R.drawable.o,
+            R.drawable.e, R.drawable.ec, R.drawable.eu};
+    int[] imagesSwaraSunda = {R.drawable.a_s, R.drawable.i_s, R.drawable.u_s, R.drawable.o_s,
+            R.drawable.e_s, R.drawable.ec_s, R.drawable.eu_s};
+
+    int[] imagesAngkaLatin = {R.drawable.satu, R.drawable.dua, R.drawable.tiga, R.drawable.empat, R.drawable.lima,
+            R.drawable.enam, R.drawable.tujuh, R.drawable.delapan, R.drawable.sembilan, R.drawable.nol};
+    int[] imagesAngkaSunda = {R.drawable.satu_s, R.drawable.dua_s, R.drawable.tiga_s, R.drawable.empat_s, R.drawable.lima_s,
+            R.drawable.enam_s, R.drawable.tujuh_s, R.drawable.delapan_s, R.drawable.sembilan_s, R.drawable.nol_s};
 
 
     private Context mContext;
@@ -102,10 +106,6 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         }
 
         db = SQLiteDatabase.openOrCreateDatabase(DATABASE_FULL_PATH, null);
-        loadImages();
-        buatSoalEssay();
-        loadGambarTopikBahasa();
-        loadGambarTopikAksara();
     }
 
     boolean isExistingDB() {
@@ -133,6 +133,12 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 //        db.execSQL(CREATE_TABLE_IMAGE);
+        loadImagesSwara();
+        loadImagesAngka();
+        loadImagesNgalagena();
+        buatSoalEssay();
+        loadGambarTopikBahasa();
+        loadGambarTopikAksara();
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -494,15 +500,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         return Uri.parse("android.resource://"+R.class.getPackage().getName()+"/" +resourceId).toString();
     }
 
-    public void loadImages() {
-//        for (int i=0; i<imagesA.length; i++) {
-//            String name = mContext.getResources().getResourceEntryName(imagesA[i]);
-//            int imageA = imagesA[i];
-//            int imageB = imagesB[i];
-//            Image image = new Image(name, imageA, imageB, 1);
-//            tambah(image);
-//        }
-
+    public void loadImagesNgalagena() {
         for (int i=0; i<imagesA.length; i++) {
             String name = mContext.getResources().getResourceEntryName(imagesA[i]);
             String nameB = mContext.getResources().getResourceEntryName(imagesB[i]);
@@ -512,8 +510,46 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 //            int imageB = getURLForResource(imagesB[i]);
             int imageB = resources.getIdentifier(nameB, "drawable",
                     mContext.getPackageName());
-            Image image = new Image(name, imageA, imageB, 1);
+            Image image = new Image(name, imageA, imageB, 2);
             insertImage(image);
+        }
+    }
+
+    public void loadImagesAngka() {
+        for (int i=0; i<imagesAngkaLatin.length; i++) {
+            String name = mContext.getResources().getResourceEntryName(imagesAngkaLatin[i]);
+            String nameB = mContext.getResources().getResourceEntryName(imagesAngkaSunda[i]);
+            Resources resources = mContext.getResources();
+            int imageA = resources.getIdentifier(name, "drawable",
+                    mContext.getPackageName());
+//            int imageB = getURLForResource(imagesB[i]);
+            int imageB = resources.getIdentifier(nameB, "drawable",
+                    mContext.getPackageName());
+            Image imageAngka = new Image(name, imageA, imageB, 3);
+            insertImage(imageAngka);
+        }
+    }
+
+    public void loadImagesSwara() {
+//        for (int i=0; i<imagesA.length; i++) {
+//            String name = mContext.getResources().getResourceEntryName(imagesA[i]);
+//            int imageA = imagesA[i];
+//            int imageB = imagesB[i];
+//            Image image = new Image(name, imageA, imageB, 1);
+//            tambah(image);
+//        }
+
+        for (int i=0; i<imagesSwaraLatin.length; i++) {
+            String name = mContext.getResources().getResourceEntryName(imagesSwaraLatin[i]);
+            String nameB = mContext.getResources().getResourceEntryName(imagesSwaraSunda[i]);
+            Resources resources = mContext.getResources();
+            int imageA = resources.getIdentifier(name, "drawable",
+                    mContext.getPackageName());
+//            int imageB = getURLForResource(imagesB[i]);
+            int imageB = resources.getIdentifier(nameB, "drawable",
+                    mContext.getPackageName());
+            Image imageSwara = new Image(name, imageA, imageB, 1);
+            insertImage(imageSwara);
         }
     }
 
@@ -556,16 +592,38 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     }
 
     private void buatSoalEssay() {
-        SoalEssay soalEssay1 = new SoalEssay(1, "abdi", "ᮃᮘ᮪ᮓᮤ");
+        SoalEssay soalEssay1 = new SoalEssay(4, "abdi", "ᮃᮘ᮪ᮓᮤ");
         insertSoalEssay(soalEssay1);
-        SoalEssay soalEssay2 = new SoalEssay(1, "bapa", "ᮘᮕ");
+        SoalEssay soalEssay2 = new SoalEssay(4, "anjeun", "ᮃᮔ᮪ᮏᮩᮔ᮪");
         insertSoalEssay(soalEssay2);
-        SoalEssay soalEssay3 = new SoalEssay(1, "ibu", "ᮄᮘᮥ");
+        SoalEssay soalEssay3 = new SoalEssay(4, "aranjeun", "ᮃᮛᮔ᮪ᮏᮩᮔ᮪");
         insertSoalEssay(soalEssay3);
-        SoalEssay soalEssay4 = new SoalEssay(1, "bajigur", "ᮘᮏᮤᮌᮥᮛ᮪");
+        SoalEssay soalEssay4 = new SoalEssay(4, "aranjeunna", "ᮃᮛᮔ᮪ᮏᮩᮔ᮪ᮔ");
         insertSoalEssay(soalEssay4);
-        SoalEssay soalEssay5 = new SoalEssay(1, "bajakan", "ᮘᮏᮊᮔ᮪");
+        SoalEssay soalEssay5 = new SoalEssay(4, "anjeunna", "ᮃᮔ᮪ᮏᮩᮔ᮪ᮔ");
         insertSoalEssay(soalEssay5);
+
+        SoalEssay soalEssay6 = new SoalEssay(5, "kuring", "ᮊᮥᮛᮤᮀ");
+        insertSoalEssay(soalEssay6);
+        SoalEssay soalEssay7 = new SoalEssay(5, "maneh", "ᮙᮔᮦᮂ");
+        insertSoalEssay(soalEssay7);
+        SoalEssay soalEssay8 = new SoalEssay(5, "manehna", "ᮙᮔᮦᮂᮔ");
+        insertSoalEssay(soalEssay8);
+        SoalEssay soalEssay9 = new SoalEssay(5, "maranehna", "ᮙᮛᮔᮦᮂᮔ");
+        insertSoalEssay(soalEssay9);
+        SoalEssay soalEssay10 = new SoalEssay(5, "maranehanana", "ᮙᮛᮔᮦᮠᮔᮔ");
+        insertSoalEssay(soalEssay10);
+
+        SoalEssay soalEssay11 = new SoalEssay(6, "naon", "ᮔᮇᮔ᮪");
+        insertSoalEssay(soalEssay11);
+        SoalEssay soalEssay12 = new SoalEssay(6, "saha", "ᮞᮠ");
+        insertSoalEssay(soalEssay12);
+        SoalEssay soalEssay13 = new SoalEssay(6, "kunaha", "ᮊᮥᮔᮠ");
+        insertSoalEssay(soalEssay13);
+        SoalEssay soalEssay14 = new SoalEssay(6, "iraha", "ᮄᮛᮠ");
+        insertSoalEssay(soalEssay14);
+        SoalEssay soalEssay15 = new SoalEssay(6, "kumaha", "ᮊᮥᮙᮠ");
+        insertSoalEssay(soalEssay15);
     }
 
     public void insertSoalEssay(SoalEssay soalEssay) {

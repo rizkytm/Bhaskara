@@ -36,7 +36,7 @@ public class TheoryActivity extends AppCompatActivity implements TabLayout.OnTab
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
+        // Create the adapter that will return a_latin fragment for each of the three
         // primary sections of the activity.
 //        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -91,7 +91,7 @@ public class TheoryActivity extends AppCompatActivity implements TabLayout.OnTab
 //        @Override
 //        public Fragment getItem(int position) {
 //            // getItem is called to instantiate the fragment for the given page.
-//            // Return a PlaceholderFragment (defined as a static inner class below).
+//            // Return a_latin PlaceholderFragment (defined as a_latin static inner class below).
 //            return PlaceholderFragment.newInstance(position + 1);
 //        }
 //
