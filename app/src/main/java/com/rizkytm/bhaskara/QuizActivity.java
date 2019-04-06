@@ -241,6 +241,7 @@ public class QuizActivity extends AppCompatActivity {
             startCountDown();
         } else {
             updateScore();
+            questionCounter=1;
             dialogBox();
 //            finishQuiz();
 

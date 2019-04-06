@@ -81,10 +81,11 @@ public class LatihanActivity extends AppCompatActivity {
         String topikName = intents.getStringExtra(ListTopikQuizActivity.EXTRA_TITLE);
         int topikID = intents.getIntExtra(ListTopikQuizActivity.EXTRA_CATEGORY_ID, 0 );
         int skor = intents.getIntExtra(ListTopikQuizActivity.EXTRA_SCORE, 0 );
+        int diff = intents.getIntExtra(ListTopikQuizActivity.EXTRA_DIFFICULTY, 0 );
 //        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
         int categoryID = topikID;
         String categoryName = topikName;
-        int difficulty = 1;
+        int difficulty = diff;
 //        String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
         Intent intent = new Intent(LatihanActivity.this, QuizActivity.class);

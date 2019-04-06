@@ -22,6 +22,7 @@ public class ListTopikQuizActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "extraTitle";
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_SCORE = "extraScore";
+    public static final String EXTRA_DIFFICULTY = "extraDifficulty";
     public List<TopikKuis> topikKuis = new ArrayList<>();
     BhaskaraDB dbHelper;
 
@@ -35,7 +36,6 @@ public class ListTopikQuizActivity extends AppCompatActivity {
         final TopikKuisAdapter adapter = new TopikKuisAdapter(getApplicationContext(), getTopikList());
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.listview_item, R.id.judul_topik_kuis, countryList);
         simpleList.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
         simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -45,6 +45,7 @@ public class ListTopikQuizActivity extends AppCompatActivity {
 //                intent.putExtra(EXTRA_TITLE, textView.getText().toString().trim());
                 intent.putExtra(EXTRA_TITLE, topikKuis.get(position).getJudul());
                 intent.putExtra(EXTRA_CATEGORY_ID, topikKuis.get(position).getId());
+                intent.putExtra(EXTRA_DIFFICULTY, topikKuis.get(position).getDifficulty_id());
                 intent.putExtra(EXTRA_SCORE, topikKuis.get(position).getSkor());
                 startActivity(intent);
             }
