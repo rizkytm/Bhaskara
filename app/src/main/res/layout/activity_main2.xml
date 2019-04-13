@@ -71,10 +71,10 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -89,7 +89,7 @@
                         android:text="Teori"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="24sp"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal"/>
 
@@ -113,10 +113,10 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -126,12 +126,12 @@
                         android:src="@drawable/icon_game" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Game"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="24sp"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         android:gravity="center_horizontal"/>
 
@@ -158,10 +158,10 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -171,12 +171,12 @@
                         android:src="@drawable/icon_quiz" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Kuis\nPilihan Ganda"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textStyle="bold"
                         android:gravity="center_horizontal"/>
 
@@ -200,10 +200,10 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -213,14 +213,14 @@
                         android:src="@drawable/icon_essay" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Kuis\nEssay"
+                        android:gravity="center_horizontal"
+                        android:text="Kuis Essay"
                         android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -245,10 +245,10 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -258,12 +258,12 @@
                         android:src="@drawable/icon_indo" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Kamus\nIndo-Sunda"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textStyle="bold"
                         android:gravity="center_horizontal"/>
 
@@ -287,10 +287,10 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -300,12 +300,12 @@
                         android:src="@drawable/icon_sunda" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Kamus\nSunda-Indo"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="20sp"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textStyle="bold"
                         android:gravity="center_horizontal"/>
 

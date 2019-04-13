@@ -68,7 +68,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_quiz_constraint);
 
         stateProgressBar = (StateProgressBar) findViewById(R.id.your_state_progress_bar_id);
 //        stateProgressBar.setStateDescriptionData(steps);

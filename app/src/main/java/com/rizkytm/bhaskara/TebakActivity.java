@@ -191,7 +191,7 @@ public class TebakActivity extends AppCompatActivity {
                     result+=String.valueOf(Common.user_submit_answer[i]);
                 }
                 if (result.equals(correct_answer)) {
-                    Toast.makeText(getApplicationContext(), "Finish ! This is " + result, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Benar!!! Jawabannya " + result, Toast.LENGTH_SHORT).show();
 
                     ke=0;
                     btnDelete.setEnabled(false);
@@ -217,7 +217,7 @@ public class TebakActivity extends AppCompatActivity {
                 } else {
                     points--;
                     textViewSkor.setText("Skor: " + points);
-                    Toast.makeText(TebakActivity.this, "Incorrect!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TebakActivity.this, "Salah!!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

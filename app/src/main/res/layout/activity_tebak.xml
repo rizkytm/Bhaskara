@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,7 +20,7 @@
             android:id="@+id/simpleChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_gravity="center_horizontal"
             android:textSize="32dp"
             android:textColor="#fff"
@@ -32,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textSize="32dp"
             android:textColor="#fff"
             android:text="Skor: 0" />
@@ -41,7 +40,7 @@
             android:id="@+id/your_state_progress_bar_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_margin="8dp"
             android:layout_centerHorizontal="true"
             app:spb_currentStateNumber="one"
             app:spb_maxStateNumber="five"
@@ -68,17 +67,19 @@
             android:text="Soal Essay"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/white"
-            android:layout_marginTop="56dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:layout_gravity="center_horizontal"/>
 
         <GridView
             android:id="@+id/gridViewAnswer"
             android:background="@drawable/buttonbackground"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:padding="4dp"
-            android:horizontalSpacing="4dp"
-            android:verticalSpacing="4dp"
+            android:horizontalSpacing="8dp"
+            android:verticalSpacing="8dp"
             android:columnWidth="40dp"
             android:numColumns="auto_fit"
             android:scrollbars="none"
@@ -89,10 +90,12 @@
 
         <GridView
             android:id="@+id/gridViewSuggest"
-            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:padding="4dp"
-            android:horizontalSpacing="4dp"
-            android:verticalSpacing="4dp"
+            android:horizontalSpacing="8dp"
+            android:verticalSpacing="8dp"
             android:columnWidth="40dp"
             android:numColumns="auto_fit"
             android:scrollbars="none"
@@ -103,25 +106,36 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:background="@drawable/buttonbackground"
-        android:layout_width="192dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="8dp"
-        android:text="Submit" />
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:weightSum="2">
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:background="@drawable/buttonbackground"
-        android:text="Delete"
-        android:layout_toRightOf="@+id/btnSubmit"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_alignParentBottom="true"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/a_essay"
+            android:textColor="@android:color/white"
+            android:text="Jawab" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/b_essay"
+            android:textColor="@android:color/white"
+            android:text="Hapus" />
+
+    </LinearLayout>
 
 </RelativeLayout>
