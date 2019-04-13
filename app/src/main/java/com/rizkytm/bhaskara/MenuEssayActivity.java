@@ -35,7 +35,7 @@ public class MenuEssayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_latihan_essay);
+        setContentView(R.layout.activity_latihan_essay_constraint);
 
         Intent intent = getIntent();
         String topikName = intent.getStringExtra(ListTopikEssayActivity.EXTRA_TITLE);

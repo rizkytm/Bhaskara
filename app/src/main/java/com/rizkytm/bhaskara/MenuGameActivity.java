@@ -34,7 +34,7 @@ public class MenuGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_game);
+        setContentView(R.layout.activity_menu_game_constraint);
 
         Intent intent = getIntent();
         String topikName = intent.getStringExtra(ListTopikGameActivity.EXTRA_TITLE);

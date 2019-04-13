@@ -39,7 +39,7 @@ public class LatihanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_latihan);
+        setContentView(R.layout.activity_latihan_constraint);
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

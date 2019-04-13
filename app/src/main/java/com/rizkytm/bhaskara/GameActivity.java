@@ -475,8 +475,8 @@ public class GameActivity extends AppCompatActivity {
     public void updateScore() {
         BhaskaraDB dbHelper = BhaskaraDB.getInstance(this);
         Intent intentSebelumnya = getIntent();
-        int categoryID = intentSebelumnya.getIntExtra(LatihanActivity.EXTRA_CATEGORY_ID, 0);
-        int skor = intentSebelumnya.getIntExtra(LatihanActivity.EXTRA_SCORE, 0);
+        int categoryID = intentSebelumnya.getIntExtra(MenuGameActivity.EXTRA_CATEGORY_ID, 0);
+        int skor = intentSebelumnya.getIntExtra(MenuGameActivity.EXTRA_SCORE, 0);
         if (skor < playerPoints) {
             dbHelper.updateSkorGame(playerPoints, categoryID);
         }
