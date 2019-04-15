@@ -320,6 +320,7 @@ public class TebakActivity extends AppCompatActivity {
         long elapsedMillis = SystemClock.elapsedRealtime() - chronometer.getBase();
         int minutes = (int) (elapsedMillis / 1000) / 60;
         int seconds = (int) (elapsedMillis / 1000) % 60;
+        chronometer.setBase(SystemClock.elapsedRealtime());
 
         Intent intentSebelumnya = getIntent();
         int categoryID = intentSebelumnya.getIntExtra(MenuEssayActivity.EXTRA_CATEGORY_ID, 0);
@@ -334,7 +335,7 @@ public class TebakActivity extends AppCompatActivity {
         alertDialogBuilder
                 .setMessage("KUIS SELESAI!!!\nSkor: "+ points
 //                            + "\nP2: " + cpuPoints
-//                            + "\nWaktu yang ditempuh: " + timeFormatted
+                            + "\nWaktu yang ditempuh: " + timeFormatted
                 )
                 .setCancelable(false)
 //                .setPositiveButton("NEW", new DialogInterface.OnClickListener() {

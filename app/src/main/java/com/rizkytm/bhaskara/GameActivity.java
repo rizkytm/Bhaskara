@@ -33,6 +33,10 @@ public class GameActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE_GAME = "extraScore";
     private static final String KEY_SCORE_GAME = "keyScore";
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
+    private static final long COUNTDOWN_IN_MILLIS = 60000;
+
+    private long timeLeftInMillis;
+    private CountDownTimer countDownTimer;
 
     private long backPressedTime;
 
@@ -84,7 +88,7 @@ public class GameActivity extends AppCompatActivity {
 
         tv_p1 = (TextView) findViewById(R.id.tv_p1);
         tv_p1.setTextColor(Color.WHITE);
-//        tv_cd = (TextView) findViewById(R.id.tv_cd);
+        tv_cd = (TextView) findViewById(R.id.tv_cd);
 
         iv_11 = (ImageView) findViewById(R.id.iv_11);
         iv_12 = (ImageView) findViewById(R.id.iv_12);
@@ -240,9 +244,45 @@ public class GameActivity extends AppCompatActivity {
 
 
         simpleChronometer = (Chronometer) findViewById(R.id.simpleChronometer);
+        simpleChronometer.setVisibility(View.INVISIBLE);
         simpleChronometer.setBase(SystemClock.elapsedRealtime());
         simpleChronometer.start();
 
+        timeLeftInMillis = COUNTDOWN_IN_MILLIS;
+        startCountDown();
+
+    }
+
+    private void startCountDown() {
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                timeLeftInMillis = 0;
+                updateCountDownText();
+                dialogBox();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (timeLeftInMillis / 1000) / 60;
+        int seconds = (int) (timeLeftInMillis / 1000) % 60;
+
+        String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        tv_cd.setText(timeFormatted);
+
+        if (timeLeftInMillis < 10000) {
+            tv_cd.setTextColor(Color.RED);
+        } else {
+            tv_cd.setTextColor(Color.WHITE);
+        }
     }
 
     private void doStuff(ImageView iv, int card) {
@@ -440,15 +480,23 @@ public class GameActivity extends AppCompatActivity {
 
             String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
-            updateScore();
+            dialogBox();
+        }
+    }
 
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
-            alertDialogBuilder
-                    .setMessage("PERMAINAN SELESAI!!!\nSkor: "+ playerPoints
+    public void dialogBox() {
+
+        countDownTimer.cancel();
+
+        updateScore();
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
+        alertDialogBuilder
+                .setMessage("PERMAINAN SELESAI!!!\nSkor: "+ playerPoints
 //                            + "\nP2: " + cpuPoints
 //                            + "\nWaktu yang ditempuh: " + timeFormatted
-                    )
-                    .setCancelable(false)
+                )
+                .setCancelable(false)
 //                    .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
 //                        @Override
 //                        public void onClick(DialogInterface dialog, int which) {
@@ -461,15 +509,14 @@ public class GameActivity extends AppCompatActivity {
 //                            finish();
 //                        }
 //                    })
-                    .setNegativeButton("SELESAI", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finishQuiz();
-                        }
-                    });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-        }
+                .setNegativeButton("SELESAI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finishQuiz();
+                    }
+                });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     public void updateScore() {

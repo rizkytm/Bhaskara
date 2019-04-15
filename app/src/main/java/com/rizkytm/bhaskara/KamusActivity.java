@@ -66,6 +66,16 @@ public class KamusActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        Intent intent = getIntent();
+        String jenisKamus = intent.getStringExtra(Main2Activity.EXTRA_KAMUS);
+        if (jenisKamus.equals("indo_sunda")) {
+            int dicType = R.id.action_ind_sun;
+            Global.saveState(this,"dic_type", String.valueOf(dicType));
+        } else {
+            int dicType = R.id.action_sun_ind;
+            Global.saveState(this,"dic_type", String.valueOf(dicType));
+        }
+
         kamusFragment = new KamusFragment();
         bookmarkFragment = BookmarkFragment.getNewInstance(dbHelper);
         goToFragment(kamusFragment, true);
