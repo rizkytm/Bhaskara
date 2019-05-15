@@ -25,6 +25,7 @@ public class ListTopikQuizActivity extends AppCompatActivity {
     public static final String EXTRA_DIFFICULTY = "extraDifficulty";
     public List<TopikKuis> topikKuis = new ArrayList<>();
     BhaskaraDB dbHelper;
+    public TopikKuisAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,27 +33,11 @@ public class ListTopikQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_topik_quiz);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        simpleList = (ListView)findViewById(R.id.list_topik);
-        final TopikKuisAdapter adapter = new TopikKuisAdapter(getApplicationContext(), getTopikList());
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.listview_item, R.id.judul_topik_kuis, countryList);
-        simpleList.setAdapter(adapter);
-        simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListTopikQuizActivity.this, LatihanActivity.class);
-//                String topik = (String) adapter.getItem(position).toString();
-//                TextView textView = (TextView) view.findViewById(R.id.judul_topik_kuis);
-//                intent.putExtra(EXTRA_TITLE, textView.getText().toString().trim());
-                intent.putExtra(EXTRA_TITLE, topikKuis.get(position).getJudul());
-                intent.putExtra(EXTRA_CATEGORY_ID, topikKuis.get(position).getId());
-                intent.putExtra(EXTRA_DIFFICULTY, topikKuis.get(position).getDifficulty_id());
-                intent.putExtra(EXTRA_SCORE, topikKuis.get(position).getSkor());
-                startActivity(intent);
-            }
-        });
+
     }
 
     public List<TopikKuis> getTopikList() {
+        topikKuis.clear();
         dbHelper = new BhaskaraDB(getApplicationContext());
         dbHelper.getWritableDatabase();
         List<TopikKuis> topikList = dbHelper.getAllTopikKuis();
@@ -75,4 +60,27 @@ public class ListTopikQuizActivity extends AppCompatActivity {
         return topikKuis;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        simpleList = (ListView)findViewById(R.id.list_topik);
+        adapter = new TopikKuisAdapter(getApplicationContext(), getTopikList());
+        adapter.notifyDataSetChanged();
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.listview_item, R.id.judul_topik_kuis, countryList);
+        simpleList.setAdapter(adapter);
+        simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListTopikQuizActivity.this, LatihanActivity.class);
+//                String topik = (String) adapter.getItem(position).toString();
+//                TextView textView = (TextView) view.findViewById(R.id.judul_topik_kuis);
+//                intent.putExtra(EXTRA_TITLE, textView.getText().toString().trim());
+                intent.putExtra(EXTRA_TITLE, topikKuis.get(position).getJudul());
+                intent.putExtra(EXTRA_CATEGORY_ID, topikKuis.get(position).getId());
+                intent.putExtra(EXTRA_DIFFICULTY, topikKuis.get(position).getDifficulty_id());
+                intent.putExtra(EXTRA_SCORE, topikKuis.get(position).getSkor());
+                startActivity(intent);
+            }
+        });
+    }
 }

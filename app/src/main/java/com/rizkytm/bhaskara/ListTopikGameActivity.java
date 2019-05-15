@@ -18,6 +18,7 @@ public class ListTopikGameActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "extraScore";
     public List<TopikGame> topikGames = new ArrayList<>();
     BhaskaraDB dbHelper;
+    public TopikGameAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,22 +26,11 @@ public class ListTopikGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_topik_game);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        topikListView = (ListView)findViewById(R.id.list_topik);
-        final TopikGameAdapter adapter = new TopikGameAdapter(getApplicationContext(), getTopikList());
-        topikListView.setAdapter(adapter);
-        topikListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListTopikGameActivity.this, MenuGameActivity.class);
-                intent.putExtra(EXTRA_TITLE, topikGames.get(position).getJudul());
-                intent.putExtra(EXTRA_CATEGORY_ID, topikGames.get(position).getId());
-                intent.putExtra(EXTRA_SCORE, topikGames.get(position).getSkor());
-                startActivity(intent);
-            }
-        });
+
     }
 
     public List<TopikGame> getTopikList() {
+        topikGames.clear();
         dbHelper = new BhaskaraDB(getApplicationContext());
         dbHelper.getWritableDatabase();
         List<TopikGame> topikList = dbHelper.getAllTopikGame();
@@ -59,5 +49,24 @@ public class ListTopikGameActivity extends AppCompatActivity {
         dbHelper.close();
 
         return topikGames;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        topikListView = (ListView)findViewById(R.id.list_topik);
+        adapter = new TopikGameAdapter(getApplicationContext(), getTopikList());
+        adapter.notifyDataSetChanged();
+        topikListView.setAdapter(adapter);
+        topikListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListTopikGameActivity.this, MenuGameActivity.class);
+                intent.putExtra(EXTRA_TITLE, topikGames.get(position).getJudul());
+                intent.putExtra(EXTRA_CATEGORY_ID, topikGames.get(position).getId());
+                intent.putExtra(EXTRA_SCORE, topikGames.get(position).getSkor());
+                startActivity(intent);
+            }
+        });
     }
 }

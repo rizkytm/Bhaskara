@@ -137,6 +137,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         loadImagesAngka();
         loadImagesNgalagena();
         buatSoalEssay();
+        buatTeoriAksara();
         loadGambarTopikBahasa();
         loadGambarTopikAksara();
     }
@@ -626,11 +627,161 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         insertSoalEssay(soalEssay15);
     }
 
+    private void buatTeoriAksara() {
+        Topik topikAksara = new Topik("Pengenalan Aksara Sunda",
+                "Aksara Swara<br>" +
+                        "<table border='1' align='center'>" +
+                            "<tr>" +
+                                "<td>ᮃ : a</td>" +
+                                "<td>ᮆ : é</td>" +
+                                "<td>ᮄ : i</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮇ : o</td>" +
+                                "<td>ᮅ : u</td>" +
+                                "<td>ᮈ : e</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮉ : eu</td>" +
+                            "</tr>" +
+                        "</table><br>" +
+                    "Aksara Ngalagena<br>" +
+                        "<table border='1' align='center'>" +
+                            "<tr>" +
+                                "<td>ᮊ : ka</td>" +
+                                "<td>ᮌ : ga</td>" +
+                                "<td>ᮍ : nga</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮎ : ca</td>" +
+                                "<td>ᮏ : ja</td>" +
+                                "<td>ᮑ : nya</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮒ : ta</td>" +
+                                "<td>ᮓ : da</td>" +
+                                "<td>ᮔ : na</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮕ : pa</td>" +
+                                "<td>ᮘ : ba</td>" +
+                                "<td>ᮙ : ma</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮚ : ya</td>" +
+                                "<td>ᮛ : ra</td>" +
+                                "<td>ᮜ : la</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮝ : wa</td>" +
+                                "<td>ᮞ : sa</td>" +
+                                "<td>ᮠ : ha</td>" +
+                            "</tr>" +
+                        "</table><br>" +
+                    "Rarangkén<br>" +
+                        "<table border='1' align='center'>" +
+                            "<tr>" +
+                                "<td>ᮊᮤ : ki</td>" +
+                                "<td>ᮊᮨ : ke</td>" +
+                                "<td>ᮊᮩ : keu</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮊᮁ : kar</td>" +
+                                "<td>ᮊᮀ : kang</td>" +
+                                "<td>ᮊᮥ : ku</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮊᮢ : kra</td>" +
+                                "<td>ᮊᮣ : kla</td>" +
+                                "<td>ᮦᮊ : ké</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮊᮧ : ko</td>" +
+                                "<td>ᮊᮡ : kya</td>" +
+                                "<td>ᮊᮂ : kah</td>" +
+                            "</tr>" +
+                            "<tr>" +
+                                "<td>ᮊ᮪ : k</td>" +
+                            "</tr>" +
+                        "</table><br>"+
+                        "Angka<br>" +
+                        "<table border='1' align='center'>" +
+                        "<tr>" +
+                        "<td>᮱ : 1</td>" +
+                        "<td>᮲ : 2</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>᮳ : 3</td>" +
+                        "<td>᮴ : 4</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>᮵ : 5</td>" +
+                        "<td>᮶ : 6</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>᮷ : 7</td>" +
+                        "<td>᮸ : 8</td>" +
+                        "</tr>" +
+                        "<tr>" +
+                        "<td>᮹ : 9</td>" +
+                        "<td>᮰ : 0</td>" +
+                        "</tr>" +
+                        "</table><br>",
+                0);
+        insertTeoriAksara(topikAksara);
+        Topik topikAksara1 = new Topik("Dongeng Semut dan Belalang",
+                "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮓᮤᮔ ᮠᮤᮏᮤ ᮙᮀᮞ, ᮃᮚ ᮞᮊᮓᮀ ᮞᮤᮙᮩᮒ᮪ ᮊᮩᮛ᮪ ᮑᮑᮤ ᮍᮀᮦᮌ ᮌᮤᮒᮛ᮪ ᮓᮤᮔ ᮠᮔ᮪ᮓᮕᮩᮔ᮪ ᮒᮀᮊᮜ᮪ ᮊᮎᮙ᮪ᮘᮂ, ᮒᮩ ᮕᮒᮤ ᮜᮤᮜ ᮃᮚ ᮞᮊᮥᮙ᮪ᮕᮥᮜᮔ᮪ ᮞᮤᮛᮩᮙ᮪ ᮜᮩᮙ᮪ᮕᮀ ᮍᮜᮤᮝᮒ᮪" +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "\"ᮙᮛᮦᮔᮂ ᮃᮦᮛᮊ᮪ ᮊᮙᮔ, ᮙᮨᮔᮤ ᮍᮜᮩᮒ᮪ ᮘᮛᮤ ᮘᮛᮤᮞ᮪ ᮒᮥᮛ᮪ ᮛᮕᮤᮂ ᮙᮝ ᮕᮊᮊᮞ᮪?\" ᮒᮥᮙᮛᮧᮞ᮪ ᮞᮤᮙᮩᮒ᮪ ᮘᮛᮤ ᮍᮌᮧᮔ᮪ᮦᮏᮀᮊᮩᮔ᮪ ᮌᮤᮒᮛ᮪ᮔ" +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "\"ᮦᮔᮃᮍᮔ᮪ ᮓᮠᮛᮩᮔ᮪, ᮊᮥᮞᮘᮘ᮪ ᮒᮩ ᮕᮒᮤ ᮜᮤᮜ ᮓᮩᮄ ᮦᮛᮊ᮪ ᮅᮞᮥᮙ᮪ ᮠᮥᮏᮔ᮪, ᮈᮀᮦᮊ ᮦᮠᮦᮞ ᮦᮔᮃᮍᮔ᮪ᮔᮔ ᮓᮩᮄ,\" ᮏᮝᮘ᮪ ᮕᮍᮝᮜ᮪ ᮃᮔᮥ ᮏᮓᮤ ᮕᮒᮥᮌᮞ᮪ ᮊᮃᮙᮔᮔ᮪ ᮞᮤᮛᮩᮙ᮪" +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮊᮌᮤᮃᮒᮔ᮪ ᮆᮒ ᮦᮒᮂ ᮒᮨᮛᮥᮞ᮪ ᮝᮆ ᮓᮤᮜᮊᮧᮔᮔ᮪ ᮊᮥ ᮞᮤᮛᮩᮙ᮪ ᮓᮥᮌᮤ ᮊ ᮕᮤᮔᮥᮂᮔ ᮓᮠᮛᮩᮔ᮪ ᮓᮤ ᮄᮙᮂ ᮃᮒᮝ ᮌᮥᮠ ᮞᮤᮛᮩᮙ᮪ ᮦᮒᮂ" +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮘᮩᮛᮀ ᮏᮓᮤ ᮕᮩᮒᮤᮀ ᮒᮥᮛ᮪ ᮞᮘᮜᮤᮊ᮪ᮔ, ᮑ ᮆᮒ ᮝᮆ ᮅᮞᮥᮙ᮪ ᮠᮥᮏᮔ᮪ ᮦᮒᮂ ᮊᮜᮊᮧᮔᮔ᮪, ᮞᮤᮛᮩᮙ᮪ ᮏᮩᮍ᮪ ᮌᮨᮛᮧᮙ᮪ᮘᮧᮜᮔ᮪ ᮜᮄᮔ᮪ᮔ ᮉᮝᮩᮂ ᮔᮥ ᮊᮜᮥᮃᮁ. ᮙᮛᮦᮔᮂᮔ ᮊᮩᮛ ᮜᮨᮜᮨᮞᮧᮔ᮪ ᮞᮀᮊᮔ᮪ ᮊᮎᮥᮙ᮪ᮕᮧᮔᮔ᮪ ᮞᮌᮜᮔ." +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮦᮘᮓ ᮏᮩᮍ᮪ ᮞᮤᮙᮩᮒ᮪ ᮃᮔᮥ ᮊᮜᮕᮛᮔ᮪, ᮊᮥᮞᮘᮘ᮪ ᮒᮩ ᮙᮩᮔᮀ ᮓᮠᮛᮩᮔ᮪. ᮦᮛᮊ᮪ ᮙᮩᮔᮀ ᮊᮥᮙᮠ ᮓ ᮠᮤᮘᮨᮛ᮪ ᮦᮠᮦᮞ, ᮒᮥᮁ ᮜᮩᮉᮁ." +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮞᮤᮙᮩᮒ᮪ ᮔᮥ ᮌᮩᮞ᮪ ᮊᮜᮕᮛᮔ᮪ ᮕᮤᮞᮔ᮪, ᮍᮛᮞ ᮠᮛᮤᮝᮀ, \"ᮊᮥᮙᮠ ᮄᮉ ᮉᮝᮩᮂ ᮓᮠᮛᮩᮔ᮪, ᮘᮤᮞ-ᮘᮤᮞ ᮅᮛᮀ ᮕᮆᮂ ᮓᮤ ᮓᮤᮉ.\" ᮎᮩᮊ᮪ ᮞᮤᮙᮩᮒ᮪ ᮍᮧᮙᮀᮧ ᮓᮤᮔ ᮠᮦᮒᮔ" +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮃᮚ ᮇᮦᮌ ᮊᮨᮛᮨᮒᮨᮌ᮪ ᮓᮤᮔ ᮠᮦᮒᮔ, ᮞᮀᮊᮔ᮪ ᮊᮥᮓᮥ ᮙᮀᮌᮤᮠᮔ᮪ ᮊ ᮄᮙᮂ ᮞᮤᮛᮩᮙ᮪, ᮦᮙᮔ᮪ᮒ ᮓᮠᮛᮩᮔ᮪, ᮒᮕᮤ ᮆᮛ." +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮞᮊᮤᮍ᮪ ᮜᮕᮛ᮪ ᮆᮒ, ᮙᮦᮔᮂᮔ ᮙᮊ᮪ᮞᮊᮩᮔ᮪, \"ᮒᮥᮜᮥᮀ, ᮅᮛᮀ ᮜᮕᮁ ᮒᮩ ᮘᮧᮌ ᮓᮠᮛᮩᮔ᮪, ᮒᮥᮜᮥᮀ!\" ᮌᮧᮛᮧᮝᮧᮊ᮪ ᮞᮤᮙᮩᮒ᮪ ᮓᮤ ᮠᮛᮩᮕᮩᮔ᮪ ᮜᮝᮀ ᮄᮙᮂ ᮞᮤᮛᮩᮙ᮪" +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮊᮥᮞᮘᮘ᮪ ᮜᮕᮁ ᮊᮎᮤᮓ, ᮙᮦᮔᮂᮔ ᮒᮩ ᮊᮥᮃᮒ᮪, ᮒᮥᮜᮥᮚ᮪ ᮝᮆ ᮕᮤᮀᮞᮔ᮪, ᮊᮞᮙ᮪ᮕᮊ᮪ ᮊᮥ ᮠᮤᮏᮤ ᮞᮤᮛᮩᮙ᮪ ᮔᮥ ᮙᮀᮌᮤᮠᮔ᮪ ᮙᮦᮔᮂᮔ, ᮒᮥᮜᮥᮚ᮪ ᮝᮆ ᮓᮤᮌᮛᮧᮒᮀᮧ ᮊᮥ ᮔᮥ ᮜᮄᮔ᮪ᮔ ᮓᮤᮘᮝ ᮊ ᮏᮨᮛᮧ." +
+                    "</p>" +
+                    "<p align='justify' style='text-indent: 40px'>" +
+                        "ᮞᮤᮙᮩᮒ᮪ ᮓᮤᮒᮥᮜᮥᮍᮔ᮪, ᮓᮤᮅᮘᮛᮔ᮪, ᮓᮤᮦᮘᮦᮛ ᮓᮠᮛᮩᮔ᮪ ᮞᮀᮊᮔ᮪ ᮦᮞᮠᮒ᮪ ᮓᮩᮄ ᮒᮩ ᮊᮜᮕᮛᮔ᮪" +
+                    "</p>",
+                0);
+        insertTeoriAksara(topikAksara1);
+    }
+
     public void insertSoalEssay(SoalEssay soalEssay) {
 
         try {
             String sql="INSERT INTO soal_essay ([topik_id], [pertanyaan], [jawaban]) VALUES(?, ?, ?);";
             db.execSQL(sql, new Object[]{soalEssay.getTopik_id(), soalEssay.getPertanyaan(), soalEssay.getJawaban()});
+        } catch (SQLException ex) {
+
+        }
+    }
+
+    public void insertTeoriAksara(Topik topikAksara) {
+
+        try {
+            String sql="INSERT INTO teori_aksara ([title], [content], [image]) VALUES(?, ?, ?);";
+            db.execSQL(sql, new Object[]{topikAksara.getJudul(), topikAksara.getIsi(), topikAksara.getImage()});
         } catch (SQLException ex) {
 
         }

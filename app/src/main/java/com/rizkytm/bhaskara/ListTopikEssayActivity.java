@@ -18,6 +18,7 @@ public class ListTopikEssayActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "extraScore";
     public List<TopikEssay> topikEssays = new ArrayList<>();
     BhaskaraDB dbHelper;
+    public TopikEssayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,22 +26,11 @@ public class ListTopikEssayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_topik_essay);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        topikListView = (ListView)findViewById(R.id.list_topik);
-        final TopikEssayAdapter adapter = new TopikEssayAdapter(getApplicationContext(), getTopikList());
-        topikListView.setAdapter(adapter);
-        topikListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListTopikEssayActivity.this, MenuEssayActivity.class);
-                intent.putExtra(EXTRA_TITLE, topikEssays.get(position).getJudul());
-                intent.putExtra(EXTRA_CATEGORY_ID, topikEssays.get(position).getId());
-                intent.putExtra(EXTRA_SCORE, topikEssays.get(position).getSkor());
-                startActivity(intent);
-            }
-        });
+
     }
 
     public List<TopikEssay> getTopikList() {
+        topikEssays.clear();
         dbHelper = new BhaskaraDB(getApplicationContext());
         dbHelper.getWritableDatabase();
         List<TopikEssay> topikList = dbHelper.getAllTopikEssay();
@@ -59,5 +49,24 @@ public class ListTopikEssayActivity extends AppCompatActivity {
         dbHelper.close();
 
         return topikEssays;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        topikListView = (ListView)findViewById(R.id.list_topik);
+        adapter = new TopikEssayAdapter(getApplicationContext(), getTopikList());
+        adapter.notifyDataSetChanged();
+        topikListView.setAdapter(adapter);
+        topikListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListTopikEssayActivity.this, MenuEssayActivity.class);
+                intent.putExtra(EXTRA_TITLE, topikEssays.get(position).getJudul());
+                intent.putExtra(EXTRA_CATEGORY_ID, topikEssays.get(position).getId());
+                intent.putExtra(EXTRA_SCORE, topikEssays.get(position).getSkor());
+                startActivity(intent);
+            }
+        });
     }
 }
