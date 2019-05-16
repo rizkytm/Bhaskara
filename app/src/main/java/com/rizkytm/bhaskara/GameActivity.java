@@ -415,7 +415,9 @@ public class GameActivity extends AppCompatActivity {
 //                tv_p2.setText("P2: " + cpuPoints);
             }
         } else {
-            playerPoints--;
+            if (playerPoints > 0) {
+                playerPoints--;
+            }
             tv_p1.setText("Skor: " + playerPoints);
             tv_p1.setTextColor(Color.WHITE);
 

@@ -215,7 +215,9 @@ public class TebakActivity extends AppCompatActivity {
                     setupList();
 
                 } else {
-                    points--;
+                    if (points > 0) {
+                        points--;
+                    }
                     textViewSkor.setText("Skor: " + points);
                     Toast.makeText(TebakActivity.this, "Salah!!!", Toast.LENGTH_SHORT).show();
                 }
