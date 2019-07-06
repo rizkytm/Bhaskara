@@ -9,20 +9,25 @@
         android:roundIcon="@drawable/icon_bhaskara"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListTopikGameActivity"
+        <activity android:name=".KataActivity"></activity>
+        <activity
+            android:name=".ListTopikGameActivity"
             android:label="Topik Game"
-            android:parentActivityName=".Main2Activity"></activity>
-        <activity android:name=".ListTopikEssayActivity"
+            android:parentActivityName=".Main2Activity" />
+        <activity
+            android:name=".ListTopikEssayActivity"
             android:label="Topik Kuis Essay"
-            android:parentActivityName=".Main2Activity"/>
+            android:parentActivityName=".Main2Activity" />
         <activity
             android:name=".DetailCollapseActivity"
             android:label="Judul Teori"
             android:parentActivityName=".TheoryActivity"
             android:theme="@style/AppThemeDetail" />
-        <activity android:name=".MenuGameActivity"
+        <activity
+            android:name=".MenuGameActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ListTopikQuizActivity"
+        <activity
+            android:name=".ListTopikQuizActivity"
             android:label="Topik Kuis Pilihan Ganda"
             android:parentActivityName=".Main2Activity" />
         <activity
@@ -80,8 +85,8 @@
         <activity
             android:name=".MenuEssayActivity"
             android:label="Quiz"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Main2Activity">
+            android:parentActivityName=".Main2Activity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rizkytm.bhaskara.Main2Activity" />

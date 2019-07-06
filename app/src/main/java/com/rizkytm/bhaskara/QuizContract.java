@@ -35,19 +35,21 @@ public final class QuizContract {
     }
 
     public static class TopicsTable implements BaseColumns {
-        public static final String TABLE_NAME = "teori_bahasa";
+        public static final String TABLE_NAME = "teori";
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_CONTENT = "content";
         public static final String COLUMN_IMAGE = "image";
+        public static final String COLUMN_JENIS = "jenis";
     }
 
     public static class TopicAksaraTable implements BaseColumns {
-        public static final String TABLE_NAME = "teori_aksara";
+        public static final String TABLE_NAME = "teori";
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_CONTENT = "content";
         public static final String COLUMN_IMAGE = "image";
+        public static final String COLUMN_JENIS = "jenis";
     }
 
     public static class TopikEssayTable implements BaseColumns {

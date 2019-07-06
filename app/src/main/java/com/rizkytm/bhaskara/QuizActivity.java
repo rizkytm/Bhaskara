@@ -8,7 +8,9 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -65,10 +67,140 @@ public class QuizActivity extends AppCompatActivity {
 
     private StateProgressBar stateProgressBar;
 
+    Button helpButton;
+    WebView webViewContent;
+    String help;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_constraint);
+
+        help = "Aksara Swara<br>" +
+                "<table border='1' align='center'>" +
+                "<tr>" +
+                "<td>ᮃ : a</td>" +
+                "<td>ᮆ : é</td>" +
+                "<td>ᮄ : i</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮇ : o</td>" +
+                "<td>ᮅ : u</td>" +
+                "<td>ᮈ : e</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮉ : eu</td>" +
+                "</tr>" +
+                "</table><br>" +
+                "Aksara Ngalagena<br>" +
+                "<table border='1' align='center'>" +
+                "<tr>" +
+                "<td>ᮊ : ka</td>" +
+                "<td>ᮌ : ga</td>" +
+                "<td>ᮍ : nga</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮎ : ca</td>" +
+                "<td>ᮏ : ja</td>" +
+                "<td>ᮑ : nya</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮒ : ta</td>" +
+                "<td>ᮓ : da</td>" +
+                "<td>ᮔ : na</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮕ : pa</td>" +
+                "<td>ᮘ : ba</td>" +
+                "<td>ᮙ : ma</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮚ : ya</td>" +
+                "<td>ᮛ : ra</td>" +
+                "<td>ᮜ : la</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮝ : wa</td>" +
+                "<td>ᮞ : sa</td>" +
+                "<td>ᮠ : ha</td>" +
+                "</tr>" +
+                "</table><br>" +
+                "Rarangkén<br>" +
+                "<table border='1' align='center'>" +
+                "<tr>" +
+                "<td>ᮊᮤ : ki</td>" +
+                "<td>ᮊᮨ : ke</td>" +
+                "<td>ᮊᮩ : keu</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮊᮁ : kar</td>" +
+                "<td>ᮊᮀ : kang</td>" +
+                "<td>ᮊᮥ : ku</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮊᮢ : kra</td>" +
+                "<td>ᮊᮣ : kla</td>" +
+                "<td>ᮦᮊ : ké</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮊᮧ : ko</td>" +
+                "<td>ᮊᮡ : kya</td>" +
+                "<td>ᮊᮂ : kah</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>ᮊ᮪ : k</td>" +
+                "</tr>" +
+                "</table><br>"+
+                "Angka<br>" +
+                "<table border='1' align='center'>" +
+                "<tr>" +
+                "<td>᮱ : 1</td>" +
+                "<td>᮲ : 2</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>᮳ : 3</td>" +
+                "<td>᮴ : 4</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>᮵ : 5</td>" +
+                "<td>᮶ : 6</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>᮷ : 7</td>" +
+                "<td>᮸ : 8</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td>᮹ : 9</td>" +
+                "<td>᮰ : 0</td>" +
+                "</tr>" +
+                "</table><br>";
+
+        helpButton = (Button) findViewById(R.id.help_kuis);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogHelp = new AlertDialog.Builder(QuizActivity.this);
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.help_dialog, null);
+
+                webViewContent = (WebView) dialogView.findViewById(R.id.wv_bantuan);
+                webViewContent.loadDataWithBaseURL(null, help, "text/html", "utf-8", null);
+
+                dialogHelp
+                        .setView(dialogView)
+                        .setTitle("Bantuan Aksara")
+//                        .setMessage("Butuh bantuan?")
+                        .setCancelable(false)
+                        .setPositiveButton("OKE", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                AlertDialog alertDialog = dialogHelp.create();
+                alertDialog.show();
+            }
+        });
 
         stateProgressBar = (StateProgressBar) findViewById(R.id.your_state_progress_bar_id);
 //        stateProgressBar.setStateDescriptionData(steps);

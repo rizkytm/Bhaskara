@@ -425,7 +425,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     public ArrayList<Topik> getAllTopics() {
         ArrayList<Topik> topikList = new ArrayList<>();
 //        db = getReadableDatabase();
-        String q = "SELECT * FROM " + TopicsTable.TABLE_NAME;
+        String q = "SELECT * FROM " + TopicsTable.TABLE_NAME + " WHERE jenis = 0";
         Cursor c = db.rawQuery(q, null);
 
         if (c.moveToFirst()) {
@@ -446,7 +446,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     public ArrayList<TopikAksara> getAllTopicAksara() {
         ArrayList<TopikAksara> topikAksaraList = new ArrayList<>();
 //        db = getReadableDatabase();
-        String q = "SELECT * FROM " + TopicAksaraTable.TABLE_NAME;
+        String q = "SELECT * FROM " + TopicAksaraTable.TABLE_NAME + " WHERE jenis = 1";
         Cursor c = db.rawQuery(q, null);
 
         if (c.moveToFirst()) {
@@ -625,6 +625,28 @@ public class BhaskaraDB extends SQLiteOpenHelper {
         insertSoalEssay(soalEssay14);
         SoalEssay soalEssay15 = new SoalEssay(6, "kumaha", "ᮊᮥᮙᮠ");
         insertSoalEssay(soalEssay15);
+
+        SoalEssay soalEssay16 = new SoalEssay(7, "bapa", "ᮘᮕ");
+        insertSoalEssay(soalEssay16);
+        SoalEssay soalEssay17 = new SoalEssay(7, "indung", "ᮄᮔ᮪ᮓᮥᮀ");
+        insertSoalEssay(soalEssay17);
+        SoalEssay soalEssay18 = new SoalEssay(7, "raka", "ᮛᮊ");
+        insertSoalEssay(soalEssay18);
+        SoalEssay soalEssay19 = new SoalEssay(7, "rai", "ᮛᮄ");
+        insertSoalEssay(soalEssay19);
+        SoalEssay soalEssay20 = new SoalEssay(7, "aki", "ᮃᮊᮤ");
+        insertSoalEssay(soalEssay20);
+
+        SoalEssay soalEssay21 = new SoalEssay(8, "patuangan", "ᮕᮒᮥᮃᮍᮔ᮪");
+        insertSoalEssay(soalEssay21);
+        SoalEssay soalEssay22 = new SoalEssay(8, "panon", "ᮕᮔᮧᮔ᮪");
+        insertSoalEssay(soalEssay22);
+        SoalEssay soalEssay23 = new SoalEssay(8, "baham", "ᮘᮠᮙ᮪");
+        insertSoalEssay(soalEssay23);
+        SoalEssay soalEssay24 = new SoalEssay(8, "sirah", "ᮞᮤᮛᮂ");
+        insertSoalEssay(soalEssay24);
+        SoalEssay soalEssay25 = new SoalEssay(8, "suku", "ᮞᮥᮊᮥ");
+        insertSoalEssay(soalEssay25);
     }
 
     private void buatTeoriAksara() {
@@ -764,7 +786,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
                         "ᮞᮤᮙᮩᮒ᮪ ᮓᮤᮒᮥᮜᮥᮍᮔ᮪, ᮓᮤᮅᮘᮛᮔ᮪, ᮓᮤᮦᮘᮦᮛ ᮓᮠᮛᮩᮔ᮪ ᮞᮀᮊᮔ᮪ ᮦᮞᮠᮒ᮪ ᮓᮩᮄ ᮒᮩ ᮊᮜᮕᮛᮔ᮪" +
                     "</p>",
                 0);
-        insertTeoriAksara(topikAksara1);
+//        insertTeoriAksara(topikAksara1);
     }
 
     public void insertSoalEssay(SoalEssay soalEssay) {
@@ -780,7 +802,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     public void insertTeoriAksara(Topik topikAksara) {
 
         try {
-            String sql="INSERT INTO teori_aksara ([title], [content], [image]) VALUES(?, ?, ?);";
+            String sql="INSERT INTO teori ([title], [content], [image], [jenis]) VALUES(?, ?, ?, 1);";
             db.execSQL(sql, new Object[]{topikAksara.getJudul(), topikAksara.getIsi(), topikAksara.getImage()});
         } catch (SQLException ex) {
 
@@ -952,7 +974,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     public void updateGambarBahasa(int gambar, int topikID) {
 
         try {
-            String sql="UPDATE teori_bahasa SET [image] = ? WHERE [id] = ?;";
+            String sql="UPDATE teori SET [image] = ? WHERE [id] = ?;";
             db.execSQL(sql, new Object[]{gambar, topikID});
         } catch (SQLException ex) {
 
@@ -962,7 +984,7 @@ public class BhaskaraDB extends SQLiteOpenHelper {
     public void updateGambarAksara(int gambar, int topikID) {
 
         try {
-            String sql="UPDATE teori_aksara SET [image] = ? WHERE [id] = ?;";
+            String sql="UPDATE teori SET [image] = ? WHERE [id] = ?;";
             db.execSQL(sql, new Object[]{gambar, topikID});
         } catch (SQLException ex) {
 
