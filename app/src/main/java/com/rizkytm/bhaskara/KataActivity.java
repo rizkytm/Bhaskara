@@ -16,6 +16,7 @@ public class KataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kata);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         kataList = new ArrayList<>();
         kataList.add(new Kata("Aku", "Abdi"));

@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/icon_bhaskara"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".KataActivity"></activity>
+        <activity android:name=".KataActivity"
+            android:label="Kosa Kata"
+            android:parentActivityName=".ListTopikQuizActivity"/>
         <activity
             android:name=".ListTopikGameActivity"
             android:label="Topik Game"

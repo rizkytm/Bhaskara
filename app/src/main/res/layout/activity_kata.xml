@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".KataActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KataActivity"
+    android:orientation="vertical"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="8dp">
 
     <android.support.v7.widget.RecyclerView
@@ -16,3 +23,24 @@
     </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="4dp"
+            android:background="@drawable/a_essay"
+            android:textColor="@android:color/white"
+            android:text="Selanjutnya" />
+
+    </LinearLayout>
+
+</RelativeLayout>
