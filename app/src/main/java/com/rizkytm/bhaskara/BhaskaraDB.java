@@ -990,4 +990,26 @@ public class BhaskaraDB extends SQLiteOpenHelper {
 
         }
     }
+
+    public ArrayList<Kata> getAllKosaKata(int topikID) {
+        ArrayList<Kata> kosaKataList = new ArrayList<>();
+        String q = "SELECT * FROM " + KosaKataTable.TABLE_NAME +" WHERE topik_id = ? ";
+
+        String[] selectionArgs = new String[]{String.valueOf(topikID)};
+        Cursor c = db.rawQuery(q, selectionArgs);
+
+        if (c.moveToFirst()) {
+            do {
+                Kata kata = new Kata();
+                kata.setId(c.getInt(c.getColumnIndex(KosaKataTable.COLUMN_ID)));
+                kata.setKataIndo(c.getString(c.getColumnIndex(KosaKataTable.COLUMN_KATA_INDO)));
+                kata.setKataSunda(c.getString(c.getColumnIndex(KosaKataTable.COLUMN_KATA_SUNDA)));
+                kata.setId(c.getInt(c.getColumnIndex(SoalGameTable.COLUMN_TOPIK_ID)));
+                kosaKataList.add(kata);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return kosaKataList;
+    }
 }

@@ -93,7 +93,7 @@ public class Main2Activity extends AppCompatActivity {
                         startActivity(intent);
                     } else if (finalI == 5) {
                         jenisKamus = "sunda_indo";
-                        Intent intent = new Intent(Main2Activity.this,KataActivity.class);
+                        Intent intent = new Intent(Main2Activity.this,KamusActivity.class);
                         intent.putExtra(EXTRA_KAMUS, jenisKamus);
                         startActivity(intent);
                     }

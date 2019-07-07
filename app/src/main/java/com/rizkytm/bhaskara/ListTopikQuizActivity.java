@@ -71,7 +71,7 @@ public class ListTopikQuizActivity extends AppCompatActivity {
         simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListTopikQuizActivity.this, LatihanActivity.class);
+                Intent intent = new Intent(ListTopikQuizActivity.this, KataActivity.class);
 //                String topik = (String) adapter.getItem(position).toString();
 //                TextView textView = (TextView) view.findViewById(R.id.judul_topik_kuis);
 //                intent.putExtra(EXTRA_TITLE, textView.getText().toString().trim());

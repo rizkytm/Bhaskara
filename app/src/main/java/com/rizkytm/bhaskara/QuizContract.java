@@ -103,4 +103,12 @@ public final class QuizContract {
         public static final String COLUMN_DIFFICULTY = "difficulty_id";
         public static final String COLUMN_CATEGORY_ID = "topik_id";
     }
+
+    public static class KosaKataTable implements BaseColumns {
+        public static final String TABLE_NAME = "kosa_kata";
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_KATA_INDO = "kata_indo";
+        public static final String COLUMN_KATA_SUNDA = "kata_sunda";
+        public static final String COLUMN_TOPIK_ID = "topik_id";
+    }
 }

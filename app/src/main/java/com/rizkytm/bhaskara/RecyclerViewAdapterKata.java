@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+//import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -38,12 +38,12 @@ public class RecyclerViewAdapterKata extends RecyclerView.Adapter<RecyclerViewAd
         holder.kataIndo.setText(mData.get(position).getKataIndo());
         holder.kataSunda.setText(mData.get(position).getKataSunda());
         final String arti = mData.get(position).getKataSunda();
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 
-                Toast toast=Toast.makeText(mContext, arti, Toast.LENGTH_SHORT);
-                toast.show();
+//                Toast toast=Toast.makeText(mContext, arti, Toast.LENGTH_SHORT);
+//                toast.show();
 
 //                Intent intent = new Intent(mContext,Book_Activity.class);
 //
@@ -54,8 +54,8 @@ public class RecyclerViewAdapterKata extends RecyclerView.Adapter<RecyclerViewAd
 //                // start the activity
 //                mContext.startActivity(intent);
 
-            }
-        });
+//            }
+//        });
     }
 
     @Override
